@@ -8,28 +8,267 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-dE:/CMP third year/VLSI/projects/fullProject1/floating point
-vForwardingUnit
-!s110 1668505386
+dF:/Eng/Third Year/First Term/Computer Architecture/Project/Code
+vALU
+Z0 !s110 1668637676
 !i10b 1
-!s100 N<^FT@j4HI[Dj>WZP1Afl0
-!s11b Dg1SIo80bB@j0V0VzS_@n1
-Ia6H6Mk]eWBDm_DH[cML<52
-VDg1SIo80bB@j0V0VzS_@n1
-dE:/CMP third year/computer architecture/project/code/MZNM-Processor
-w1668505346
-8E:/CMP third year/computer architecture/project/code/MZNM-Processor/forwarding-unit.v
-FE:/CMP third year/computer architecture/project/code/MZNM-Processor/forwarding-unit.v
-!i122 1
-L0 1 22
-OV;L;2020.1;71
+!s100 ?<8^c1LRRJ^@T<DEdegVY1
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Ion9:Uf[D3nXYI]Z_U>@A_1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor
+w1668637468
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/ALU.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/ALU.v
+!i122 63
+L0 3 27
+Z4 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1668505386.000000
-!s107 E:/CMP third year/computer architecture/project/code/MZNM-Processor/forwarding-unit.v|
-!s90 -reportprogress|300|-work|work|-stats=none|E:/CMP third year/computer architecture/project/code/MZNM-Processor/forwarding-unit.v|
+Z5 !s108 1668637676.000000
+!s107 defines.v|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/ALU.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/ALU.v|
 !i113 1
-o-work work
-tCvgOpt 0
+Z6 o-work work
+Z7 tCvgOpt 0
+n@a@l@u
+vControlUnit
+R0
+!i10b 1
+!s100 <h>;^JB[L5Q<VklCOoQoh2
+R1
+ICk9G9?hb6C@J1@U9TznSR1
+R2
+R3
+w1668633673
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/controlUnit.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/controlUnit.v
+!i122 64
+L0 3 146
+R4
+r1
+!s85 0
+31
+R5
+!s107 defines.v|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/controlUnit.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/controlUnit.v|
+!i113 1
+R6
+R7
+n@control@unit
+vFetch
+R0
+!i10b 1
+!s100 >L=QFcQ]Ea?lV_^9JYM`g1
+R1
+I_KBa`Qafz7iN6FP`m4Q9D0
+R2
+R3
+w1668465149
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/fetch.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/fetch.v
+!i122 65
+L0 1 6
+R4
+r1
+!s85 0
+31
+R5
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/fetch.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/fetch.v|
+!i113 1
+R6
+R7
+n@fetch
+vfetchTB
+Z8 !s110 1668637677
+!i10b 1
+!s100 `;7UCADTH5b[ORVX:5]>z2
+R1
+I><CYUjkP9=dEFnKNMX`[43
+R2
+R3
+w1668465013
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/fetchTB.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/fetchTB.v
+!i122 66
+L0 1 35
+R4
+r1
+!s85 0
+31
+Z9 !s108 1668637677.000000
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/fetchTB.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/fetchTB.v|
+!i113 1
+R6
+R7
+nfetch@t@b
+vForwardingUnit
+R8
+!i10b 1
+!s100 N<^FT@j4HI[Dj>WZP1Afl0
+R1
+IaQ>7]Pn79nCMbgm:127aX3
+R2
+R3
+Z10 w1668606857
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/forwarding-unit.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/forwarding-unit.v
+!i122 67
+Z11 L0 1 22
+R4
+r1
+!s85 0
+31
+R9
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/forwarding-unit.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/forwarding-unit.v|
+!i113 1
+R6
+R7
 n@forwarding@unit
+vMemory
+R8
+!i10b 1
+!s100 1kKc]fM3aIgmMeIAHcaz31
+R1
+I93R9[4bCPWljPRiX;1[VH2
+R2
+R3
+R10
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/Memory.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/Memory.v
+!i122 68
+L0 1 19
+R4
+r1
+!s85 0
+31
+R9
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/Memory.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/Memory.v|
+!i113 1
+R6
+R7
+n@memory
+vPC
+Z12 !s110 1668637678
+!i10b 1
+!s100 2>^j4B8D5Ca5?FLe?`cOT1
+R1
+Imij6CSJeQzb9GlhkcQW2m3
+R2
+R3
+w1668636130
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/pc.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/pc.v
+!i122 69
+R11
+R4
+r1
+!s85 0
+31
+Z13 !s108 1668637678.000000
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/pc.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/pc.v|
+!i113 1
+R6
+R7
+n@p@c
+vProcessor
+R12
+!i10b 1
+!s100 JgFPQzVA_:6U?lAL=_B<_1
+R1
+IFngRN7BSN1oAMTc8O2D[Z3
+R2
+R3
+w1668637670
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v
+!i122 70
+L0 1 46
+R4
+r1
+!s85 0
+31
+R13
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v|
+!i113 1
+R6
+R7
+n@processor
+vregfile
+R12
+!i10b 1
+!s100 Gm8OWF_S[YBO9@[Ai22ek3
+R1
+I=Til0e7?Q=Q;Id[EVReUH1
+R2
+R3
+w1668632792
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/regfile.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/regfile.v
+!i122 71
+L0 1 40
+R4
+r1
+!s85 0
+31
+R13
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/regfile.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/regfile.v|
+!i113 1
+R6
+R7
+vSignExtend
+Z14 !s110 1668637679
+!i10b 1
+!s100 zGaAAUYjTnn?1_3da3C;E1
+R1
+IcFZ?:ng50J1lSb6:k6WfV2
+R2
+R3
+w1668631961
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/signExtend.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/signExtend.v
+!i122 72
+L0 1 14
+R4
+r1
+!s85 0
+31
+Z15 !s108 1668637679.000000
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/signExtend.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/signExtend.v|
+!i113 1
+R6
+R7
+n@sign@extend
+vWriteBack
+R14
+!i10b 1
+!s100 Y>WI[_jX@FiI4A]J]C9]d1
+R1
+I2XRo3c2ca6fdQUIjV;fiI3
+R2
+R3
+w1668606442
+8F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/writeBack.v
+FF:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/writeBack.v
+!i122 73
+L0 1 8
+R4
+r1
+!s85 0
+31
+R15
+!s107 F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/writeBack.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/writeBack.v|
+!i113 1
+R6
+R7
+n@write@back

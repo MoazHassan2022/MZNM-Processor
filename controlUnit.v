@@ -1,7 +1,7 @@
 `include "defines.v"
 
 module ControlUnit (
-    opcode,  aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC
+    opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC
 );
 
 /// defining the inputs 
