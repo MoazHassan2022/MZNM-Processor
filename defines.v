@@ -63,6 +63,8 @@
 `define ALU_OR 4'd8
 `define ALU_SHL 4'd9
 `define ALU_SHR 4'd10
+`define ALU_STD 4'd11
+`define ALU_LDD 4'd12
 
 /// defining common signals 
 ///  [IR, IW, MR, MW, MTR, ALU src, RW, Branch, SetC, CLRC]

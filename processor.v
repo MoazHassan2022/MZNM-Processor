@@ -3,8 +3,8 @@ module Processor (
     memData, /* READ DATA */
     MR, 
     MW, 
-    aluOut, /* READ ADDRESS */ 
-    readData2, /* WRITE DATA */
+    aluOut, /* ADDRESS */ 
+    read_data2, /* WRITE DATA */
     /* INTERFACE WITH INSTRUCTION MEMORY */
     pc, /* READ ADDRESS */
     instr, 
@@ -18,7 +18,7 @@ input wire [31:0] instr;
 
 // DEFINING OUTPUTS
 output MR, MW;
-output [15:0] aluOut, readData2;
+output [15:0] aluOut, read_data2;
 output [31:0] pc;
 
 // DEFINING WIRES
@@ -42,7 +42,7 @@ assign aluSecondOperand = ALU_src === 1'b0 ? read_data2 : instr[15:0];
 PC pcCircuit(extendedAddress, pcSrc, pc, reset, clk);
 
 ControlUnit cu(instr[31:27], aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC);
-SignExtend se(instr[15:0], extendedInstruction);
+SignExtend se(instr[15:0], extendedInstruction); // TODO: Should be removed unless we add another memory instruction that uses immediate value
 
 // INSTR: [31:27] opcode
 // [26:24] Rdest

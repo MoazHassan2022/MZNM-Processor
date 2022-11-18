@@ -13,6 +13,8 @@ assign negativeFlag = result[15];
 assign {carryFlag,result} = 
 		(aluSignals == `ALU_NOP)?17'd0:
                 (aluSignals == `ALU_NOT)?{1'b0,~firstOperand}:
+                (aluSignals == `ALU_STD)?{1'b0,firstOperand}: // aluOut must be Rdst
+                (aluSignals == `ALU_LDD)?{1'b0,secondOperand}: // aluOut must be Rsrc
                 (aluSignals == `ALU_INC)?firstOperand+1:
                 (aluSignals == `ALU_DEC)?firstOperand-1:
                 (aluSignals == `ALU_MOV)?{1'b0,secondOperand}:

@@ -74,16 +74,16 @@ always @(*) begin
         aluSignals = `ALU_NOP; 
       end
     else if(opcode == `OP_LDM) begin 
-        {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010111000; 
-        aluSignals = `ALU_NOP; 
+        {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0000011000; 
+        aluSignals = `ALU_MOV; // LDM is an instruction in which we move immediate value to Rdst  
       end
     else if(opcode == `OP_LDD) begin 
-        {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010111000; 
-        aluSignals = `ALU_NOP; 
+        {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010101000; // ALU_src must be 0
+        aluSignals = `ALU_LDD; 
       end
     else if(opcode == `OP_STD) begin 
-        {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001010000; 
-        aluSignals = `ALU_NOP; 
+        {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; // ALU_src must be 0
+        aluSignals = `ALU_STD; 
       end
     ///  J operations
     else if(opcode == `OP_JZ) begin 
