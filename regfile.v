@@ -28,6 +28,5 @@ begin
     begin
         if(write_enable) registers[write_addr] = write_data;
     end
-	$display("registers[0] = %d", registers[0]);
 end
 endmodule
