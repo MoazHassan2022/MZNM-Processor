@@ -1,0 +1,457 @@
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# 11 compiles, 2 failed with no errors.
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# 13 compiles, 0 failed with no errors.
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 10:34:22 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+# ** Fatal: (vsim-3365) Too many port connections. Expected 9, found 10.
+#    Time: 0 ps  Iteration: 0  Instance: /Controller/processor File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/controller.v Line: 14
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 10:34:24 on Nov 18,2022, Elapsed time: 0:00:02
+# Errors: 1, Warnings: 7
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# 13 compiles, 0 failed with no errors.
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 10:35:48 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+add wave -position end sim:/Controller/instrMem/*
+force -freeze sim:/Controller/instrMem/pc 0 0
+add wave -position end sim:/Controller/dataMem/*
+quit -sim
+# End time: 10:40:42 on Nov 18,2022, Elapsed time: 0:04:54
+# Errors: 0, Warnings: 2
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v failed with 1 errors.
+# 13 compiles, 1 failed with 1 error.
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# 13 compiles, 0 failed with no errors.
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 11:00:24 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+force -freeze sim:/Controller/reset St0 0
+run
+quit -sim
+# End time: 11:02:31 on Nov 18,2022, Elapsed time: 0:02:07
+# Errors: 0, Warnings: 3
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# 13 compiles, 0 failed with no errors.
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 11:03:18 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+run
+force -freeze sim:/Controller/reset St0 0
+run
+run
+quit -sim
+# End time: 11:04:35 on Nov 18,2022, Elapsed time: 0:01:17
+# Errors: 0, Warnings: 2
+# Compile of instructionMemory.v was successful.
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 11:05:14 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+run
+force -freeze sim:/Controller/reset St0 0
+run
+run
+quit -sim
+# End time: 11:06:14 on Nov 18,2022, Elapsed time: 0:01:00
+# Errors: 0, Warnings: 2
+# Compile of instructionMemory.v was successful.
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 11:14:53 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+force -freeze sim:/Controller/reset 0 0
+run
+run
+quit -sim
+# End time: 11:17:57 on Nov 18,2022, Elapsed time: 0:03:04
+# Errors: 0, Warnings: 2
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# 13 compiles, 0 failed with no errors.
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 11:19:39 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+add wave -position end sim:/Controller/processor/regFile/*
+run
+force -freeze sim:/Controller/reset 0 0
+run
+quit -sim
+# End time: 11:22:08 on Nov 18,2022, Elapsed time: 0:02:29
+# Errors: 0, Warnings: 2
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# 13 compiles, 0 failed with no errors.
+# Compile of ALU.v failed with 1 errors.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# 13 compiles, 1 failed with 1 error.
+# Compile of ALU.v failed with 1 errors.
+# Compile of ALU.v failed with 1 errors.
+# Compile of ALU.v was successful.
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 12:45:48 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+quit -sim
+# End time: 12:46:06 on Nov 18,2022, Elapsed time: 0:00:18
+# Errors: 0, Warnings: 6
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 12:47:10 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+add wave -position end sim:/Controller/processor/alu/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+# registers[0] =     0
+# registers[0] =     0
+force -freeze sim:/Controller/reset St0 0
+run
+# registers[0] =     0
+# registers[0] =     1
+restart -f
+add wave -position end sim:/Controller/processor/regFile/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+# registers[0] =     0
+# registers[0] =     0
+force -freeze sim:/Controller/reset St0 0
+run
+# registers[0] =     0
+# registers[0] =     1
+quit -sim
+# End time: 12:52:12 on Nov 18,2022, Elapsed time: 0:05:02
+# Errors: 0, Warnings: 1
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 12:52:54 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+add wave -position end sim:/Controller/dataMem/*
+add wave -position end sim:/Controller/processor/writeBack/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+# registers[0] =     0
+# registers[0] =     0
+force -freeze sim:/Controller/reset St0 0
+run
+# registers[0] =     0
+# registers[0] =     1
+restart -f
+quit -sim
+# End time: 12:56:50 on Nov 18,2022, Elapsed time: 0:03:56
+# Errors: 0, Warnings: 1
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 12:57:03 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+add wave -position end sim:/Controller/processor/alu/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+# registers[0] =     0
+# registers[0] =     0
+force -freeze sim:/Controller/reset St0 0
+run
+# registers[0] =     0
+# registers[0] =     1
+quit -sim
+# End time: 12:59:28 on Nov 18,2022, Elapsed time: 0:02:25
+# Errors: 0, Warnings: 1
+vsim -gui work.ALU
+# vsim -gui work.ALU 
+# Start time: 12:59:37 on Nov 18,2022
+# Loading work.ALU
+add wave -position end sim:/ALU/*
+force -freeze sim:/ALU/aluSignals 0001 0
+force -freeze sim:/ALU/firstOperand 0 0
+force -freeze sim:/ALU/secondOperand 0 0
+run
+quit -sim
+# End time: 13:00:23 on Nov 18,2022, Elapsed time: 0:00:46
+# Errors: 0, Warnings: 1
+vsim -gui work.ALU
+# vsim -gui work.ALU 
+# Start time: 13:01:24 on Nov 18,2022
+# Loading work.ALU
+add wave -position end sim:/ALU/*
+force -freeze sim:/ALU/aluSignals 0001 0
+quit -sim
+# End time: 13:02:04 on Nov 18,2022, Elapsed time: 0:00:40
+# Errors: 0, Warnings: 1
+# Compile of ALU.v was successful.
+vsim -gui work.ALU
+# vsim -gui work.ALU 
+# Start time: 13:03:03 on Nov 18,2022
+# Loading work.ALU
+add wave -position end sim:/ALU/*
+force -freeze sim:/ALU/aluSignals 0001 0
+force -freeze sim:/ALU/firstOperand 0 0
+force -freeze sim:/ALU/secondOperand 0 0
+run
+# Break key hit
+quit -sim
+# End time: 13:04:08 on Nov 18,2022, Elapsed time: 0:01:05
+# Errors: 0, Warnings: 2
+vsim -gui work.Controller
+# vsim -gui work.Controller 
+# Start time: 13:04:16 on Nov 18,2022
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.SignExtend
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/Controller/*
+force -freeze sim:/Controller/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Controller/reset 1 0
+run
+# registers[0] =     0
+# registers[0] =     0
+force -freeze sim:/Controller/reset St0 0
+run
+# registers[0] =     0
+# registers[0] = 65535
+run
+# registers[0] = 65535
+quit -sim
+# End time: 13:07:07 on Nov 18,2022, Elapsed time: 0:02:51
+# Errors: 0, Warnings: 1

@@ -28,13 +28,6 @@ begin
     begin
         if(write_enable) registers[write_addr] = write_data;
     end
-end
-always@(posedge clk or rst)
-begin
-    if(rst)
-    begin
-        for (i = 0;i<8;i = i+1)
-        registers [i] = 16'b0; 
-    end
+	$display("registers[0] = %d", registers[0]);
 end
 endmodule

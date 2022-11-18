@@ -8,41 +8,41 @@
 
 /// operation codes 
 // R type Operations
-`define OP_NOT 6'd0
-`define OP_INC 6'd1
-`define OP_DEC 6'd2
-`define OP_MOV 6'd3
-`define OP_ADD 6'd4
-`define OP_SUB 6'd5
-`define OP_AND 6'd6
-`define OP_OR 6'd7
-`define OP_SHL 6'd8
-`define OP_SHR 6'd9
+`define OP_NOT 5'd0
+`define OP_INC 5'd1
+`define OP_DEC 5'd2
+`define OP_MOV 5'd3
+`define OP_ADD 5'd4
+`define OP_SUB 5'd5
+`define OP_AND 5'd6
+`define OP_OR 5'd7
+`define OP_SHL 5'd8
+`define OP_SHR 5'd9
 
 // I type operations
-`define OP_PUSH 6'd10
-`define OP_POP 6'd11
-`define OP_LDM 6'd12
-`define OP_LDD 6'd13
-`define OP_STD 6'd14
+`define OP_PUSH 5'd10
+`define OP_POP 5'd11
+`define OP_LDM 5'd12
+`define OP_LDD 5'd13
+`define OP_STD 5'd14
 
 // J type operations
-`define OP_JZ 6'd15
-`define OP_JN 6'd16
-`define OP_JC 6'd17
-`define OP_JMP 6'd18
-`define OP_Call 6'd19
-`define OP_Ret 6'd20
-`define OP_RTI 6'd21
+`define OP_JZ 5'd15
+`define OP_JN 5'd16
+`define OP_JC 5'd17
+`define OP_JMP 5'd18
+`define OP_Call 5'd19
+`define OP_Ret 5'd20
+`define OP_RTI 5'd21
 
 // other operations
-`define OP_Rst 6'd22
-`define OP_INT 6'd23
-`define OP_OUT 6'd24
-`define OP_IN 6'd25
-`define OP_NOP 6'd26
-`define OP_SETC 6'd27
-`define OP_CLCR 6'd28
+`define OP_Rst 5'd22
+`define OP_INT 5'd23
+`define OP_OUT 5'd24
+`define OP_IN 5'd25
+`define OP_NOP 5'd26
+`define OP_SETC 5'd27
+`define OP_CLCR 5'd28
 
 
 /// define the memory size

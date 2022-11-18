@@ -8,7 +8,7 @@ always@(posedge clk)
 begin
 	if(reset === 1'b1)
 	begin
-		pc =  32'h20; // 32d
+		pc =  32'd30; // 30d
 	end
 	else if(pcSrc === 1'b1)
 	begin
