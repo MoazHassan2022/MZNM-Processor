@@ -19,6 +19,7 @@ assign read_data2 = registers[read_addr2];
 //read from the registers based on the address
 always@(negedge clk or rst)
 begin
+    $monitor("reg[0] = %d,reg[1] = %d,reg[2] = %d,reg[3] = %d,reg[4] = %d,reg[5] = %d,reg[6] = %d,reg[7] = %d",registers[0],registers[1],registers[2],registers[3],registers[4],registers[5],registers[6],registers[7]);
     if(rst)
     begin
         for (i = 0;i<8;i = i+1)
@@ -28,6 +29,5 @@ begin
     begin
         if(write_enable) registers[write_addr] = write_data;
     end
-	$display("registers[0] = %d", registers[0]);
 end
 endmodule
