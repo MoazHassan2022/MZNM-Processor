@@ -15,9 +15,9 @@ assign {carryFlag,result} =
                 (aluSignals == `ALU_NOT)?{1'b0,~firstOperand}:
                 (aluSignals == `ALU_INC)?firstOperand+1:
                 (aluSignals == `ALU_DEC)?firstOperand-1:
-                (aluSignals == `ALU_MOV)?{1'b0,firstOperand}:
+                (aluSignals == `ALU_MOV)?{1'b0,secondOperand}:
                 (aluSignals == `ALU_ADD)?firstOperand+secondOperand:
-                (aluSignals == `ALU_SUB)?firstOperand-secondOperand:
+                (aluSignals == `ALU_SUB)?firstOperand-secondOperand:   /*rdst= rdst-rsrc*/
                 (aluSignals == `ALU_AND)?{1'b0,firstOperand&secondOperand}:
                 (aluSignals == `ALU_OR)? {1'b0,firstOperand|secondOperand}:
                 (aluSignals == `ALU_SHL)?{1'b0,firstOperand<<secondOperand}:
