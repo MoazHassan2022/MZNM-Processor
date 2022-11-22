@@ -32,7 +32,7 @@ wire [3:0] CCR; // [0: ZF, 1: NF, 2: CF, 3: OF] TODO: I had to make this as wire
 // Assigns
 assign pcSrc = Branch & CCR[0];
 // shift left and give it to pc
-assign extendedAddress = pc + (extendedInstruction<<1);
+assign extendedAddress = pc + (extendedInstruction<<1); // TODO: to be not shifted
 
 // Registers, alu output, and alu inputs are all 16 bits
 assign aluSecondOperand = ALU_src === 1'b0 ? read_data2 : instr[15:0];
