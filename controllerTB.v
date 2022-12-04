@@ -41,7 +41,7 @@ initial begin
     instrWriteData = 16'b0000000000000000; // NOT R1
     #100;
     instrWriteAddress = 20'd42;
-    instrWriteData = {`OP_STD, 11'b00000100000}; // STD R1, R2
+    instrWriteData = {`OP_STD, 11'b00000100000}; // STD R1, R2 (will see the data in next negative clk edge)
     #100;
     instrWriteAddress = 20'd43;
     instrWriteData = 16'b0000000000000000; // STD R1, R2
