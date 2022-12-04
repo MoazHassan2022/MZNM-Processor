@@ -25,7 +25,7 @@ output [31:0] pc;
 wire IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC; // control unit signals
 wire pcSrc; // pcSrc is result of anding of (Branch, zeroFlag)
 wire [31:0] extendedInstruction, extendedAddress;
-wire [3:0] aluSignals; // condition code register
+wire [3:0] aluSignals;
 wire [15:0] aluOut, read_data1, read_data2, write_data, aluSecondOperand;
 wire [3:0] CCR; // [0: ZF, 1: NF, 2: CF, 3: OF] TODO: I had to make this as wire for (Illegeal output or inout port connection) error, I think this is right and in pipelined processor just put CCR wires in the buffer register
 
@@ -33,6 +33,9 @@ wire [3:0] CCR; // [0: ZF, 1: NF, 2: CF, 3: OF] TODO: I had to make this as wire
 assign pcSrc = Branch & CCR[0];
 // shift left and give it to pc
 assign extendedAddress = pc + (extendedInstruction<<1); // TODO: to be not shifted
+
+// BZ + BN + BC
+// B(Z+N+C)
 
 // Registers, alu output, and alu inputs are all 16 bits
 assign aluSecondOperand = ALU_src === 1'b0 ? read_data2 : instr[15:0];
