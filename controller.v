@@ -20,7 +20,7 @@ Processor processor(
     memData, /* READ DATA */
     memRead, 
     memWrite, 
-    aluOut, /* READ ADDRESS */ 
+    aluOut, /* ADDRESS */ 
     readData2, /* WRITE DATA */
     /* INTERFACE WITH INSTRUCTION MEMORY */
     pc, /* READ ADDRESS */
