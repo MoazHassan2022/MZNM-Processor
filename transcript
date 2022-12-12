@@ -1,1 +1,487 @@
 # Compile of instructionMemory.v was successful.
+# Compile of pc.v was successful.
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v failed with 3 errors.
+# Compile of controllerTB.v was successful.
+# 14 compiles, 1 failed with 3 errors.
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of fetchTB.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of signExtend.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# Compile of controllerTB.v was successful.
+# 14 compiles, 0 failed with no errors.
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# Compile of controllerTB.v was successful.
+# 12 compiles, 0 failed with no errors.
+vsim -gui work.IntructionMemory
+# vsim -gui work.IntructionMemory 
+# Start time: 23:00:23 on Dec 12,2022
+# Loading work.IntructionMemory
+add wave -position end sim:/IntructionMemory/*
+force -freeze sim:/IntructionMemory/instr 0 0
+force -freeze sim:/IntructionMemory/address 0 0
+force -freeze sim:/IntructionMemory/pc 0 0
+force -freeze sim:/IntructionMemory/clk 0 0, 1 {50 ps} -r 100
+run
+run
+run
+run
+quit -sim
+# End time: 23:05:05 on Dec 12,2022, Elapsed time: 0:04:42
+# Errors: 0, Warnings: 8
+# Compile of instructionMemory.v was successful.
+vsim -gui work.IntructionMemory
+# vsim -gui work.IntructionMemory 
+# Start time: 23:05:19 on Dec 12,2022
+# Loading work.IntructionMemory
+add wave -position end sim:/IntructionMemory/*
+force -freeze sim:/IntructionMemory/pc 0 0
+run
+force -freeze sim:/IntructionMemory/pc 1 0
+run
+force -freeze sim:/IntructionMemory/pc 11110 0
+run
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+force -freeze sim:/IntructionMemory/pc 0 0
+run
+force -freeze sim:/IntructionMemory/pc 1 0
+run
+force -freeze sim:/IntructionMemory/pc 11110 0
+run
+force -freeze sim:/IntructionMemory/pc 00000000000000000000000000011111 0
+run
+force -freeze sim:/IntructionMemory/pc 00000000000000000000000000100000 0
+run
+quit -sim
+# End time: 23:17:13 on Dec 12,2022, Elapsed time: 0:11:54
+# Errors: 0, Warnings: 1
+vsim -gui work.DataMemory
+# vsim -gui work.DataMemory 
+# Start time: 23:18:50 on Dec 12,2022
+# Loading work.DataMemory
+add wave -position end sim:/DataMemory/*
+force -freeze sim:/DataMemory/MemeWrite 0 0
+force -freeze sim:/DataMemory/MemeRead 1 0
+force -freeze sim:/DataMemory/Clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/DataMemory/Addr 0 0
+run
+run
+force -freeze sim:/DataMemory/Addr 00000000001 0
+run
+force -freeze sim:/DataMemory/DataIn 1101110111010101 0
+force -freeze sim:/DataMemory/MemeWrite St1 0
+force -freeze sim:/DataMemory/MemeRead St0 0
+run
+force -freeze sim:/DataMemory/MemeWrite St0 0
+force -freeze sim:/DataMemory/MemeRead St1 0
+run
+quit -sim
+# End time: 23:23:31 on Dec 12,2022, Elapsed time: 0:04:41
+# Errors: 0, Warnings: 1
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v failed with 1 errors.
+# Compile of regfile.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v failed with 1 errors.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# Compile of controllerTB.v was successful.
+# 12 compiles, 2 failed with 2 errors.
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v failed with 1 errors.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# Compile of controllerTB.v was successful.
+# 12 compiles, 1 failed with 1 error.
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# Compile of controllerTB.v was successful.
+# 12 compiles, 0 failed with no errors.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 23:37:45 on Dec 12,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+# ** Fatal: (vsim-3365) Too many port connections. Expected 2, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/instrMem File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/controller.v Line: 15
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 23:37:46 on Dec 12,2022, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 4
+# Compile of controller.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 23:38:28 on Dec 12,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+add wave -position end sim:/controllerTB/controller/processor/pcCircuit/#ALWAYS#9/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 23:42:11 on Dec 12,2022, Elapsed time: 0:03:43
+# Errors: 0, Warnings: 1
+# Compile of pc.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 23:42:26 on Dec 12,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+add wave -position end sim:/controllerTB/controller/processor/pcCircuit/#ALWAYS#9/*
+add wave -position end sim:/controllerTB/controller/processor/#ASSIGN#34/*
+# ** UI-Msg: (vish-4014) No objects found matching '/controllerTB/controller/processor/#ASSIGN#34/*'.
+add wave -position end sim:/controllerTB/controller/processor/#ASSIGN#40/*
+# ** UI-Msg: (vish-4014) No objects found matching '/controllerTB/controller/processor/#ASSIGN#40/*'.
+add wave -position end sim:/controllerTB/controller/instrMem/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+add wave -position end sim:/controllerTB/controller/processor/pcCircuit/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 23:47:34 on Dec 12,2022, Elapsed time: 0:05:08
+# Errors: 0, Warnings: 1
+# Compile of pc.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 23:47:50 on Dec 12,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+add wave -position end sim:/controllerTB/controller/processor/pcCircuit/*
+add wave -position end sim:/controllerTB/controller/instrMem/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 23:51:41 on Dec 12,2022, Elapsed time: 0:03:51
+# Errors: 0, Warnings: 2
+# Compile of pc.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 23:51:56 on Dec 12,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+add wave -position end sim:/controllerTB/controller/instrMem/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+#          9
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# entered
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# entered
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# entered
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# entered
+quit -sim
+# End time: 23:53:35 on Dec 12,2022, Elapsed time: 0:01:39
+# Errors: 0, Warnings: 2
+# Compile of pc.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 23:54:06 on Dec 12,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+add wave -position end sim:/controllerTB/controller/instrMem/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 23:55:27 on Dec 12,2022, Elapsed time: 0:01:21
+# Errors: 0, Warnings: 2
+# Compile of pc.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 23:56:17 on Dec 12,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+add wave -position end sim:/controllerTB/controller/instrMem/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+restart -f
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 00:09:13 on Dec 13,2022, Elapsed time: 0:12:56
+# Errors: 0, Warnings: 1
+# Compile of regfile.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 00:09:31 on Dec 13,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+add wave -position end sim:/controllerTB/controller/instrMem/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 00:11:44 on Dec 13,2022, Elapsed time: 0:02:13
+# Errors: 0, Warnings: 2
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 00:11:57 on Dec 13,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+add wave -position end sim:/controllerTB/controller/instrMem/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 00:19:38 on Dec 13,2022, Elapsed time: 0:07:41
+# Errors: 0, Warnings: 2
+# Compile of controllerTB.v was successful with warnings.
+# Compile of ALU.v was successful with warnings.
+# Compile of controlUnit.v failed with 4 errors.
+# Compile of defines.v was successful with warnings.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# Compile of controllerTB.v was successful with warnings.
+# 12 compiles, 1 failed with 4 errors.
+# Compile of ALU.v was successful.
+# Compile of controlUnit.v was successful.
+# Compile of defines.v was successful.
+# Compile of forwarding-unit.v was successful.
+# Compile of pc.v was successful.
+# Compile of processor.v was successful.
+# Compile of regfile.v was successful.
+# Compile of writeBack.v was successful.
+# Compile of controller.v was successful.
+# Compile of dataMemory.v was successful.
+# Compile of instructionMemory.v was successful.
+# Compile of controllerTB.v was successful.
+# 12 compiles, 0 failed with no errors.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 00:20:54 on Dec 13,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/*
+add wave -position end sim:/controllerTB/controller/instrMem/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 00:22:35 on Dec 13,2022, Elapsed time: 0:01:41
+# Errors: 0, Warnings: 4

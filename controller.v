@@ -1,19 +1,18 @@
-module Controller (clk, reset, instrWriteAddress, instrWriteData, instrWriteEnable);
+module Controller (clk, reset, interruptSignal);
 
 // DEFINING INPUTS
-input wire clk, reset, instrWriteEnable;
-input wire [19:0] instrWriteAddress;
-input wire [15:0] instrWriteData;
+input wire clk, reset;
+input wire [1:0] interruptSignal;
 
 
-// DEFINING OUTPUTS
-wire [31:0] pc, instr;
-wire [15:0] memData, aluOut, readData2;
+// DEFINING WIRES
+wire [31:0] pc;
+wire [15:0] memData, aluOut, readData2, instr;
 wire memRead, memWrite;
 
 
 // DEFINING BLOCKS
-IntructionMemory instrMem(pc, instr, clk, instrWriteAddress, instrWriteData, instrWriteEnable);
+IntructionMemory instrMem(pc, instr);
 DataMemory dataMem(clk,memWrite,memRead,readData2,memData,aluOut[10:0]);
 Processor processor(
     /* INTERFACE WITH DATA MEMORY */
@@ -26,7 +25,8 @@ Processor processor(
     pc, /* READ ADDRESS */
     instr, 
     clk, 
-    reset
+    reset,
+    interruptSignal
 );
 
 

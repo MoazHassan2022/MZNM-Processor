@@ -1,8 +1,5 @@
-module IntructionMemory (pc, instr, clk, writeAddress, writeData, writeEnable);
+module IntructionMemory (pc, instr);
 input  [31:0] pc;
-input clk, writeEnable;
-input [19:0]  writeAddress;
-input [15:0]  writeData;
 output reg [15:0] instr;
 wire [19:0] address;
 
@@ -18,12 +15,4 @@ end
 
 assign address = pc[19:0];
 assign instr = instrMem[address];
-always@(negedge clk)
-begin
-    if(writeEnable)
-    begin
-        instrMem[writeAddress] = writeData;
-    end
-end
-
 endmodule

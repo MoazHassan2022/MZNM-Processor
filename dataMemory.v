@@ -3,10 +3,18 @@ input  MemeWrite,MemeRead,Clk;
 input [15:0] DataIn;
 output reg [15:0] DataOut;
 input [10:0] Addr;
-reg [15:0]  Memo [2047:0];
+reg [15:0]  Memo [0:2047];
+
+integer i;
+
+initial begin 
+    for(i = 0; i < 2047; i = i + 1)
+        Memo[i] = 16'b0;
+    $readmemb("dataMemory.txt", Memo);
+end
+
 assign DataOut = MemeRead === 1'b1 ? Memo[Addr] : 16'bx;
 always @(negedge Clk) begin
-    $display("DataMemory[11'b1111_1111_101] = %d", Memo[11'b1111_1111_101]);
     if(MemeWrite==1'b1)
     begin
         Memo[Addr]=DataIn;
