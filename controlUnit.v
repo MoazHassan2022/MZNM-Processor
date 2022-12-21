@@ -9,7 +9,7 @@ module ControlUnit (
 input [4:0] opcode; 
 input  StIn;
 input  SstIn;
-input  [2:0] FlushNumIn;
+input  [1:0] FlushNumIn;
 input NopSignal; 
 
 
@@ -28,7 +28,7 @@ output reg CLRC;
 output reg [3:0] aluSignals;
 output reg StOut;
 output reg SstOut;
-output reg [2:0] FlushNumOut;
+output reg [1:0] FlushNumOut;
 output reg PCHazard;
 
 
@@ -61,9 +61,9 @@ output reg PCHazard;
       }
 */
 always @(*) begin
-    if(FlashNumIn>0)
+    if(FlushNumIn>0)
     begin
-      FlashNumOut=FlashNumIn-1;
+      FlushNumOut=FlushNumIn-1;
       PCHazard=1;
       {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
       aluSignals = `ALU_NOP; 
@@ -75,8 +75,8 @@ always @(*) begin
     end
     else
       begin
-
-          if(StIn==1&&SstIn==1)
+        if(StIn==1&&SstIn==1)
+        // it is the second cycle after detecting that it was LDM inst
         begin
           {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0000011000; 
             aluSignals = `ALU_MOV;
@@ -126,7 +126,6 @@ always @(*) begin
             {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
             aluSignals = `ALU_SHR; 
           end
-
         /// I Operations
         else if(opcode == `OP_PUSH) begin 
             {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
@@ -173,12 +172,12 @@ always @(*) begin
             aluSignals = `ALU_NOP; 
           end
         else if(opcode == `OP_Ret) begin 
-            FlushOut=2;
+            FlushNumOut=2'd2;
             {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
             aluSignals = `ALU_NOP; 
           end
         else if(opcode == `OP_RTI) begin 
-            FlushOut=2;
+            FlushNumOut=2'd3;
             {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
             aluSignals = `ALU_NOP; 
           end
