@@ -1,15 +1,21 @@
-module Controller (clk, reset, interruptSignal);
+module Controller (clk, reset, interruptSignal, inPortData, outPortData, outSignalEn);
 
 // DEFINING INPUTS
-input wire clk, reset;
-input wire [1:0] interruptSignal;
+input clk, reset;
+input [1:0] interruptSignal;
 
+////////////// IN Port WORK /////////////////
+wire [`inPortWidth - 1:0] inPortData; 
+/////////////////////////////////////////////
+
+/// Defining the outputs. 
+output [`inPortWidth - 1:0] outPortData; 
+output outSignalEn;  // this is the enable for the IW (input write). 
 
 // DEFINING WIRES
 wire [31:0] pc;
 wire [15:0] memData, aluOut, readData2, instr;
 wire memRead, memWrite;
-
 
 // DEFINING BLOCKS
 IntructionMemory instrMem(pc, instr);
@@ -26,7 +32,10 @@ Processor processor(
     instr, 
     clk, 
     reset,
-    interruptSignal
+    interruptSignal,
+    inPortData, /// the data which is coming from the in port. 
+    outPortData, 
+    outSignalEn
 );
 
 

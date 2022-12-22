@@ -1,7 +1,10 @@
 module DEBuffer(aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC,
 ST,SST,STOut, SSTOut, Reg1,Reg2,Instruction,SrcAddress,RegDestination,Clk, Reg1Out, Reg2Out, 
 InstructionOut, SrcAddressOut, RegDestinationOut,FlashNumOut,FlashNumIn, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, 
-    CLRCOut, aluSignalsOut, instr, instrOut);
+    CLRCOut, aluSignalsOut, instr, instrOut,  
+    shift, 
+    shiftOut
+    );
 
 
 // Inputs to the buffer
@@ -15,7 +18,7 @@ input [2:0]  SrcAddress;
 input [2:0]  RegDestination;
 input [1:0]  FlashNumIn;
 input [3:0]  aluSignals;
-
+input shift;
 
 // Outputs from the buffer
 output reg   STOut;
@@ -29,6 +32,7 @@ output reg  [2:0]  RegDestinationOut;
 output reg  [1:0]  FlashNumOut;
 output reg IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut;
 output reg [3:0] aluSignalsOut;
+output reg shiftOut;
 
 
 
@@ -54,5 +58,6 @@ begin
     CLRCOut = CLRC;
     aluSignalsOut = aluSignals;
     instrOut = instr;
+    shiftOut = shift;
 end
 endmodule
