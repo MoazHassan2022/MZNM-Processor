@@ -26,7 +26,6 @@ begin
     end
     else
     begin
-        #0; // TODO: try to avoid doing this making M2W buffer makes registersOut = inputs @negedge clk
         if(write_enable) begin
             registers[write_addr] = write_data;
         end

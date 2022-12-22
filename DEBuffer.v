@@ -32,7 +32,7 @@ output reg [3:0] aluSignalsOut;
 
 
 
-always@(posedge Clk)
+always@(negedge Clk)
 begin
     FlashNumOut=FlashNumIn;
     STOut=ST;
