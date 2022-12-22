@@ -31,64 +31,28 @@ output reg IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, Set
 output reg [3:0] aluSignalsOut;
 
 
-// Regs in the buffer
-reg STReg;
-reg SSTReg;
-reg IRReg, IWReg, MRReg, MWReg, MTRReg, ALU_srcReg, RWReg, BranchReg, SetCReg, CLRCReg;
-reg [1:0] FlashNumReg;
-reg [15:0] Reg1Reg,Reg2Reg, instrReg;
-reg [4:0]  InstructionReg;
-reg [2:0]  SrcAddressReg;
-reg [2:0]  RegDestinationReg;
-reg [3:0]  aluSignalsReg;
-
-
-
-always@(negedge Clk)
-begin
-    FlashNumReg=FlashNumIn;
-    STReg=ST;
-    SSTReg=SST;
-    Reg1Reg=Reg1;
-    Reg2Reg=Reg2;
-    InstructionReg=Instruction;
-    SrcAddressReg=SrcAddress;
-    RegDestinationReg=RegDestination;
-    IRReg = IR;
-    IWReg = IW;
-    MRReg = MR;
-    MWReg = MW;
-    MTRReg = MTR;
-    ALU_srcReg = ALU_src;
-    RWReg = RW;
-    BranchReg = Branch;
-    SetCReg = SetC;
-    CLRCReg = CLRC;
-    aluSignalsReg = aluSignals;
-    instrReg = instr;
-end
 
 always@(posedge Clk)
 begin
-    FlashNumOut=FlashNumReg;
-    STOut=STReg;
-    SSTOut=SSTReg;
-    Reg1Out=Reg1Reg;
-    Reg2Out=Reg2Reg;
-    InstructionOut=InstructionReg;
-    SrcAddressOut=SrcAddressReg;
-    RegDestinationOut=RegDestinationReg;
-    IROut = IRReg;
-    IWOut = IWReg;
-    MROut = MRReg;
-    MWOut = MWReg;
-    MTROut = MTRReg;
-    ALU_srcOut = ALU_srcReg;
-    RWOut = RWReg;
-    BranchOut = BranchReg;
-    SetCOut = SetCReg;
-    CLRCOut = CLRCReg;
-    aluSignalsOut = aluSignalsReg;
-    instrOut = instrReg;
+    FlashNumOut=FlashNumIn;
+    STOut=ST;
+    SSTOut=SST;
+    Reg1Out=Reg1;
+    Reg2Out=Reg2;
+    InstructionOut=Instruction;
+    SrcAddressOut=SrcAddress;
+    RegDestinationOut=RegDestination;
+    IROut = IR;
+    IWOut = IW;
+    MROut = MR;
+    MWOut = MW;
+    MTROut = MTR;
+    ALU_srcOut = ALU_src;
+    RWOut = RW;
+    BranchOut = Branch;
+    SetCOut = SetC;
+    CLRCOut = CLRC;
+    aluSignalsOut = aluSignals;
+    instrOut = instr;
 end
 endmodule
