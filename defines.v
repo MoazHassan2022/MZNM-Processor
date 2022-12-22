@@ -8,7 +8,8 @@
 
 /// operation codes 
 // R type Operations
-`define OP_NOT 5'd0
+`define OP_NOP 5'd0
+`define OP_NOT 5'd26
 `define OP_INC 5'd1
 `define OP_DEC 5'd2
 `define OP_MOV 5'd3
@@ -40,7 +41,6 @@
 `define OP_INT 5'd23
 `define OP_OUT 5'd24
 `define OP_IN 5'd25
-`define OP_NOP 5'd26
 `define OP_SETC 5'd27
 `define OP_CLCR 5'd28
 

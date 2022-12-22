@@ -1,21 +1,20 @@
 # Compile of ALU.v was successful.
 # Compile of controlUnit.v was successful.
 # Compile of defines.v was successful.
-# Compile of fetchTB.v was successful.
 # Compile of forwarding-unit.v was successful.
 # Compile of pc.v was successful.
 # Compile of processor.v was successful.
 # Compile of regfile.v was successful.
-# Compile of signExtend.v was successful.
 # Compile of writeBack.v was successful.
 # Compile of controller.v was successful.
 # Compile of dataMemory.v was successful.
 # Compile of instructionMemory.v was successful.
 # Compile of controllerTB.v was successful.
-# 14 compiles, 0 failed with no errors.
+# Compile of DEBuffer.v was successful.
+# 13 compiles, 0 failed with no errors.
 vsim -gui work.controllerTB
 # vsim -gui work.controllerTB 
-# Start time: 18:24:10 on Dec 03,2022
+# Start time: 22:14:20 on Dec 22,2022
 # Loading work.controllerTB
 # Loading work.Controller
 # Loading work.IntructionMemory
@@ -23,99 +22,93 @@ vsim -gui work.controllerTB
 # Loading work.Processor
 # Loading work.PC
 # Loading work.ControlUnit
-# Loading work.SignExtend
 # Loading work.regfile
+# Loading work.DEBuffer
 # Loading work.ALU
 # Loading work.WriteBack
 add wave -position end sim:/controllerTB/*
-run
-# DataMemory[11'b1111_1111_101] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
+add wave -position end sim:/controllerTB/controller/processor/*
 run
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# DataMemory[11'b1111_1111_101] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-# DataMemory[11'b1111_1111_101] =     x
+run
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-# DataMemory[11'b1111_1111_101] =     x
-# reg[0] =     0,reg[1] =     2,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-# DataMemory[11'b1111_1111_101] =     x
-# reg[0] =     0,reg[1] =     2,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-# DataMemory[11'b1111_1111_101] =     x
-# reg[0] =     2,reg[1] =     2,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# DataMemory[11'b1111_1111_101] =     x
-# reg[0] = 65533,reg[1] =     2,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# DataMemory[11'b1111_1111_101] =     x
-# reg[0] = 65533,reg[1] =     2,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# DataMemory[11'b1111_1111_101] =     2
-# reg[0] = 65533,reg[1] =     2,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     2,reg[6] =     0,reg[7] =     0
-run
-# DataMemory[11'b1111_1111_101] =     2
-# reg[0] = 65533,reg[1] =     2,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     2,reg[6] =     0,reg[7] =     0
 quit -sim
-# End time: 18:32:06 on Dec 03,2022, Elapsed time: 0:07:56
+# End time: 22:18:07 on Dec 22,2022, Elapsed time: 0:03:47
 # Errors: 0, Warnings: 2
 # Compile of ALU.v was successful.
 # Compile of controlUnit.v was successful.
 # Compile of defines.v was successful.
-# Compile of fetchTB.v was successful.
 # Compile of forwarding-unit.v was successful.
 # Compile of pc.v was successful.
 # Compile of processor.v was successful.
 # Compile of regfile.v was successful.
-# Compile of signExtend.v was successful.
 # Compile of writeBack.v was successful.
 # Compile of controller.v was successful.
 # Compile of dataMemory.v was successful.
 # Compile of instructionMemory.v was successful.
 # Compile of controllerTB.v was successful.
-# 14 compiles, 0 failed with no errors.
+# Compile of DEBuffer.v was successful.
+# 13 compiles, 0 failed with no errors.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 22:18:40 on Dec 22,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.ControlUnit
+# Loading work.regfile
+# Loading work.DEBuffer
+# Loading work.ALU
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     2,reg[7] =     0
+run
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+quit -sim
+# End time: 22:21:31 on Dec 22,2022, Elapsed time: 0:02:51
+# Errors: 0, Warnings: 2
