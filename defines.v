@@ -1,7 +1,7 @@
 /// define width 
 `define regWidth 16
 `define PCWidth 32
-`define SPWidth     
+`define SPWidth 16    
 `define CCRWidth 4  // condition code register that can be divided to ZERO FLAG, NEGATIVE FLAG, CARRY FLAG, OVERFLOW FLAG
 `define inPortWidth 16
 `define outPortWidth 16
