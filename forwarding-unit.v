@@ -13,10 +13,7 @@ output [1:0] src1_signal ,src2_signal; /*the selecting signals that determine th
 assign src1_signal = (src1==EX_MEM_RD && !EX_MEM_readEN)? 2'd2:
                      (src1==MEM_WB_RD && !MEM_WB_EN)? 2'd1:
                      2'd0;
-
-
 assign src2_signal = (src2 == EX_MEM_RD && !EX_MEM_readEN)?2'd2:
                      (src2 == MEM_WB_RD && !MEM_WB_EN)?2'd1:
                      2'd0;
-
 endmodule

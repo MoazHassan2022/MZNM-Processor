@@ -1,3 +1,4 @@
+`include "defines.v"
 module Processor (
     /* INTERFACE WITH DATA MEMORY */
     memData, /* READ DATA */
@@ -18,7 +19,7 @@ module Processor (
 // DEFINNG INPUTS
 input wire clk, reset;
 input wire [1:0] interruptSignal;
-input wire [15:0] memData, instr;
+input wire [15:0] memData, instr, inPortData;
 
 // DEFINING OUTPUTS
 output MRAfterD2E, MWAfterD2E;
@@ -54,7 +55,7 @@ assign pcSrc = 2'b0; // TODO: I had to make this static for now, but please who 
 //////////////////////////////////////////////////
 // Registers, alu output, and alu inputs are all 16 bits
 //assign aluSecondOperand = ALU_src === 1'b0 ? Reg2AfterD2E : instr[15:0];
-assign aluSecondOperand = (StAfterD2E^SstAfterD2E) === 1'b0 ?( (shiftAfterD2E == 1'b0) ?  Reg2AfterD2E : {11{smallImmediateAfterD2E[4]},smallImmediateAfterD2E} ) : instrAfterD2E;
+assign aluSecondOperand = ((StAfterD2E^SstAfterD2E) === 1'b0) ? ( (shiftAfterD2E == 1'b0) ?  Reg2AfterD2E : {{11{1'b0}},smallImmediateAfterD2E} ) : instrAfterD2E;
 
 // In Decode stage, pass the register destination of current instruction if it wasn't an instruction that needs immediate (e.g. LDM),
 // and pass the previos register destination if it was an instruction that needs immediate
@@ -109,7 +110,7 @@ DEBuffer de(
      CLRCAfterD2E, /// CLRC signal after the buffer.
      aluSignalsAfterD2E, /// aluSignals signal after the buffer.
      instr, /// instruction itself which is used for the LDM before the buffer.
-     instrAfterD2E /// the instruction which is used for the LDM after the buffer.
+     instrAfterD2E, /// the instruction which is used for the LDM after the buffer.
      shift, 
      shiftAfterD2E
      );

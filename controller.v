@@ -1,3 +1,4 @@
+`include "defines.v"
 module Controller (clk, reset, interruptSignal, inPortData, outPortData, outSignalEn);
 
 // DEFINING INPUTS
@@ -5,7 +6,7 @@ input clk, reset;
 input [1:0] interruptSignal;
 
 ////////////// IN Port WORK /////////////////
-wire [`inPortWidth - 1:0] inPortData; 
+input [`inPortWidth - 1:0] inPortData; 
 /////////////////////////////////////////////
 
 /// Defining the outputs. 
