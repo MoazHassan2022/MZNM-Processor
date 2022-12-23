@@ -1,7 +1,7 @@
 /// define width 
 `define regWidth 16
 `define PCWidth 32
-`define SPWidth     
+`define SPWidth 16    
 `define CCRWidth 4  // condition code register that can be divided to ZERO FLAG, NEGATIVE FLAG, CARRY FLAG, OVERFLOW FLAG
 `define inPortWidth 16
 `define outPortWidth 16
@@ -23,7 +23,7 @@
 // I type operations
 `define OP_PUSH 5'd10
 `define OP_POP 5'd11
-`define OP_LDM 5'd12
+`define OP_LDM 5'd12 /// note that in the report this is defined in the 32bits instruction. 
 `define OP_LDD 5'd13
 `define OP_STD 5'd14
 
@@ -65,9 +65,11 @@
 `define ALU_SHR 4'd10
 `define ALU_STD 4'd11
 `define ALU_LDD 4'd12
+`define ALU_SETC 4'd13
+
 
 /// defining common signals 
 ///  [IR, IW, MR, MW, MTR, ALU src, RW, Branch, SetC, CLRC]
-`define ALU_SIGNALS 10'b0000001000
-`define BRANCH_SIGNALS 10'b0000000001
+`define ALU_SIGNALS 10'b0000001000 /// this is a common signal form for all the alu operations.
+`define BRANCH_SIGNALS 10'b0000000100
 
