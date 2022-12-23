@@ -21,9 +21,9 @@ assign {carryFlag,result} =
                 (aluSignals == `ALU_ADD)?firstOperand+secondOperand:
                 (aluSignals == `ALU_SUB)?firstOperand-secondOperand:   /*rdst= rdst-rsrc*/
                 (aluSignals == `ALU_AND)?{1'b0,firstOperand&secondOperand}:
-                (aluSignals == `ALU_OR)? {1'b0,firstOperand|secondOperand}:
+                (aluSignals == `ALU_OR)?{1'b0,firstOperand|secondOperand}:
                 (aluSignals == `ALU_SHL)?(secondOperand == 16'b0 ? {1'b0, firstOperand} : {firstOperand[15 - (secondOperand - 1)] , firstOperand << secondOperand}) : 
-                (aluSignals == `ALU_SHR)? (secondOperand == 16'b0) ? {1'b0, firstOperand} : {firstOperand[secondOperand - 1], firstOperand >> secondOperand} :
+                (aluSignals == `ALU_SHR)?(secondOperand == 16'b0) ? {1'b0, firstOperand} : {firstOperand[secondOperand - 1], firstOperand >> secondOperand} :
                 (aluSignals == `ALU_SETC)?{1'b1, 16'b0}: /// we just raised the setC to 1. 
                 17'dx;
 
