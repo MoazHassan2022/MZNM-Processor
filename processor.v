@@ -71,7 +71,7 @@ module Processor (
 4. HANDLING PC UNIT WITH HAZARD DETECTION UNIT.
 5. PUTTING REMAINING 4 BUFFERS
 6. PUTTING FORWARDING UNIT
-
+7. Handling RET
 
 
                         ******************* WHAT REMAINS **********************
