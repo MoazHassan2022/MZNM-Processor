@@ -1,9 +1,9 @@
-module PC (aluOut, pcSrc, pc, reset, clk, interruptSignal);
+module PC (aluOut, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E);
 // pcSrc = 00 => old pc+1, pcSrc = 01 => aluOut(branch result address), pcSrc = 10 => old pc-1
 // interruptSignal = 11 => pc = 0, interruptSignal = 01 => pc = 30
 // reset = 1 => 32d, reset = 0 => evaluate
 input  [15:0] aluOut;
-input [1:0] pcSrc, interruptSignal;
+input [1:0] pcSrc, interruptSignal, firstTimeCallAfterD2E;
 input reset, clk;
 output reg [31:0] pc;
 always@(posedge clk)
@@ -15,6 +15,10 @@ begin
 	else if(interruptSignal === 2'b11)
 	begin
 		pc =  32'd0;
+	end
+	else if(firstTimeCallAfterD2E === 2'b11)
+	begin
+		pc = aluOut; // First time in call, we need to the specified address
 	end
 	else if(pcSrc === 2'b01)
 	begin

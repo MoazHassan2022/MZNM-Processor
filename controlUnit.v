@@ -3,14 +3,14 @@
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
     CLRC,StIn,SstIn,StOut,SstOut,FlushNumIn,FlushNumOut,PCHazard,NopSignal,
-    shift, enablePushOrPop
+    shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut
 );
 
 /// defining the inputs 
 input [4:0] opcode; 
 input  StIn;
 input  SstIn;
-input  [1:0] FlushNumIn;
+input  [1:0] FlushNumIn, firstTimeCallIn;
 input NopSignal; 
 
 
@@ -33,6 +33,7 @@ output reg [1:0] FlushNumOut;
 output reg PCHazard;
 output reg shift; // this signal inform me if this instruction was shift or not 
 output reg [1:0] enablePushOrPop; // 00 => no push or pop, 01 => push, 11 => pop
+output reg [1:0] firstTimeCallOut; // Please see the call algorithm down at handling OP_CALL instruction
 
 
 
@@ -82,9 +83,9 @@ always @(*) begin
     end
     else
       begin
-        // it is the second cycle after detecting that it was LDM inst
         if(StIn==1&&SstIn==1)
           begin
+            // it is the second cycle after detecting that it was LDM inst
             {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0000011000; 
               aluSignals = `ALU_MOV;
               StOut=1;
@@ -92,8 +93,18 @@ always @(*) begin
               enablePushOrPop = 2'b00;
               shift = 1'b0;
           end
+        else if(firstTimeCallIn === 2'b11)
+          begin
+            // it is the second cycle in call
+            {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
+              aluSignals = `ALU_NOP;
+              firstTimeCallOut = 2'b01;
+              enablePushOrPop = 2'b01;
+              shift = 1'b0;
+          end
         else
           begin
+              firstTimeCallOut = 2'b00;
               StOut=0;
               SstOut=0;
             if(opcode == `OP_NOT) begin
@@ -215,10 +226,19 @@ always @(*) begin
               enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_Call) begin 
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_NOP;
+              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
+              aluSignals = `ALU_JMP; // to make aluOut = Rdst
               shift = 1'b0; 
-              enablePushOrPop = 2'b00;
+              enablePushOrPop = 2'b01; // push
+              firstTimeCallOut = 2'b11; // first cycle in call(push lower PC + 1)
+              /*
+                ******* CALL ALGORITHM *******
+                there are 2 bits register in the D2E buffer like st, sst, called firstTimeCall[1:0]
+                If it was a call, make enablePushOrPop = 01, make firstTimeCall = 11, first 1 tells data memory that it is the first cycle in call, then it will push lower part of PC + 1, second bit tells that it is a call instr, pass ALU_JMP
+                If we find here in next cycle that firstTimeCall = 11, then make enablePushOrPop = 01, make firstTimeCall = 01, pass NOP, in order to prevent writing previos instr result back, data memory will find firstTimeCall = 01, then will write the higher part of the PC as it is(it is already incremented)
+                We need to pass PC in all buffers
+                firstTimeCallAfterD2E must be a selector in pc mux to select aluOut as a pc new value
+              */
             end
           else if(opcode == `OP_Ret) begin 
               FlushNumOut=2'd2;
