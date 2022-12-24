@@ -42,7 +42,7 @@
 `define OP_OUT 5'd24
 `define OP_IN 5'd25
 `define OP_SETC 5'd27
-`define OP_CLCR 5'd28
+`define OP_CLRC 5'd28
 
 
 /// define the memory size
@@ -66,6 +66,7 @@
 `define ALU_STD 4'd11
 `define ALU_LDD 4'd12
 `define ALU_SETC 4'd13
+`define ALU_JMP 4'd14
 
 
 /// defining common signals 

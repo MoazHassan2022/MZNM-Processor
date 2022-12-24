@@ -13,7 +13,7 @@ initial begin
 	#100;
     clk = 1'b0;
     reset = 1'b0;
-    #100; // [NOT R0], [NOT R1], [NOP], [ADD R1, R0], [LDM R5, 6], [LDM R6, 2], [SUB R5, R6], [IN R3], [SUB R3, R5], [OUT R5], [SHL R3, 2], [SHR R3, 4]
+    #100; // [NOT R0], [NOT R1], [NOP], [ADD R1, R0], [LDM R5, 6], [LDM R6, 2], [SUB R5, R6], [IN R3], [SUB R3, R5], [OUT R5], [SHL R3, 2], [SHR R3, 4], [SETC], [CLRC], [PUSH R3], [PUSH R1], [POP R7], [POP R4], [STD R5, R0], [LDD R2, R5]
     #100;
     #100;
     #100;

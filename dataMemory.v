@@ -8,17 +8,18 @@ reg [15:0]  Memo [0:2047];
 integer i;
 
 initial begin 
-    for(i = 0; i < 2047; i = i + 1)
+    for(i = 0; i <= 2047; i = i + 1)
         Memo[i] = 16'b0;
     $readmemb("dataMemory.txt", Memo);
 end
 
 assign DataOut = MemeRead === 1'b1 ? Memo[Addr] : 16'bx;
-always @(negedge Clk) begin
+always @(posedge Clk) begin
     if(MemeWrite==1'b1)
     begin
         Memo[Addr]=DataIn;
     end
+    $display("Memo[%d] = %d", Addr, Memo[Addr]);
 end
 
 endmodule

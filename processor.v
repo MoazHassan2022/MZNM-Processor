@@ -4,7 +4,7 @@ module Processor (
     memData, /* READ DATA */
     MRAfterD2E, 
     MWAfterD2E, 
-    aluOut, /* ADDRESS */ 
+    dataMemAddr, /* ADDRESS */ 
     read_data2, /* WRITE DATA */
     /* INTERFACE WITH INSTRUCTION MEMORY */
     pc, /* READ ADDRESS */
@@ -16,6 +16,99 @@ module Processor (
     outPortData,
     outSignalEn
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                        ******************* WHAT REMAINS **********************
+1. MAKING CCR AS LIKE AS STACK POINTER MODULE.
+2. BRANCH INSTRUCTIONS AND HANDLING THEM WITH HAZARD DETECTION UNIT.
+3. INTERRUPT & RTI.
+4. HANDLING PC UNIT WITH HAZARD DETECTION UNIT.
+5. PUTTING REMAINING 4 BUFFERS
+6. PUTTING FORWARDING UNIT
+
+
+
+                        ******************* WHAT REMAINS **********************
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // DEFINNG INPUTS
 input wire clk, reset;
 input wire [1:0] interruptSignal;
@@ -23,7 +116,7 @@ input wire [15:0] memData, instr, inPortData;
 
 // DEFINING OUTPUTS
 output MRAfterD2E, MWAfterD2E;
-output [15:0] aluOut, read_data2;
+output [15:0] dataMemAddr, read_data2;
 output [31:0] pc;
 output [15:0] outPortData;
 output outSignalEn;
@@ -33,16 +126,17 @@ output outSignalEn;
 
 wire IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, StIn, SstIn, StAfterD2E, SstAfterD2E, PCHazard, IRAfterD2E, IWAfterD2E, MTRAfterD2E, ALU_srcAfterD2E, RWAfterD2E, BranchAfterD2E, SetCAfterD2E, 
     CLRCAfterD2E, shift, shiftAfterD2E; // control unit signals, TODO: use PCHazard
-wire [1:0] pcSrc, FlushNumIn, FlushNumAfterD2E; // pcSrc is result of anding of (Branch, zeroFlag)
+wire [1:0] pcSrc, FlushNumIn, FlushNumAfterD2E, enablePushOrPop, enablePushOrPopAfterD2E; // pcSrc is result of anding of (Branch, zeroFlag)
 wire [31:0] extendedInstruction, extendedAddress;
 wire [3:0] aluSignals, aluSignalsAfterD2E;
 wire [15:0] aluOut, read_data1, read_data2, write_data, aluSecondOperand, Reg1AfterD2E, Reg2AfterD2E;
-wire [3:0] CCR; // [0: ZF, 1: NF, 2: CF, 3: OF] TODO: I had to make this as wire for (Illegeal output or inout port connection) error, I think this is right and in pipelined processor just put CCR wires in the buffer register
+wire [3:0] CCR; // [3: NF, 2: OF, 1: CF, 0: ZF] TODO: I had to make this as wire for (Illegeal output or inout port connection) error, I think this is right and in pipelined processor just put CCR wires in the buffer register
 wire [4:0] smallImmediateAfterD2E;
 wire [2:0] SrcAddressAfterD2E, RegDestinationAfterD2E; // TODO: use them for forwarding
 wire [2:0] regDestAddressToD2E;
 wire [15:0] instrAfterD2E;
 wire [`inPortWidth - 1 : 0] dataEitherFromInputPortOrSrc; 
+wire [31:0] sp;
 
 // Assigns
 assign pcSrc = 2'b0; // TODO: I had to make this static for now, but please who takes detecion hazard unit must edit it
@@ -68,13 +162,15 @@ assign dataEitherFromInputPortOrSrc = ((IR) == 1'b1 ? inPortData : read_data2);
 assign outSignalEn = IWAfterD2E;  /// this is a signal to inform the listener on the outport that it should read this data. 
 assign outPortData = aluOut ; // here we attach the aluOut to the outport in case that we have out write signal.
 //////////////////////////////////////////////////
+/// Working on push and pop instructions
+assign dataMemAddr = (enablePushOrPopAfterD2E[0] === 1'b0) ? aluOut : (enablePushOrPopAfterD2E[1] === 1'b0) ? sp[15:0] : (sp[15:0] + 1'b1); // make the data memory address is aluOut for ordinary instructions, but stack pointer for push and pop, if the instruction is push (enablePushOrPopAfterD2E[1] = 0), take old value of stack pointer, if the instruction is pop (enablePushOrPopAfterD2E[1] = 1), take new value after increment of stack pointer.
 
 // DEFINING Logic
 PC pcCircuit(aluOut, pcSrc, pc, reset, clk, interruptSignal);
 
 ControlUnit cu(
     instr[15:11], aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StAfterD2E,SstAfterD2E,StIn,SstIn,FlushNumAfterD2E,FlushNumIn,PCHazard,1'b0,shift
+    CLRC,StAfterD2E,SstAfterD2E,StIn,SstIn,FlushNumAfterD2E,FlushNumIn,PCHazard,1'b0,shift,enablePushOrPop
 ); // NopSignal is the last input here, from detectionHazardUnit, PCHazard will be connected as an output from detectionHazardUnit
 
 // INSTR: [31:27] opcode
@@ -111,11 +207,15 @@ DEBuffer de(
      aluSignalsAfterD2E, /// aluSignals signal after the buffer.
      instr, /// instruction itself which is used for the LDM before the buffer.
      instrAfterD2E, /// the instruction which is used for the LDM after the buffer.
-     shift, 
-     shiftAfterD2E
+     shift, /// used for shift left or right instructions
+     shiftAfterD2E, /// used for shift left or right instructions after the buffer.
+     enablePushOrPop, /// used for push or pop instructions, 00 => no push or pop, 01 => push, 11 => pop
+     enablePushOrPopAfterD2E /// used for push or pop instructions, after the buffer
      );
 
 ALU alu(aluSignalsAfterD2E,Reg1AfterD2E,aluSecondOperand,aluOut,CCR[0],CCR[1],CCR[2],CCR[3]);
+
+stackPointer stackP(enablePushOrPopAfterD2E[0], clk, reset, enablePushOrPopAfterD2E[1], sp);
 
 WriteBack writeBack(memData, aluOut, RWAfterD2E, MTRAfterD2E, write_data);
 

@@ -3,7 +3,7 @@
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
     CLRC,StIn,SstIn,StOut,SstOut,FlushNumIn,FlushNumOut,PCHazard,NopSignal,
-    shift
+    shift, enablePushOrPop
 );
 
 /// defining the inputs 
@@ -32,6 +32,7 @@ output reg SstOut;
 output reg [1:0] FlushNumOut;
 output reg PCHazard;
 output reg shift; // this signal inform me if this instruction was shift or not 
+output reg [1:0] enablePushOrPop; // 00 => no push or pop, 01 => push, 11 => pop
 
 
 
@@ -69,11 +70,15 @@ always @(*) begin
       PCHazard=1;
       {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
       aluSignals = `ALU_NOP; 
+      enablePushOrPop = 2'b00;
+      shift = 1'b0;
     end
     if(NopSignal==1)
     begin
       {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
       aluSignals = `ALU_NOP; 
+      enablePushOrPop = 2'b00;
+      shift = 1'b0;
     end
     else
       begin
@@ -84,6 +89,8 @@ always @(*) begin
               aluSignals = `ALU_MOV;
               StOut=1;
               SstOut=0;
+              enablePushOrPop = 2'b00;
+              shift = 1'b0;
           end
         else
           begin
@@ -93,61 +100,73 @@ always @(*) begin
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_NOT;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
           end else if(opcode == `OP_INC) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_INC;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_DEC) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_DEC;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_MOV) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_MOV;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_ADD) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_ADD;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_SUB) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_SUB;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_AND) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_AND;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_OR) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_OR;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_SHL) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_SHL;
               shift = 1'b1;
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_SHR) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_SHR;
               shift = 1'b1;
+              enablePushOrPop = 2'b00;
             end
           /// I Operations
           else if(opcode == `OP_PUSH) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
-              aluSignals = `ALU_NOP;
-              shift = 1'b0; 
+              aluSignals = `ALU_MOV;
+              shift = 1'b0;
+              enablePushOrPop = 2'b01; 
             end
           else if(opcode == `OP_POP) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010101000; 
-              aluSignals = `ALU_NOP;
+              aluSignals = `ALU_MOV;
               shift = 1'b0; 
+              enablePushOrPop = 2'b11;
             end
           else if(opcode == `OP_LDM) begin 
             // in this part will put the St,SSt=1 and put Nop operation 
@@ -156,65 +175,77 @@ always @(*) begin
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
               aluSignals = `ALU_NOP;
               shift = 1'b0;  
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_LDD) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010101000; // ALU_src must be 0
               aluSignals = `ALU_LDD;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_STD) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; // ALU_src must be 0
               aluSignals = `ALU_STD;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           ///  J operations
           else if(opcode == `OP_JZ) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_NOP;
+              aluSignals = `ALU_JMP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_JN) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_NOP;
+              aluSignals = `ALU_JMP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_JC) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_NOP;
+              aluSignals = `ALU_JMP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_JMP) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_NOP;
+              aluSignals = `ALU_JMP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_Call) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
               aluSignals = `ALU_NOP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_Ret) begin 
               FlushNumOut=2'd2;
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
               aluSignals = `ALU_NOP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_RTI) begin 
               FlushNumOut=2'd3;
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
               aluSignals = `ALU_NOP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           /// other operations 
           else if(opcode == `OP_Rst) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
               aluSignals = `ALU_NOP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_INT) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000100; 
               aluSignals = `ALU_NOP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_OUT) begin 
               // {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0110000000; 
@@ -223,6 +254,7 @@ always @(*) begin
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0100000000; 
               aluSignals = `ALU_MOV;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_IN) begin 
               /// TODO: DON'T FORGET TO DETECT AND SOLVE IF THERE ARE ANY HAZARDS DURING THE IN OPERATIONS.
@@ -232,26 +264,27 @@ always @(*) begin
               /// RW = 1 -> because I will write to the register file in the destation. 
               aluSignals = `ALU_MOV;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_NOP) begin // this is repeated. 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
               aluSignals = `ALU_NOP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_SETC) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0000000010; 
               aluSignals = `ALU_SETC;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
-          else if(opcode == `OP_CLCR) begin 
+          else if(opcode == `OP_CLRC) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0000000001; 
               aluSignals = `ALU_NOP;
               shift = 1'b0; 
+              enablePushOrPop = 2'b00;
             end
-
           end
       end
-  
 end
-   
 endmodule
