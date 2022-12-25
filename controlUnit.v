@@ -3,14 +3,14 @@
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
     CLRC,StIn,SstIn,StOut,SstOut,FlushNumIn,FlushNumOut,PCHazard,NopSignal,
-    shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut
+    shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut
 );
 
 /// defining the inputs 
 input [4:0] opcode; 
 input  StIn;
 input  SstIn;
-input  [1:0] FlushNumIn, firstTimeCallIn;
+input  [1:0] FlushNumIn, firstTimeCallIn, firstTimeRETIn;
 input NopSignal; 
 
 
@@ -34,6 +34,7 @@ output reg PCHazard;
 output reg shift; // this signal inform me if this instruction was shift or not 
 output reg [1:0] enablePushOrPop; // 00 => no push or pop, 01 => push, 11 => pop
 output reg [1:0] firstTimeCallOut; // Please see the call algorithm down at handling OP_CALL instruction
+output reg [1:0] firstTimeRETOut; // Please see the call algorithm down at handling OP_RET instruction
 
 
 
@@ -102,9 +103,20 @@ always @(*) begin
               enablePushOrPop = 2'b01;
               shift = 1'b0;
           end
+          else if(firstTimeRETIn === 2'b11)
+          begin
+            // it is the second cycle in ret
+              FlushNumOut = 2'b10;
+              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010000000; 
+              aluSignals = `ALU_MOV;
+              shift = 1'b0; 
+              enablePushOrPop = 2'b11;
+              firstTimeRETOut = 2'b01;
+          end
         else
           begin
               firstTimeCallOut = 2'b00;
+              firstTimeRETOut = 2'b00;
               StOut=0;
               SstOut=0;
             if(opcode == `OP_NOT) begin
@@ -231,6 +243,7 @@ always @(*) begin
               shift = 1'b0; 
               enablePushOrPop = 2'b01; // push
               firstTimeCallOut = 2'b11; // first cycle in call(push lower PC + 1)
+              // TODO: try to make the PC takes the value of aluOutAfterE2M @ firstTimeCallAfterD2E = 01, and make the control unit flushes 1 cycle when firstTimeCallAfterD2E = 11
               /*
                 ******* CALL ALGORITHM *******
                 there are 2 bits register in the D2E buffer like st, sst, called firstTimeCall[1:0]
@@ -240,12 +253,19 @@ always @(*) begin
                 firstTimeCallAfterD2E must be a selector in pc mux to select aluOut as a pc new value
               */
             end
-          else if(opcode == `OP_Ret) begin 
-              FlushNumOut=2'd2;
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_NOP;
+          else if(opcode == `OP_Ret) begin
+              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010000000; 
+              aluSignals = `ALU_MOV;
               shift = 1'b0; 
-              enablePushOrPop = 2'b00;
+              enablePushOrPop = 2'b11;
+              firstTimeRETOut = 2'b11;
+              /*
+                ******* RET ALGORITHM *******
+                there are 2 bits register in the D2E buffer like st, sst, called firstTimeRET[1:0]
+                If it was a call, make enablePushOrPop = 11, make firstTimeRET = 11, first 1 tells PC that it is the first cycle in ret, then it will take the popped into higher part of PC, second bit tells that it is a call instr
+                If we find here in next cycle that firstTimeRET = 11, then make enablePushOrPop = 11, make firstTimeRET = 01, PC will find firstTimeRET = 01, then will write the popped into the lower part of the PC
+                We need to flush previous two instructions, so make FlushNumOut = 2
+              */
             end
           else if(opcode == `OP_RTI) begin 
               FlushNumOut=2'd3;

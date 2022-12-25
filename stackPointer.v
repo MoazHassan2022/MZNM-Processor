@@ -11,10 +11,14 @@ begin
     else
     begin
         if(enable) begin
-            if(pushOrPop === 1'b0) // push
+            if(pushOrPop === 1'b0) begin // push
                 sp = sp - 1;
-            else // pop
+                $display("PUSH SP = %d", sp);
+            end
+            else begin // pop
                 sp = sp + 1;
+                $display("POP SP = %d", sp);
+            end
         end
     end
 end

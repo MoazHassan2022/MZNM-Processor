@@ -71,9 +71,6 @@ module Processor (
 4. HANDLING PC UNIT WITH HAZARD DETECTION UNIT.
 5. PUTTING REMAINING 4 BUFFERS
 6. PUTTING FORWARDING UNIT
-7. Handling RET
-
-
                         ******************* WHAT REMAINS **********************
 
 
@@ -126,8 +123,7 @@ output outSignalEn;
 
 wire IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, StIn, SstIn, StAfterD2E, SstAfterD2E, PCHazard, IRAfterD2E, IWAfterD2E, MTRAfterD2E, ALU_srcAfterD2E, RWAfterD2E, BranchAfterD2E, SetCAfterD2E, 
     CLRCAfterD2E, shift, shiftAfterD2E; // control unit signals, TODO: use PCHazard
-wire [1:0] pcSrc, FlushNumIn, FlushNumAfterD2E, enablePushOrPop, enablePushOrPopAfterD2E, firstTimeCall, firstTimeCallAfterD2E; // pcSrc is result of anding of (Branch, zeroFlag)
-wire [31:0] extendedInstruction, extendedAddress;
+wire [1:0] pcSrc, FlushNumIn, FlushNumAfterD2E, enablePushOrPop, enablePushOrPopAfterD2E, firstTimeCall, firstTimeCallAfterD2E, firstTimeRET, firstTimeRETAfterD2E; // pcSrc is result of anding of (Branch, zeroFlag)
 wire [3:0] aluSignals, aluSignalsAfterD2E;
 wire [15:0] aluOut, read_data1, read_data2, write_data, aluSecondOperand, read_data1AfterD2E, read_data2AfterD2E;
 wire [3:0] CCR; // [3: NF, 2: OF, 1: CF, 0: ZF] TODO: I had to make this as wire for (Illegeal output or inout port connection) error, I think this is right and in pipelined processor just put CCR wires in the buffer register
@@ -169,11 +165,11 @@ assign dataMemAddr = (enablePushOrPopAfterD2E[0] === 1'b0) ? aluOut : (enablePus
 assign writeMemData = (firstTimeCallAfterD2E === 2'b11) ? (pcAfterD2E[15:0]+1'b1) : (firstTimeCallAfterD2E === 2'b01) ? (pcAfterD2E[31:16]) : read_data2AfterD2E;
 
 // DEFINING Logic
-PC pcCircuit(aluOut, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E);
+PC pcCircuit(aluOut, memData, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterD2E);
 
 ControlUnit cu(
     instr[15:11], aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StAfterD2E,SstAfterD2E,StIn,SstIn,FlushNumAfterD2E,FlushNumIn,PCHazard,1'b0,shift,enablePushOrPop, firstTimeCallAfterD2E, firstTimeCall
+    CLRC,StAfterD2E,SstAfterD2E,StIn,SstIn,FlushNumAfterD2E,FlushNumIn,PCHazard,1'b0,shift,enablePushOrPop, firstTimeCallAfterD2E, firstTimeCall, firstTimeRETAfterD2E, firstTimeRET
 ); // NopSignal is the last input here, from detectionHazardUnit, PCHazard will be connected as an output from detectionHazardUnit
 
 // INSTR: [31:27] opcode
@@ -216,8 +212,10 @@ DEBuffer de(
      enablePushOrPopAfterD2E, /// used for push or pop instructions, after the buffer
      firstTimeCall, // used for call instruction, 11 => first cycle in call, 01 => second cycle in call, 00 => no call
      firstTimeCallAfterD2E,
-     pc, // user for call instruction
-     pcAfterD2E
+     pc, // used for call instruction
+     pcAfterD2E,
+     firstTimeRET, // used for ret instruction
+     firstTimeRETAfterD2E
      );
 
 ALU alu(aluSignalsAfterD2E,read_data1AfterD2E,aluSecondOperand,aluOut,CCR[0],CCR[1],CCR[2],CCR[3]);

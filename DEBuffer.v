@@ -9,7 +9,9 @@ InstructionOut, SrcAddressOut, RegDestinationOut,FlashNumOut,FlashNumIn, IROut, 
     firstTimeCall,
     firstTimeCallOut,
     pc,
-    pcOut
+    pcOut,
+    firstTimeRET,
+    firstTimeRETOut
     );
 
 
@@ -19,7 +21,7 @@ input [15:0] Reg1,Reg2, instr;
 input [4:0]  Instruction;
 input [2:0]  SrcAddress;
 input [2:0]  RegDestination;
-input [1:0]  FlashNumIn, enablePushOrPop, firstTimeCall;
+input [1:0]  FlashNumIn, enablePushOrPop, firstTimeCall, firstTimeRET;
 input [3:0]  aluSignals;
 input [31:0] pc;
 
@@ -28,7 +30,7 @@ output reg  [15:0] Reg1Out, Reg2Out, instrOut;
 output reg  [4:0]  InstructionOut;
 output reg  [2:0]  SrcAddressOut;
 output reg  [2:0]  RegDestinationOut;
-output reg  [1:0]  FlashNumOut, enablePushOrPopOut, firstTimeCallOut;
+output reg  [1:0]  FlashNumOut, enablePushOrPopOut, firstTimeCallOut, firstTimeRETOut;
 output reg STOut, SSTOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut, shiftOut;
 output reg [3:0] aluSignalsOut;
 output reg [31:0] pcOut;
@@ -61,5 +63,6 @@ begin
     enablePushOrPopOut = enablePushOrPop;
     firstTimeCallOut = firstTimeCall;
     pcOut = pc;
+    firstTimeRETOut = firstTimeRET;
 end
 endmodule

@@ -1,9 +1,9 @@
-module PC (aluOut, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E);
+module PC (aluOut, memData, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterD2E);
 // pcSrc = 00 => old pc+1, pcSrc = 01 => aluOut(branch result address), pcSrc = 10 => old pc-1
 // interruptSignal = 11 => pc = 0, interruptSignal = 01 => pc = 30
 // reset = 1 => 32d, reset = 0 => evaluate
-input  [15:0] aluOut;
-input [1:0] pcSrc, interruptSignal, firstTimeCallAfterD2E;
+input  [15:0] aluOut, memData;
+input [1:0] pcSrc, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterD2E;
 input reset, clk;
 output reg [31:0] pc;
 always@(posedge clk)
@@ -18,7 +18,15 @@ begin
 	end
 	else if(firstTimeCallAfterD2E === 2'b11)
 	begin
-		pc = aluOut; // First time in call, we need to the specified address
+		pc = aluOut; // First time in call, we need to go the specified address
+	end
+	else if(firstTimeRETAfterD2E === 2'b11)
+	begin
+		pc[31:16] = memData; // First time in ret, we need to take higher part
+	end
+	else if(firstTimeRETAfterD2E === 2'b01)
+	begin
+		pc[15:0] = memData; // Second time in ret, we need to take the lower part
 	end
 	else if(pcSrc === 2'b01)
 	begin
