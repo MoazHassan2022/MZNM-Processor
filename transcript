@@ -1,5 +1,214 @@
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 20:40:53 on Dec 26,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   x] =     x
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2046] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   6] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+# Memo[   2] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     2,reg[7] =     0
+run
+# Memo[   4] =     0
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+# Memo[   4] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+# Memo[2047] =     0
+# PUSH SP =       2046
+run
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+# Memo[2047] =     0
+# POP SP =       2047
+quit -sim
+# End time: 20:59:04 on Dec 26,2022, Elapsed time: 0:18:11
+# Errors: 0, Warnings: 1
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 21:00:33 on Dec 26,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   x] =     x
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+quit -sim
+# End time: 21:04:39 on Dec 26,2022, Elapsed time: 0:04:06
+# Errors: 0, Warnings: 2
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 21:04:49 on Dec 26,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   x] =     x
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+# PUSH SP =       2046
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 21:20:24 on Dec 26,2022, Elapsed time: 0:15:35
+# Errors: 0, Warnings: 1
 # Compile of ALU.v was successful.
-# Compile of controlUnit.v failed with 1 errors.
+# Compile of controlUnit.v was successful.
 # Compile of defines.v was successful.
 # Compile of forwarding-unit.v was successful.
 # Compile of pc.v was successful.
@@ -12,22 +221,259 @@
 # Compile of controllerTB.v was successful.
 # Compile of DEBuffer.v was successful.
 # Compile of stackPointer.v was successful.
-# 14 compiles, 2 failed with 2 errors.
-# Compile of ALU.v was successful.
-# Compile of controlUnit.v failed with 1 errors.
-# Compile of defines.v was successful.
-# Compile of forwarding-unit.v was successful.
-# Compile of pc.v was successful.
+# Compile of EMBuffer.v failed with 4 errors.
+# Compile of FDBuffer.v was successful.
+# Compile of MWBuffer.v was successful.
+# Compile of hazardDetectionUnit.v was successful.
+# 18 compiles, 2 failed with 5 errors.
+# Compile of EMBuffer.v was successful.
 # Compile of processor.v was successful.
-# Compile of regfile.v was successful.
-# Compile of writeBack.v was successful.
-# Compile of controller.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 21:25:02 on Dec 26,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   x] =     x
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 21:25:50 on Dec 26,2022, Elapsed time: 0:00:48
+# Errors: 0, Warnings: 4
+# Compile of controlUnit.v was successful.
+# Compile of processor.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 21:28:58 on Dec 26,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   x] =     x
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+run
+run
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[2047] =     0
+run
+run
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 21:31:11 on Dec 26,2022, Elapsed time: 0:02:13
+# Errors: 0, Warnings: 3
 # Compile of dataMemory.v was successful.
-# Compile of instructionMemory.v was successful.
-# Compile of controllerTB.v was successful.
-# Compile of DEBuffer.v was successful.
-# Compile of stackPointer.v was successful.
-# 14 compiles, 1 failed with 1 error.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 21:31:40 on Dec 26,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[2047] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[2047] =     0
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[2047] = 65535
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# PUSH SP =       2046
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   6] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   2] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   4] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     2,reg[7] =     0
+run
+run
+run
+# Memo[   4] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+run
+# Memo[2047] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+# POP SP =       2047
+run
+run
+# Memo[   4] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+# Memo[   4] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+# Memo[  52] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+run
+# Memo[2047] =    49
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+# PUSH SP =       2046
+run
+# Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+# PUSH SP =       2045
+quit -sim
+# End time: 22:03:00 on Dec 26,2022, Elapsed time: 0:31:20
+# Errors: 0, Warnings: 1
+# Compile of controlUnit.v was successful.
 # Compile of ALU.v was successful.
 # Compile of controlUnit.v was successful.
 # Compile of defines.v was successful.
@@ -43,14 +489,13 @@
 # Compile of DEBuffer.v was successful.
 # Compile of stackPointer.v was successful.
 # Compile of EMBuffer.v was successful.
-# Compile of FDBuffer.v failed with 3 errors.
-# Compile of MWBuffer.v failed with 1 errors.
-# 17 compiles, 2 failed with 4 errors.
 # Compile of FDBuffer.v was successful.
 # Compile of MWBuffer.v was successful.
+# Compile of hazardDetectionUnit.v was successful.
+# 18 compiles, 0 failed with no errors.
 vsim -gui work.controllerTB
 # vsim -gui work.controllerTB 
-# Start time: 00:03:44 on Dec 26,2022
+# Start time: 22:05:31 on Dec 26,2022
 # Loading work.controllerTB
 # Loading work.Controller
 # Loading work.IntructionMemory
@@ -58,10 +503,7 @@ vsim -gui work.controllerTB
 # Loading work.Processor
 # Loading work.PC
 # Loading work.FDBuffer
-# ** Error: (vsim-3033) Instantiation of 'hazardDetectionUnit' failed. The design unit was not found.
-#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/processor File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v Line: 98
-#         Searched libraries:
-#             F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/work
+# Loading work.hazardDetectionUnit
 # Loading work.regfile
 # Loading work.ControlUnit
 # Loading work.DEBuffer
@@ -71,53 +513,138 @@ vsim -gui work.controllerTB
 # Loading work.stackPointer
 # Loading work.MWBuffer
 # Loading work.WriteBack
-# Error loading design
-# End time: 00:03:46 on Dec 26,2022, Elapsed time: 0:00:02
-# Errors: 1, Warnings: 7
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[2047] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[2047] =     0
+# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[2047] = 65535
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# PUSH SP =       2046
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   6] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   2] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   4] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     2,reg[7] =     0
+run
+run
+run
+# Memo[   4] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+run
+# Memo[2047] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+# POP SP =       2047
+run
+run
+# Memo[   4] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+# Memo[   4] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+# Memo[  52] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+run
+# Memo[2047] =    49
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+# PUSH SP =       2046
+run
+# Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+# PUSH SP =       2045
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+# Memo[  51] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+run
+# Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# POP SP =       2046
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+run
+quit -sim
+# End time: 22:48:26 on Dec 26,2022, Elapsed time: 0:42:55
+# Errors: 0, Warnings: 3
+# Compile of controllerTB.v was successful.
 # Compile of hazardDetectionUnit.v was successful.
 vsim -gui work.controllerTB
 # vsim -gui work.controllerTB 
-# Start time: 00:04:31 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'aluSignals'. The port definition is at: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/controlUnit.v(4).
-#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/processor/cu File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v Line: 102
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'aluSignals'. The port definition is at: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/DEBuffer.v(1).
-#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/processor/de File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'aluSignalsOut'. The port definition is at: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/DEBuffer.v(4).
-#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/processor/de File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (3) for port 'src1'. The port definition is at: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/forwarding-unit.v(1).
-#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/processor/fu File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v Line: 149
-# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (3) for port 'src2'. The port definition is at: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/forwarding-unit.v(1).
-#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/processor/fu File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v Line: 149
-# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (3) for port 'EX_MEM_RD'. The port definition is at: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/forwarding-unit.v(1).
-#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/processor/fu File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v Line: 149
-# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (3) for port 'MEM_WB_RD'. The port definition is at: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/forwarding-unit.v(1).
-#    Time: 0 ps  Iteration: 0  Instance: /controllerTB/controller/processor/fu File: F:/Eng/Third Year/First Term/Computer Architecture/Project/Github/MZNM-Processor/processor.v Line: 149
-quit -sim
-# End time: 00:07:07 on Dec 26,2022, Elapsed time: 0:02:36
-# Errors: 0, Warnings: 10
-# Compile of forwarding-unit.v was successful.
-# Compile of controlUnit.v was successful.
-# Compile of DEBuffer.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 00:07:30 on Dec 26,2022
+# Start time: 22:55:31 on Dec 26,2022
 # Loading work.controllerTB
 # Loading work.Controller
 # Loading work.IntructionMemory
@@ -136,178 +663,6 @@ vsim -gui work.controllerTB
 # Loading work.MWBuffer
 # Loading work.WriteBack
 add wave -position end sim:/controllerTB/controller/processor/*
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[2047] =     0
-# reg[0] =     x,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] =     x,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-quit -sim
-# End time: 00:16:57 on Dec 26,2022, Elapsed time: 0:09:27
-# Errors: 0, Warnings: 1
-# Compile of pc.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 00:17:23 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[2047] =     0
-# reg[0] =     x,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-quit -sim
-# End time: 00:24:42 on Dec 26,2022, Elapsed time: 0:07:19
-# Errors: 0, Warnings: 2
-# Compile of processor.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 00:24:56 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-quit -sim
-# End time: 00:31:38 on Dec 26,2022, Elapsed time: 0:06:42
-# Errors: 0, Warnings: 2
-# Compile of MWBuffer.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 00:32:47 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
-run
 run
 # Memo[   x] =     x
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
@@ -337,372 +692,125 @@ run
 run
 run
 run
+# Memo[2047] = 65535
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# PUSH SP =       2046
+run
 # Memo[   0] =     0
 # reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 run
-# Memo[2047] =     0
+run
+# Memo[2046] =     0
 # reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   6] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+run
+run
+# Memo[   2] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
+run
+run
+# Memo[   4] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     2,reg[7] =     0
+run
+run
+run
+# Memo[   4] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+run
+# Memo[2047] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+# POP SP =       2047
+run
+run
+# Memo[   4] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+# Memo[   4] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
 run
 run
 run
 # Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+# Memo[  52] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+run
+# Memo[2047] =    49
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+# PUSH SP =       2046
+run
+# Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+# PUSH SP =       2045
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+# Memo[  51] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+run
+run
+# Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# POP SP =       2046
+run
+# Memo[2047] =    49
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# POP SP =       2047
+run
+run
+# Memo[ 103] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+run
+# Memo[ 155] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =   103
+run
+run
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =   155
+run
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =   155
 quit -sim
-# End time: 00:35:35 on Dec 26,2022, Elapsed time: 0:02:48
-# Errors: 0, Warnings: 2
-# Compile of controllerTB.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 00:37:04 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[2047] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# A time value could not be extracted from the current line
-run
-run
-# Memo[   0] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-quit -sim
-# End time: 00:49:36 on Dec 26,2022, Elapsed time: 0:12:32
-# Errors: 0, Warnings: 2
-# Compile of controllerTB.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 00:51:54 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[2047] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-quit -sim
-# End time: 01:02:54 on Dec 26,2022, Elapsed time: 0:11:00
-# Errors: 0, Warnings: 2
-# Compile of MWBuffer.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 01:03:24 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-quit -sim
-# End time: 01:32:14 on Dec 26,2022, Elapsed time: 0:28:50
-# Errors: 0, Warnings: 1
-# Compile of forwarding-unit.v failed with 5 errors.
-# Compile of forwarding-unit.v failed with 3 errors.
-# Compile of forwarding-unit.v was successful.
-# Compile of processor.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 01:34:07 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   x] =     x
-# reg[0] = 65535,reg[1] =     x,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-quit -sim
-# End time: 01:46:02 on Dec 26,2022, Elapsed time: 0:11:55
-# Errors: 0, Warnings: 5
-# Compile of forwarding-unit.v was successful.
-# Compile of processor.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 01:46:19 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
-run
-run
-# Memo[   x] =     x
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[   0] =     0
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-run
-# Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-quit -sim
-# End time: 01:48:32 on Dec 26,2022, Elapsed time: 0:02:13
+# End time: 23:24:56 on Dec 26,2022, Elapsed time: 0:29:25
 # Errors: 0, Warnings: 3
-# Compile of forwarding-unit.v failed with 3 errors.
-# Compile of forwarding-unit.v was successful.
+# Compile of hazardDetectionUnit.v was successful.
 # Compile of processor.v was successful.
 vsim -gui work.controllerTB
 # vsim -gui work.controllerTB 
-# Start time: 01:50:04 on Dec 26,2022
+# Start time: 23:27:50 on Dec 26,2022
 # Loading work.controllerTB
 # Loading work.Controller
 # Loading work.IntructionMemory
@@ -722,50 +830,42 @@ vsim -gui work.controllerTB
 # Loading work.WriteBack
 add wave -position end sim:/controllerTB/controller/processor/*
 run
-run
 # Memo[   x] =     x
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[   0] =     0
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[   0] =     0
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[   0] =     0
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
-# Memo[2047] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[   0] =     0
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-run
-# Memo[   x] =     x
-# reg[0] = 65535,reg[1] =     x,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 quit -sim
-# End time: 01:58:09 on Dec 26,2022, Elapsed time: 0:08:05
-# Errors: 0, Warnings: 4
-# Compile of regfile.v was successful.
-# Compile of MWBuffer.v was successful.
+# End time: 23:29:28 on Dec 26,2022, Elapsed time: 0:01:38
+# Errors: 0, Warnings: 3
+# Compile of hazardDetectionUnit.v was successful.
 vsim -gui work.controllerTB
 # vsim -gui work.controllerTB 
-# Start time: 01:58:29 on Dec 26,2022
+# Start time: 23:29:44 on Dec 26,2022
 # Loading work.controllerTB
 # Loading work.Controller
 # Loading work.IntructionMemory
@@ -785,110 +885,118 @@ vsim -gui work.controllerTB
 # Loading work.WriteBack
 add wave -position end sim:/controllerTB/controller/processor/*
 run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
 # Memo[   x] =     x
-run
-run
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[   0] =     0
-run
-run
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[   0] =     0
-run
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[   0] =     0
-run
-run
 # reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[2047] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
+# Memo[2047] =     0
 # reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-# Memo[2047] =     0
-run
-run
+# Memo[2047] = 65535
 # reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# PUSH SP =       2046
 run
 # Memo[   0] =     0
-run
 # reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
-run
+# Memo[   0] =     0
 # reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# A time value could not be extracted from the current line
-quit -sim
-# End time: 02:00:57 on Dec 26,2022, Elapsed time: 0:02:28
-# Errors: 0, Warnings: 3
-# Compile of processor.v was successful.
-# Compile of forwarding-unit.v was successful.
-vsim -gui work.controllerTB
-# vsim -gui work.controllerTB 
-# Start time: 02:02:13 on Dec 26,2022
-# Loading work.controllerTB
-# Loading work.Controller
-# Loading work.IntructionMemory
-# Loading work.DataMemory
-# Loading work.Processor
-# Loading work.PC
-# Loading work.FDBuffer
-# Loading work.hazardDetectionUnit
-# Loading work.regfile
-# Loading work.ControlUnit
-# Loading work.DEBuffer
-# Loading work.ForwardingUnit
-# Loading work.ALU
-# Loading work.EMBuffer
-# Loading work.stackPointer
-# Loading work.MWBuffer
-# Loading work.WriteBack
-add wave -position end sim:/controllerTB/controller/processor/*
 run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[   x] =     x
-run
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# Memo[   6] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
 run
 # Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
 run
+# Memo[   2] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     0,reg[7] =     0
 run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# Memo[   4] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     6,reg[6] =     2,reg[7] =     0
+run
+# Memo[   4] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+run
+# Memo[2047] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] =     0
+# POP SP =       2047
+run
+# Memo[   4] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+# Memo[   4] = 65535
+# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
 run
 # Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
 run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# Memo[  52] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =     0,reg[5] =     4,reg[6] =     2,reg[7] = 65535
 run
-# Memo[   0] =     0
-run
-run
-# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[2047] =     0
-run
-# reg[0] = 65535,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[2047] =     0
-run
-run
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-run
-# Memo[   0] =     0
-run
-# reg[0] = 65535,reg[1] = 65535,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# Memo[2047] =    49
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+# PUSH SP =       2046
 run
 # Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+# PUSH SP =       2045
 run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
 run
-# reg[0] = 65535,reg[1] = 65534,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+# Memo[  51] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] = 65535
+run
+# Memo[2046] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+# POP SP =       2046
+run
+# Memo[2047] =    49
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+# POP SP =       2047
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# Memo[   0] =     0
+# reg[0] = 65535,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# Memo[ 103] =     0
+# reg[0] =     0,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =    51
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =   103
+# POP SP =       2048
+run
+# Memo[   1] =     0
+# reg[0] =     0,reg[1] = 65534,reg[2] = 65535,reg[3] =     4,reg[4] =    52,reg[5] =     4,reg[6] =     2,reg[7] =   103
+# POP SP =       2049
 quit -sim
-# End time: 02:03:20 on Dec 26,2022, Elapsed time: 0:01:07
-# Errors: 0, Warnings: 3
+# End time: 23:34:45 on Dec 26,2022, Elapsed time: 0:05:01
+# Errors: 0, Warnings: 2

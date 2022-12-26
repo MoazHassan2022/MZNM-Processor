@@ -13,7 +13,7 @@ initial begin
 	#100;
     clk = 1'b0;
     reset = 1'b0;
-    #100; // [NOT R0], [NOT R1], [NOP], [ADD R1, R0], [LDM R5, 6], [LDM R6, 2], [SUB R5, R6], [ADD R3, R5], [PUSH R3], [POP R7], [STD R5, R0], [LDD R2, R5], [LDM R4, 52], [CALL R4](will go to last NOP)// TODO: try to make the PC takes the value of aluOutAfterE2M @ firstTimeCallAfterD2E = 01, and make the control unit flushes 1 cycle when firstTimeCallAfterD2E = 11 , [NOT R0](to be executed after RET), [NOP], [NOP], [NOP], [ADD R7, R0], [RET](return to near NOT R0)
+    #100; // [NOT R0], [NOT R1], [PUSH R1], [NOP], [ADD R1, R0], [LDM R5, 6], [LDM R6, 2], [SUB R5, R6], [ADD R3, R5], [POP R7], [STD R5, R0], [LDD R2, R5], [LDM R4, 52], [CALL R4](will go to last NOP), [NOT R0](to be executed after RET), [NOP], [NOP], [NOP], [ADD R7, R4], [RET](return to near NOT R0)
     #100;
     #100;
     #100;

@@ -16,10 +16,10 @@ assign {overFlowFlagOut,zeroFlagOut,negativeFlagOut,carryFlagOut,result} =
                 (aluSignals == `ALU_NOT)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,~firstOperand}:
                 (aluSignals == `ALU_STD)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,firstOperand}: // aluOut must be Rdst
                 (aluSignals == `ALU_LDD)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,secondOperand}: // aluOut must be Rsrc
-                (aluSignals == `ALU_JZ)?{overFlowFlag,1'b0,negativeFlag,carryFlag,16'd0}: // aluOut must be Rdst
-                (aluSignals == `ALU_JN)?{overFlowFlag,zeroFlag,1'b0,carryFlag,16'd0}: // aluOut must be Rdst
-                (aluSignals == `ALU_JC)?{overFlowFlag,zeroFlag,negativeFlag,1'b0,16'd0}: // aluOut must be Rdst
-                (aluSignals == `ALU_JMP)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,16'd0}: // aluOut must be Rdst
+                (aluSignals == `ALU_JZ)?{overFlowFlag,1'b0,negativeFlag,carryFlag,16'd0}: 
+                (aluSignals == `ALU_JN)?{overFlowFlag,zeroFlag,1'b0,carryFlag,16'd0}: 
+                (aluSignals == `ALU_JC)?{overFlowFlag,zeroFlag,negativeFlag,1'b0,16'd0}:
+                (aluSignals == `ALU_JMP)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,16'd0}:
                 (aluSignals == `ALU_INC)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand+1}:
                 (aluSignals == `ALU_DEC)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand-1}:
                 (aluSignals == `ALU_MOV)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,secondOperand}:

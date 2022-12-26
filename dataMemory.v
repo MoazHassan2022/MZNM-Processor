@@ -14,7 +14,7 @@ initial begin
 end
 
 assign DataOut = MemeRead === 1'b1 ? Memo[Addr] : 16'bx;
-always @(posedge Clk) begin
+always @(negedge Clk) begin
     if(MemeWrite==1'b1)
     begin
         Memo[Addr]=DataIn;

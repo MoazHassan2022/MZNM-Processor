@@ -2,7 +2,7 @@
 
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StIn,SstIn,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, bubbleSignal
+    CLRC,StIn,SstIn,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, bubbleSignal, isPush
 );
 
 /// defining the inputs 
@@ -33,6 +33,7 @@ output reg shift; // this signal inform me if this instruction was shift or not
 output reg [1:0] enablePushOrPop; // 00 => no push or pop, 01 => push, 11 => pop
 output reg [1:0] firstTimeCallOut; // Please see the call algorithm down at handling OP_CALL instruction
 output reg [1:0] firstTimeRETOut; // Please see the call algorithm down at handling OP_RET instruction
+output reg isPush;
 
 
 
@@ -71,6 +72,7 @@ always @(*) begin
       aluSignals = `ALU_NOP; 
       enablePushOrPop = 2'b00;
       shift = 1'b0;
+      isPush = 1'b0;
     end
     if(bubbleSignal==1)
     begin
@@ -78,6 +80,7 @@ always @(*) begin
       aluSignals = `ALU_NOP; 
       enablePushOrPop = 2'b00;
       shift = 1'b0;
+      isPush = 1'b0;
     end
     else
       begin
@@ -90,6 +93,7 @@ always @(*) begin
               SstOut=0;
               enablePushOrPop = 2'b00;
               shift = 1'b0;
+              isPush = 1'b0;
           end
         else if(firstTimeCallIn === 2'b11)
           begin
@@ -99,6 +103,7 @@ always @(*) begin
               firstTimeCallOut = 2'b01;
               enablePushOrPop = 2'b01;
               shift = 1'b0;
+              isPush = 1'b0;
           end
           else if(firstTimeRETIn === 2'b11)
           begin
@@ -109,6 +114,7 @@ always @(*) begin
               shift = 1'b0; 
               enablePushOrPop = 2'b11;
               firstTimeRETOut = 2'b01;
+              isPush = 1'b0;
           end
         else
           begin
@@ -116,6 +122,7 @@ always @(*) begin
               firstTimeRETOut = 2'b00;
               StOut=0;
               SstOut=0;
+              isPush = 1'b0;
             if(opcode == `OP_NOT) begin
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_NOT;
@@ -181,6 +188,7 @@ always @(*) begin
               aluSignals = `ALU_MOV;
               shift = 1'b0;
               enablePushOrPop = 2'b01; 
+              isPush = 1'b1; // for selecting aluOutAfterE2M in memory stage
             end
           else if(opcode == `OP_POP) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010101000; 
@@ -240,7 +248,7 @@ always @(*) begin
             end
           else if(opcode == `OP_Call) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
-              aluSignals = `ALU_JMP; // to make aluOut = Rdst
+              aluSignals = `ALU_STD; // to make aluOut = Rdst
               shift = 1'b0; 
               enablePushOrPop = 2'b01; // push
               firstTimeCallOut = 2'b11; // first cycle in call(push lower PC + 1)

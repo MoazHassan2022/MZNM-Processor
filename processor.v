@@ -20,15 +20,12 @@ module Processor (
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                         ******************* WHAT REMAINS **********************
-3. HANDLING PC UNIT WITH HAZARD DETECTION UNIT.
-4. INTERRUPT & RTI.
+1. INTERRUPT & RTI.
                         ******************* WHAT REMAINS **********************
 
                         ******************* TO BE TESTED **********************
-1. LDM
-2. data hazard (forwarding)
-3. branch
-4. load-use case
+1. load-use case
+2. branch
                         ******************* TO BE TESTED **********************
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -48,8 +45,8 @@ output outSignalEn;
 
 // DEFINING WIRES
 
-wire IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, StIn, SstIn, StAfterD2E, SstAfterD2E, PCHazard, IRAfterD2E, IWAfterD2E, MRAfterD2E, MWAfterD2E, MTRAfterD2E, ALU_srcAfterD2E, RWAfterD2E, BranchAfterD2E, SetCAfterD2E, 
-    CLRCAfterD2E, shift, shiftAfterD2E, MRAfterE2M, MWAfterE2M, MTRAfterE2M, RWAfterE2M, MTRAfterM2W, RWAfterM2W; // control unit signals, TODO: use PCHazard
+wire IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, isPush, StIn, SstIn, StAfterD2E, SstAfterD2E, PCHazard, IRAfterD2E, IWAfterD2E, MRAfterD2E, MWAfterD2E, MTRAfterD2E, ALU_srcAfterD2E, RWAfterD2E, BranchAfterD2E, SetCAfterD2E, 
+    CLRCAfterD2E, shift, shiftAfterD2E, isPushAfterD2E, MRAfterE2M, MWAfterE2M, MTRAfterE2M, RWAfterE2M, isPushAfterE2M, MTRAfterM2W, RWAfterM2W; // control unit signals, TODO: use PCHazard
 wire [1:0] pcSrc, FlushNumIn, FlushNumAfterD2E, enablePushOrPop, enablePushOrPopAfterD2E, enablePushOrPopAfterE2M, firstTimeCall, firstTimeCallAfterD2E, firstTimeRET, firstTimeRETAfterD2E, firstTimeCallAfterE2M, firstTimeRETAfterE2M, takeALUOrMemForwardedSrc1, takeALUOrMemForwardedSrc2; // pcSrc is result of anding of (Branch, zeroFlag)
 wire [4:0] aluSignals, aluSignalsAfterD2E;
 wire [15:0] aluOut, read_data1, read_data2, write_data, aluSecondOperand, aluFirstOperand, read_data1AfterD2E, read_data2AfterD2E, read_data2AfterE2M, instrAfterF2D, aluOutAfterE2M, aluOutAfterM2W, memDataAfterM2W;
@@ -85,7 +82,7 @@ assign outPortData = aluOut ; // here we attach the aluOut to the outport in cas
 assign dataMemAddr = (enablePushOrPopAfterE2M[0] === 1'b0) ? aluOutAfterE2M : (enablePushOrPopAfterE2M[1] === 1'b0) ? sp[15:0] : (sp[15:0] + 1'b1); // make the data memory address is aluOutAfterE2M for ordinary instructions, but stack pointer for push and pop, if the instruction is push (enablePushOrPopAfterE2M[1] = 0), take old value of stack pointer, if the instruction is pop (enablePushOrPopAfterE2M[1] = 1), take new value after increment of stack pointer.
 
 /// Working on call instruction
-assign writeMemData = (firstTimeCallAfterE2M === 2'b11) ? (pcAfterE2M[15:0]+1'b1) : (firstTimeCallAfterE2M === 2'b01) ? (pcAfterE2M[31:16]) : read_data2AfterE2M;
+assign writeMemData = (firstTimeCallAfterE2M === 2'b11) ? (pcAfterE2M[15:0]+1'b1) : (firstTimeCallAfterE2M === 2'b01) ? (pcAfterE2M[31:16]) : (isPushAfterE2M === 1'b1) ? aluOutAfterE2M : read_data2AfterE2M;
 
 // DEFINING Logic
 PC pcCircuit(aluOut, memData, read_data1, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterE2M);
@@ -98,11 +95,11 @@ regfile regFile(RWAfterM2W, read_data1, read_data2, write_data, clk, reset, inst
 
 ControlUnit cu(
     instrAfterF2D[15:11], aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StAfterD2E,SstAfterD2E,StIn,SstIn,FlushNumAfterD2E,FlushNumIn,shift,enablePushOrPop, firstTimeCallAfterD2E, firstTimeCall, firstTimeRETAfterD2E, firstTimeRET, bubbleSignal
+    CLRC,StAfterD2E,SstAfterD2E,StIn,SstIn,FlushNumAfterD2E,FlushNumIn,shift,enablePushOrPop, firstTimeCallAfterD2E, firstTimeCall, firstTimeRETAfterD2E, firstTimeRET, bubbleSignal, isPush
 );
 
 DEBuffer de(
-     aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, StIn, SstIn, /// the input signals. 
+     aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, StIn, SstIn, isPush,/// the input signals. 
      read_data1, /// read data from the register file. -> (destination data). -> the first reg in the reg file.  
      dataEitherFromInputPortOrSrc, /// to decide whether we read from the inport data or the register file. 
      instrAfterF2D[4:0], /// 5 bits which decide the immediate value for shift left or right.
@@ -141,6 +138,7 @@ DEBuffer de(
      firstTimeRETAfterD2E,
      StAfterD2E, /// state signal after the D2E buffer. 
      SstAfterD2E, /// second state signal after the D2E buffer.
+     isPushAfterD2E /// signal for detecting push instruction
      );
 
 ForwardingUnit fu(RegDestinationAfterD2E,SrcAddressAfterD2E,RegDestinationAfterE2M,RegDestinationAfterM2W,MRAfterE2M,RWAfterE2M,RWAfterM2W,takeALUOrMemForwardedSrc1,takeALUOrMemForwardedSrc2);
@@ -148,8 +146,8 @@ ForwardingUnit fu(RegDestinationAfterD2E,SrcAddressAfterD2E,RegDestinationAfterE
 ALU alu(aluSignalsAfterD2E,aluFirstOperand,aluSecondOperand,aluOut,CCRAfterE2M[0],CCRAfterE2M[1],CCRAfterE2M[2],CCRAfterE2M[3],CCR[0],CCR[1],CCR[2],CCR[3]);
 
 EMBuffer em(MRAfterD2E, MWAfterD2E, MTRAfterD2E, RWAfterD2E, read_data2AfterD2E, RegDestinationAfterD2E,
-    firstTimeCallAfterD2E, enablePushOrPopAfterD2E, pcAfterD2E, firstTimeRETAfterD2E, aluOut, CCR, clk, read_data2AfterE2M, RegDestinationAfterE2M, 
-    MRAfterE2M, MWAfterE2M, MTRAfterE2M, RWAfterE2M, enablePushOrPopAfterE2M, firstTimeCallAfterE2M, pcAfterE2M, firstTimeRETAfterE2M, aluOutAfterE2M, CCRAfterE2M
+    firstTimeCallAfterD2E, enablePushOrPopAfterD2E, pcAfterD2E, firstTimeRETAfterD2E, isPushAfterD2E, aluOut, CCR, clk, read_data2AfterE2M, RegDestinationAfterE2M, 
+    MRAfterE2M, MWAfterE2M, MTRAfterE2M, RWAfterE2M, enablePushOrPopAfterE2M, firstTimeCallAfterE2M, pcAfterE2M, firstTimeRETAfterE2M, isPushAfterE2M, aluOutAfterE2M, CCRAfterE2M
 );
 
 stackPointer stackP(enablePushOrPopAfterE2M[0], clk, reset, enablePushOrPopAfterE2M[1], sp);
