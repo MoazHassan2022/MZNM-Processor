@@ -1,12 +1,12 @@
-module PC (aluOut, memData, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterD2E);
-// pcSrc = 00 => old pc+1, pcSrc = 01 => aluOut(branch result address), pcSrc = 10 => old pc-1
+module PC (aluOut, memData, read_data1, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterE2M);
+// pcSrc = 00 => old pc+1, pcSrc = 01 => read_data1(branch result address), pcSrc = 10 => old pc-2
 // interruptSignal = 11 => pc = 0, interruptSignal = 01 => pc = 30
 // reset = 1 => 32d, reset = 0 => evaluate
-input  [15:0] aluOut, memData;
-input [1:0] pcSrc, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterD2E;
+input  [15:0] aluOut, memData, read_data1;
+input [1:0] pcSrc, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterE2M;
 input reset, clk;
 output reg [31:0] pc;
-always@(posedge clk)
+always@(negedge clk)
 begin
 	if(reset === 1'b1 || interruptSignal === 2'b01)
 	begin
@@ -20,21 +20,21 @@ begin
 	begin
 		pc = aluOut; // First time in call, we need to go the specified address
 	end
-	else if(firstTimeRETAfterD2E === 2'b11)
+	else if(firstTimeRETAfterE2M === 2'b11)
 	begin
 		pc[31:16] = memData; // First time in ret, we need to take higher part
 	end
-	else if(firstTimeRETAfterD2E === 2'b01)
+	else if(firstTimeRETAfterE2M === 2'b01)
 	begin
 		pc[15:0] = memData; // Second time in ret, we need to take the lower part
 	end
 	else if(pcSrc === 2'b01)
 	begin
-		pc = pc + {16'b0,aluOut}; // Jump to an address that is summed with the current pc
+		pc = {16'b0,read_data1};
 	end
 	else if(pcSrc === 2'b10)
 	begin
-		pc = pc - 32'b1;
+		pc = pc - 32'b10;
 	end
 	else
 	begin

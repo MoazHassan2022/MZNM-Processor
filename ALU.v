@@ -1,32 +1,36 @@
 `include "defines.v"
 
-module ALU(aluSignals,firstOperand,secondOperand,result,zeroFlag,carryFlag,overFlowFlag,negativeFlag);
-input [3:0] aluSignals;
+module ALU(aluSignals,firstOperand,secondOperand,result,zeroFlag,carryFlag,overFlowFlag,negativeFlag,zeroFlagOut,carryFlagOut,overFlowFlagOut,negativeFlagOut);
+input [4:0] aluSignals;
 input [15:0] firstOperand,secondOperand;
+input zeroFlag,carryFlag,overFlowFlag,negativeFlag;
 output [15:0] result;
-output zeroFlag,carryFlag,overFlowFlag,negativeFlag;
+output zeroFlagOut,carryFlagOut,overFlowFlagOut,negativeFlagOut;
 wire zeroFlagTemp,negativeFlagTemp, overFlowFlagTemp;
-
 
 assign zeroFlagTemp = (result==16'd0);
 assign overFlowFlagTemp = (firstOperand[15] ^ result[15]) & (secondOperand[15] ^ result[15]);
 assign negativeFlagTemp = result[15];
-assign {overFlowFlag,zeroFlag,negativeFlag,carryFlag,result} = 
-		(aluSignals == `ALU_NOP)?{1'b0,1'b0,1'b0,17'd0}:
-                (aluSignals == `ALU_NOT)?{1'b0,zeroFlagTemp,negativeFlagTemp,1'b0,~firstOperand}:
-                (aluSignals == `ALU_STD)?{1'b0,1'b0,1'b0,1'b0,firstOperand}: // aluOut must be Rdst
-                (aluSignals == `ALU_LDD)?{1'b0,1'b0,1'b0,1'b0,secondOperand}: // aluOut must be Rsrc
-                (aluSignals == `ALU_JMP)?{1'b0,1'b0,1'b0,1'b0,firstOperand}: // aluOut must be Rdst
-                (aluSignals == `ALU_INC)?{overFlowFlagTemp,zeroFlagTemp,negativeFlagTemp,firstOperand+1}:
-                (aluSignals == `ALU_DEC)?{overFlowFlagTemp,zeroFlagTemp,negativeFlagTemp,firstOperand-1}:
-                (aluSignals == `ALU_MOV)?{1'b0,1'b0,1'b0,1'b0,secondOperand}:
+assign {overFlowFlagOut,zeroFlagOut,negativeFlagOut,carryFlagOut,result} = 
+		(aluSignals == `ALU_NOP)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,16'd0}:
+                (aluSignals == `ALU_NOT)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,~firstOperand}:
+                (aluSignals == `ALU_STD)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,firstOperand}: // aluOut must be Rdst
+                (aluSignals == `ALU_LDD)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,secondOperand}: // aluOut must be Rsrc
+                (aluSignals == `ALU_JZ)?{overFlowFlag,1'b0,negativeFlag,carryFlag,16'd0}: // aluOut must be Rdst
+                (aluSignals == `ALU_JN)?{overFlowFlag,zeroFlag,1'b0,carryFlag,16'd0}: // aluOut must be Rdst
+                (aluSignals == `ALU_JC)?{overFlowFlag,zeroFlag,negativeFlag,1'b0,16'd0}: // aluOut must be Rdst
+                (aluSignals == `ALU_JMP)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,16'd0}: // aluOut must be Rdst
+                (aluSignals == `ALU_INC)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand+1}:
+                (aluSignals == `ALU_DEC)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand-1}:
+                (aluSignals == `ALU_MOV)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,secondOperand}:
                 (aluSignals == `ALU_ADD)?{overFlowFlagTemp,zeroFlagTemp,negativeFlagTemp,firstOperand+secondOperand}:
                 (aluSignals == `ALU_SUB)?{overFlowFlagTemp,zeroFlagTemp,negativeFlagTemp,firstOperand-secondOperand}:   /*rdst= rdst-rsrc*/
-                (aluSignals == `ALU_AND)?{1'b0,zeroFlagTemp,negativeFlagTemp,1'b0,firstOperand&secondOperand}:
-                (aluSignals == `ALU_OR)?{1'b0,zeroFlagTemp,negativeFlagTemp,1'b0,firstOperand|secondOperand}:
-                (aluSignals == `ALU_SHL)?(secondOperand == 16'b0 ? {1'b0,zeroFlagTemp,negativeFlagTemp,1'b0, firstOperand} : {1'b0,zeroFlagTemp,negativeFlagTemp,firstOperand[15 - (secondOperand - 1)] , firstOperand << secondOperand}) : 
-                (aluSignals == `ALU_SHR)?(secondOperand == 16'b0) ? {1'b0,zeroFlagTemp,negativeFlagTemp,1'b0, firstOperand} : {1'b0,zeroFlagTemp,negativeFlagTemp,firstOperand[secondOperand - 1], firstOperand >> secondOperand} :
-                (aluSignals == `ALU_SETC)?{1'b0,1'b0,1'b0,1'b1, 16'b0}: /// we just raised the setC to 1, in CLRC we pass ALU_NOP that clears carry
+                (aluSignals == `ALU_AND)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,firstOperand&secondOperand}:
+                (aluSignals == `ALU_OR)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,firstOperand|secondOperand}:
+                (aluSignals == `ALU_SHL)?(secondOperand == 16'b0 ? {overFlowFlag,zeroFlagTemp,negativeFlagTemp,1'b0, firstOperand} : {overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand[15 - (secondOperand - 1)] , firstOperand << secondOperand}) : 
+                (aluSignals == `ALU_SHR)?(secondOperand == 16'b0) ? {overFlowFlag,zeroFlagTemp,negativeFlagTemp,1'b0, firstOperand} : {overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand[secondOperand - 1], firstOperand >> secondOperand} :
+                (aluSignals == `ALU_SETC)?{overFlowFlag,zeroFlag,negativeFlag,1'b1, 16'b0}: /// we just raised the setC to 1
+                (aluSignals == `ALU_CLRC)?{overFlowFlag,zeroFlag,negativeFlag,1'b0, 16'b0}: /// we just raised the clrC to 1
                 17'dx;
 
 endmodule

@@ -2,8 +2,7 @@
 
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StIn,SstIn,StOut,SstOut,FlushNumIn,FlushNumOut,PCHazard,NopSignal,
-    shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut
+    CLRC,StIn,SstIn,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, bubbleSignal
 );
 
 /// defining the inputs 
@@ -11,7 +10,7 @@ input [4:0] opcode;
 input  StIn;
 input  SstIn;
 input  [1:0] FlushNumIn, firstTimeCallIn, firstTimeRETIn;
-input NopSignal; 
+input bubbleSignal; 
 
 
 /// defining the outputs [IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC] signals
@@ -26,11 +25,10 @@ output reg RW;
 output reg Branch; 
 output reg SetC; 
 output reg CLRC; 
-output reg [3:0] aluSignals;
+output reg [4:0] aluSignals;
 output reg StOut;
 output reg SstOut;
 output reg [1:0] FlushNumOut;
-output reg PCHazard;
 output reg shift; // this signal inform me if this instruction was shift or not 
 output reg [1:0] enablePushOrPop; // 00 => no push or pop, 01 => push, 11 => pop
 output reg [1:0] firstTimeCallOut; // Please see the call algorithm down at handling OP_CALL instruction
@@ -69,13 +67,12 @@ always @(*) begin
     if(FlushNumIn>0)
     begin
       FlushNumOut=FlushNumIn-1;
-      PCHazard=1;
       {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
       aluSignals = `ALU_NOP; 
       enablePushOrPop = 2'b00;
       shift = 1'b0;
     end
-    if(NopSignal==1)
+    if(bubbleSignal==1)
     begin
       {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
       aluSignals = `ALU_NOP; 
@@ -214,28 +211,32 @@ always @(*) begin
             end
           ///  J operations
           else if(opcode == `OP_JZ) begin 
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_JMP;
+              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
+              aluSignals = `ALU_JZ;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
+              FlushNumOut = 2'b01;
             end
           else if(opcode == `OP_JN) begin 
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_JMP;
+              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
+              aluSignals = `ALU_JN;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
+              FlushNumOut = 2'b01;
             end
           else if(opcode == `OP_JC) begin 
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_JMP;
+              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
+              aluSignals = `ALU_JC;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
+              FlushNumOut = 2'b01;
             end
           else if(opcode == `OP_JMP) begin 
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
+              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
               aluSignals = `ALU_JMP;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
+              FlushNumOut = 2'b01;
             end
           else if(opcode == `OP_Call) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
@@ -320,7 +321,7 @@ always @(*) begin
             end
           else if(opcode == `OP_CLRC) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0000000001; 
-              aluSignals = `ALU_NOP;
+              aluSignals = `ALU_CLRC;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
             end

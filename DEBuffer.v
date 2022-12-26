@@ -1,50 +1,40 @@
-module DEBuffer(aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC,
-ST,SST,STOut, SSTOut, Reg1,Reg2,Instruction,SrcAddress,RegDestination,Clk, Reg1Out, Reg2Out, 
-InstructionOut, SrcAddressOut, RegDestinationOut,FlashNumOut,FlashNumIn, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, 
-    CLRCOut, aluSignalsOut, instr, instrOut,  
-    shift, 
-    shiftOut,
-    enablePushOrPop,
-    enablePushOrPopOut,
-    firstTimeCall,
-    firstTimeCallOut,
-    pc,
-    pcOut,
-    firstTimeRET,
-    firstTimeRETOut
-    );
+module DEBuffer(aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, ST, SST, Reg1, Reg2, smallImmediate, SrcAddress,
+    RegDestination, FlashNumIn, instr, shift, enablePushOrPop, firstTimeCall, firstTimeRET, pc, clk, Reg1Out, Reg2Out, smallImmediateOut, 
+    SrcAddressOut, RegDestinationOut, FlashNumOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut, 
+    aluSignalsOut, instrOut, shiftOut, enablePushOrPopOut, firstTimeCallOut, pcOut, firstTimeRETOut, STOut, SSTOut,
+);
 
 
 // Inputs to the buffer
-input Clk, ST, SST, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, shift; 
+input clk, ST, SST, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, shift; 
 input [15:0] Reg1,Reg2, instr;
-input [4:0]  Instruction;
+input [4:0]  smallImmediate;
 input [2:0]  SrcAddress;
 input [2:0]  RegDestination;
 input [1:0]  FlashNumIn, enablePushOrPop, firstTimeCall, firstTimeRET;
-input [3:0]  aluSignals;
+input [4:0]  aluSignals;
 input [31:0] pc;
 
 // Outputs from the buffer
 output reg  [15:0] Reg1Out, Reg2Out, instrOut;
-output reg  [4:0]  InstructionOut;
+output reg  [4:0]  smallImmediateOut;
 output reg  [2:0]  SrcAddressOut;
 output reg  [2:0]  RegDestinationOut;
 output reg  [1:0]  FlashNumOut, enablePushOrPopOut, firstTimeCallOut, firstTimeRETOut;
 output reg STOut, SSTOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut, shiftOut;
-output reg [3:0] aluSignalsOut;
+output reg [4:0] aluSignalsOut;
 output reg [31:0] pcOut;
 
 
 
-always@(negedge Clk)
+always@(posedge clk)
 begin
     FlashNumOut=FlashNumIn;
     STOut=ST;
     SSTOut=SST;
     Reg1Out=Reg1;
     Reg2Out=Reg2;
-    InstructionOut=Instruction;
+    smallImmediateOut=smallImmediate;
     SrcAddressOut=SrcAddress;
     RegDestinationOut=RegDestination;
     IROut = IR;
