@@ -7,7 +7,12 @@ input zeroFlag,carryFlag,overFlowFlag,negativeFlag;
 output [15:0] result;
 output zeroFlagOut,carryFlagOut,overFlowFlagOut,negativeFlagOut;
 wire zeroFlagTemp,negativeFlagTemp, overFlowFlagTemp;
-wire [16:0] resultWithCarry;
+wire [16:0] resultWithCarry, resultOfInc, resultOfDec, resultOfAdd, resultOfSub;
+
+assign resultOfInc = firstOperand+1;
+assign resultOfDec = firstOperand-1;
+assign resultOfAdd = firstOperand+secondOperand;
+assign resultOfSub = firstOperand-secondOperand;
 
 assign result = resultWithCarry[15:0];
 assign carryFlagOut = resultWithCarry[16];
@@ -23,11 +28,11 @@ assign {overFlowFlagOut,zeroFlagOut,negativeFlagOut,resultWithCarry} =
                 (aluSignals == `ALU_JN)?{overFlowFlag,zeroFlag,1'b0,carryFlag,16'd0}: 
                 (aluSignals == `ALU_JC)?{overFlowFlag,zeroFlag,negativeFlag,1'b0,16'd0}:
                 (aluSignals == `ALU_JMP)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,16'd0}:
-                (aluSignals == `ALU_INC)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand+1}:
-                (aluSignals == `ALU_DEC)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand-1}:
+                (aluSignals == `ALU_INC)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,resultOfInc}:
+                (aluSignals == `ALU_DEC)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,resultOfDec}:
                 (aluSignals == `ALU_MOV)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,secondOperand}:
-                (aluSignals == `ALU_ADD)?{overFlowFlagTemp,zeroFlagTemp,negativeFlagTemp,firstOperand+secondOperand}:
-                (aluSignals == `ALU_SUB)?{overFlowFlagTemp,zeroFlagTemp,negativeFlagTemp,firstOperand-secondOperand}:   /*rdst= rdst-rsrc*/
+                (aluSignals == `ALU_ADD)?{overFlowFlagTemp,zeroFlagTemp,negativeFlagTemp,resultOfAdd}:
+                (aluSignals == `ALU_SUB)?{overFlowFlagTemp,zeroFlagTemp,negativeFlagTemp,resultOfSub}:   /*rdst= rdst-rsrc*/
                 (aluSignals == `ALU_AND)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,firstOperand&secondOperand}:
                 (aluSignals == `ALU_OR)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,firstOperand|secondOperand}:
                 (aluSignals == `ALU_SHL)?(secondOperand == 16'b0 ? {overFlowFlag,zeroFlagTemp,negativeFlagTemp,1'b0, firstOperand} : {overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand[15 - (secondOperand - 1)] , firstOperand << secondOperand}) : 

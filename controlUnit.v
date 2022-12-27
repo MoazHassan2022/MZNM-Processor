@@ -223,28 +223,24 @@ always @(*) begin
               aluSignals = `ALU_JZ;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
-              FlushNumOut = 2'b01;
             end
           else if(opcode == `OP_JN) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
               aluSignals = `ALU_JN;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
-              FlushNumOut = 2'b01;
             end
           else if(opcode == `OP_JC) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
               aluSignals = `ALU_JC;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
-              FlushNumOut = 2'b01;
             end
           else if(opcode == `OP_JMP) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
               aluSignals = `ALU_JMP;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;
-              FlushNumOut = 2'b01;
             end
           else if(opcode == `OP_Call) begin 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
