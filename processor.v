@@ -24,8 +24,7 @@ module Processor (
                         ******************* WHAT REMAINS **********************
 
                         ******************* TO BE TESTED **********************
-1. load-use case
-2. branch
+1. branch (needs forwarding(after D2E, after E2M, and after M2W) for Rdst)
                         ******************* TO BE TESTED **********************
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -89,7 +88,7 @@ PC pcCircuit(aluOut, memData, read_data1, pcSrc, pc, reset, clk, interruptSignal
 
 FDBuffer fd(clk, pc, instr, pcAfterF2D, instrAfterF2D);
 
-hazardDetectionUnit hdu(CCR,instrAfterF2D[15:11],instrAfterF2D[10:8],instrAfterF2D[7:5],RegDestinationAfterD2E,MRAfterD2E,pcSrc,bubbleSignal);
+hazardDetectionUnit hdu(CCR,instrAfterF2D[15:11],instrAfterD2E[15:11],instrAfterF2D[10:8],instrAfterF2D[7:5],RegDestinationAfterD2E,MRAfterD2E,pcSrc,bubbleSignal);
 
 regfile regFile(RWAfterM2W, read_data1, read_data2, write_data, clk, reset, instrAfterF2D[10:8], instrAfterF2D[7:5], RegDestinationAfterM2W);
 
@@ -145,7 +144,7 @@ ForwardingUnit fu(RegDestinationAfterD2E,SrcAddressAfterD2E,RegDestinationAfterE
 
 ALU alu(aluSignalsAfterD2E,aluFirstOperand,aluSecondOperand,aluOut,CCRAfterE2M[0],CCRAfterE2M[1],CCRAfterE2M[2],CCRAfterE2M[3],CCR[0],CCR[1],CCR[2],CCR[3]);
 
-EMBuffer em(MRAfterD2E, MWAfterD2E, MTRAfterD2E, RWAfterD2E, read_data2AfterD2E, RegDestinationAfterD2E,
+EMBuffer em(MRAfterD2E, MWAfterD2E, MTRAfterD2E, RWAfterD2E, aluSecondOperand, RegDestinationAfterD2E,
     firstTimeCallAfterD2E, enablePushOrPopAfterD2E, pcAfterD2E, firstTimeRETAfterD2E, isPushAfterD2E, aluOut, CCR, clk, read_data2AfterE2M, RegDestinationAfterE2M, 
     MRAfterE2M, MWAfterE2M, MTRAfterE2M, RWAfterE2M, enablePushOrPopAfterE2M, firstTimeCallAfterE2M, pcAfterE2M, firstTimeRETAfterE2M, isPushAfterE2M, aluOutAfterE2M, CCRAfterE2M
 );

@@ -1,5 +1,5 @@
 module PC (aluOut, memData, read_data1, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterE2M);
-// pcSrc = 00 => old pc+1, pcSrc = 01 => read_data1(branch result address), pcSrc = 10 => old pc-2
+// pcSrc = 00 => old pc+1, pcSrc = 01 => read_data1(branch result address), pcSrc = 10 => old pc
 // interruptSignal = 11 => pc = 0, interruptSignal = 01 => pc = 30
 // reset = 1 => 32d, reset = 0 => evaluate
 input  [15:0] aluOut, memData, read_data1;
@@ -34,7 +34,7 @@ begin
 	end
 	else if(pcSrc === 2'b10)
 	begin
-		pc = pc - 32'b10;
+		pc = pc;
 	end
 	else
 	begin

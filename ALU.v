@@ -7,11 +7,14 @@ input zeroFlag,carryFlag,overFlowFlag,negativeFlag;
 output [15:0] result;
 output zeroFlagOut,carryFlagOut,overFlowFlagOut,negativeFlagOut;
 wire zeroFlagTemp,negativeFlagTemp, overFlowFlagTemp;
+wire [16:0] resultWithCarry;
 
+assign result = resultWithCarry[15:0];
+assign carryFlagOut = resultWithCarry[16];
 assign zeroFlagTemp = (result==16'd0);
 assign overFlowFlagTemp = (firstOperand[15] ^ result[15]) & (secondOperand[15] ^ result[15]);
 assign negativeFlagTemp = result[15];
-assign {overFlowFlagOut,zeroFlagOut,negativeFlagOut,carryFlagOut,result} = 
+assign {overFlowFlagOut,zeroFlagOut,negativeFlagOut,resultWithCarry} = 
 		(aluSignals == `ALU_NOP)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,16'd0}:
                 (aluSignals == `ALU_NOT)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,~firstOperand}:
                 (aluSignals == `ALU_STD)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,firstOperand}: // aluOut must be Rdst
