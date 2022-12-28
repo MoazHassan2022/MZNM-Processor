@@ -10,7 +10,7 @@ always@(negedge clk)
 begin
 	if(reset === 1'b1)
 	begin
-		pc =  32'd31; // 32d is the first place in instruction memory, then make it 31 to be 32 when incremented, 0 is for interrupt handling routine
+		pc =  32'd32; // 32d is the first place in instruction memory, then make it 31 to be 32 when incremented, 0 is for interrupt handling routine
 	end
 	else if(firstTimeINTAfterD2E === 2'b11)
 	begin

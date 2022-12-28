@@ -1,11 +1,8 @@
-# Compile of controlUnit.v was successful.
-# Compile of forwarding-unit.v was successful.
-# Compile of pc.v was successful.
+# Load canceled
 # Compile of processor.v was successful.
-# 4 compiles, 0 failed with no errors.
 vsim -gui work.controllerTB
 # vsim -gui work.controllerTB 
-# Start time: 01:34:08 on Dec 28,2022
+# Start time: 04:22:42 on Dec 28,2022
 # Loading work.controllerTB
 # Loading work.Controller
 # Loading work.IntructionMemory
@@ -23,34 +20,14 @@ vsim -gui work.controllerTB
 # Loading work.stackPointer
 # Loading work.MWBuffer
 # Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
 quit -sim
-# End time: 01:34:27 on Dec 28,2022, Elapsed time: 0:00:19
+# End time: 04:23:57 on Dec 28,2022, Elapsed time: 0:01:15
 # Errors: 0, Warnings: 2
-# Compile of ALU.v was successful.
-# Compile of controlUnit.v was successful.
-# Compile of defines.v was successful.
-# Compile of forwarding-unit.v was successful.
-# Compile of pc.v was successful.
-# Compile of processor.v failed with 1 errors.
-# Compile of regfile.v was successful.
-# Compile of writeBack.v was successful.
-# Compile of controller.v was successful.
-# Compile of dataMemory.v was successful.
-# Compile of instructionMemory.v was successful.
 # Compile of controllerTB.v was successful.
-# Compile of DEBuffer.v was successful.
-# Compile of stackPointer.v was successful.
-# Compile of EMBuffer.v was successful.
-# Compile of FDBuffer.v was successful.
-# Compile of MWBuffer.v was successful.
-# Compile of hazardDetectionUnit.v was successful.
-# 18 compiles, 1 failed with 1 error.
-# Compile of processor.v failed with 1 errors.
-# Compile of processor.v failed with 1 errors.
-# Compile of processor.v was successful.
 vsim -gui work.controllerTB
 # vsim -gui work.controllerTB 
-# Start time: 03:29:10 on Dec 28,2022
+# Start time: 04:24:10 on Dec 28,2022
 # Loading work.controllerTB
 # Loading work.Controller
 # Loading work.IntructionMemory
@@ -90,5 +67,556 @@ run
 run
 # Memo[  40] =     0
 # reg[0] =    40,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
-# End time: 03:30:12 on Dec 28,2022, Elapsed time: 0:01:02
-# Errors: 0, Warnings: 5
+quit -sim
+# End time: 04:25:29 on Dec 28,2022, Elapsed time: 0:01:19
+# Errors: 0, Warnings: 2
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:25:55 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =    40,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:26:39 on Dec 28,2022, Elapsed time: 0:00:44
+# Errors: 0, Warnings: 2
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:28:43 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  39] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  39] =     0
+# reg[0] =    39,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    39,reg[1] =    39,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    39,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    39,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  11] =     0
+# reg[0] =    39,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    39,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =    11,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:30:25 on Dec 28,2022, Elapsed time: 0:01:42
+# Errors: 0, Warnings: 1
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:33:14 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  38] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  38] =     0
+# reg[0] =    38,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  38] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  38] =     0
+# reg[0] =    38,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    38,reg[1] =    38,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    38,reg[1] =    38,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  11] =     0
+# reg[0] =    38,reg[1] =    38,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    38,reg[1] =    38,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =    11,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:35:58 on Dec 28,2022, Elapsed time: 0:02:44
+# Errors: 0, Warnings: 1
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:39:54 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =    40,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  11] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =    11,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:40:59 on Dec 28,2022, Elapsed time: 0:01:05
+# Errors: 0, Warnings: 2
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:41:40 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =    40,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  20] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    20,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  11] =     0
+# reg[0] =    40,reg[1] =    20,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    20,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =    11,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:43:26 on Dec 28,2022, Elapsed time: 0:01:46
+# Errors: 0, Warnings: 2
+# Compile of controllerTB.v was successful.
+# Compile of processor.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:46:44 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:48:41 on Dec 28,2022, Elapsed time: 0:01:57
+# Errors: 0, Warnings: 3
+# Compile of controllerTB.v was successful.
+# Compile of pc.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:49:31 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   x] =     x
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:50:44 on Dec 28,2022, Elapsed time: 0:01:13
+# Errors: 0, Warnings: 3
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:51:41 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =    40,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:54:05 on Dec 28,2022, Elapsed time: 0:02:24
+# Errors: 0, Warnings: 2
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:54:17 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =    40,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] = 24576,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:56:50 on Dec 28,2022, Elapsed time: 0:02:33
+# Errors: 0, Warnings: 2
+# Compile of controllerTB.v was successful.
+vsim -gui work.controllerTB
+# vsim -gui work.controllerTB 
+# Start time: 04:57:24 on Dec 28,2022
+# Loading work.controllerTB
+# Loading work.Controller
+# Loading work.IntructionMemory
+# Loading work.DataMemory
+# Loading work.Processor
+# Loading work.PC
+# Loading work.FDBuffer
+# Loading work.hazardDetectionUnit
+# Loading work.regfile
+# Loading work.ControlUnit
+# Loading work.DEBuffer
+# Loading work.ForwardingUnit
+# Loading work.ALU
+# Loading work.EMBuffer
+# Loading work.stackPointer
+# Loading work.MWBuffer
+# Loading work.WriteBack
+add wave -position end sim:/controllerTB/controller/processor/*
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =     0,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =    40,reg[1] =     0,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[   0] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  40] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  80] =     0
+# reg[0] =    40,reg[1] =    40,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+run
+# Memo[  80] =     0
+# reg[0] =    40,reg[1] =    80,reg[2] =     0,reg[3] =     0,reg[4] =     0,reg[5] =     0,reg[6] =     0,reg[7] =     0
+quit -sim
+# End time: 04:58:31 on Dec 28,2022, Elapsed time: 0:01:07
+# Errors: 0, Warnings: 2

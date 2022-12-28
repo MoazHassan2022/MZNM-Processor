@@ -8,13 +8,15 @@ wire outSignalEn;
 Controller controller(clk, reset, interruptSignal, inPortData, outPortData, outSignalEn);
 initial begin
 	reset = 1'b1;
-	clk = 1'b0;
+	clk = 1'b1;
 	#100; 
     clk = 1'b0;
     reset = 1'b0;
-    #100; // [LDM R0, 40], [ADD R1, R0], [SUB R1, R1], [NOP](jump needs forwarding from next three stages), [JZ R0](go to LDM), [SHL R1, 2], [SHR R1, 1], [LDM R5, 11]
+    #100; // [LDM R0, 40], [ADD R1, R0], [ADD R2, R1], [NOP], [NOP], [JMP R1](go to LDM), [SHL R1, 2], [SHR R1, 1], [LDM R5, 11]
     #100;
+    //reset = 1'b1;
     #100;
+    //reset = 1'b0;
     #100;
     #100;
     #100;

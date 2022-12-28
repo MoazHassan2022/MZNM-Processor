@@ -22,9 +22,7 @@ module Processor (
                         ******************* WHAT REMAINS **********************
 
                         ******************* TO BE TESTED **********************
-1. branch (needs forwarding(after D2E, after E2M, and after M2W) for Rdst)
-2. Reset @any time
-3. INTERRUPT & RTI
+1. INTERRUPT & RTI
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
