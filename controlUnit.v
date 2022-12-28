@@ -2,15 +2,15 @@
 
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StIn,SstIn,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, bubbleSignal, isPush
+    CLRC,StIn,SstIn,interruptSignal,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, firstTimeINTIn, firstTimeINTOut, bubbleSignal, isPush
 );
 
 /// defining the inputs 
 input [4:0] opcode; 
 input  StIn;
 input  SstIn;
-input  [1:0] FlushNumIn, firstTimeCallIn, firstTimeRETIn;
-input bubbleSignal; 
+input  [1:0] FlushNumIn, firstTimeCallIn, firstTimeRETIn, firstTimeINTIn;
+input bubbleSignal, interruptSignal; 
 
 
 /// defining the outputs [IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC] signals
@@ -32,40 +32,38 @@ output reg [1:0] FlushNumOut;
 output reg shift; // this signal inform me if this instruction was shift or not 
 output reg [1:0] enablePushOrPop; // 00 => no push or pop, 01 => push, 11 => pop
 output reg [1:0] firstTimeCallOut; // Please see the call algorithm down at handling OP_CALL instruction
-output reg [1:0] firstTimeRETOut; // Please see the call algorithm down at handling OP_RET instruction
+output reg [1:0] firstTimeRETOut; // Please see the ret algorithm down at handling OP_RET instruction
+output reg [1:0] firstTimeINTOut; // Please see the interrupt algorithm down at handling interrupt signal
 output reg isPush;
 
 
-
-/*
-  hints:
-    the Flashing number will work with the RTI and RET to save the number of the bubbles
-  Work Flow:
-    first : will check the Number of Flashing 
-      if(Number of Flashing > 0)
-      {
-        //will decrement it by one and then put nop operation
-        // will return a signal to the hazard detection unit to return the pc to the previous value
-      }
-    second: if Flashing equal zero
-      if(Flashing equal zero)
-      {
-        //will check the St and Sst to know if the previous instruction was LDM or not
-        if(St==1 and Sst==1)
-        {
-          // it mean that was LDM inst
-          // and we should put LDM signals now
-          // and make Stout=1(will help me in the Alu to take the second 16bits withou operations) and Sst=0
-        }
-        else
-        {
-          //will put St=0 and Sst=0
-          // and check the type of the instruction
-        }
-      }
-*/
 always @(*) begin
-    if(FlushNumIn>0)
+    if(firstTimeINTIn === 2'b11)
+    begin
+      // it is the second cycle in INT
+      {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
+        aluSignals = `ALU_NOP;
+        firstTimeINTOut = 2'b01;
+        enablePushOrPop = 2'b01;
+        shift = 1'b0;
+        isPush = 1'b0;
+    end
+    else if(interruptSignal === 1'b1) begin 
+        /*
+          first cycle found interrupt = 1{
+            firstTimeINT = 11, ALU_NOP, handled as a call instr, but at memory mux take the current inst PC[15:0] as it is, and at second cycle when firstTimeINT = 01, take (current instr PC - 1)[31:16]
+            at pc, it takes zero when firstTimeINTAfterD2E = 11, at E2M buffer, it puts the CCR in freezedCCR when it sees firstTimeINTAfterD2E = 11
+            alu takes the freezedCCRAfterE2M when RTI
+          }
+        */
+        {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
+        aluSignals = `ALU_NOP;
+        shift = 1'b0; 
+        enablePushOrPop = 2'b01; // push
+        firstTimeINTOut = 2'b11; // first cycle in INT(push lower PC as it is)
+        isPush = 1'b0;
+      end
+    else if(FlushNumIn>0)
     begin
       FlushNumOut=FlushNumIn-1;
       {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
@@ -74,7 +72,7 @@ always @(*) begin
       shift = 1'b0;
       isPush = 1'b0;
     end
-    if(bubbleSignal==1)
+    else if(bubbleSignal==1)
     begin
       {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
       aluSignals = `ALU_NOP; 
@@ -248,7 +246,6 @@ always @(*) begin
               shift = 1'b0; 
               enablePushOrPop = 2'b01; // push
               firstTimeCallOut = 2'b11; // first cycle in call(push lower PC + 1)
-              // TODO: try to make the PC takes the value of aluOutAfterE2M @ firstTimeCallAfterD2E = 01, and make the control unit flushes 1 cycle when firstTimeCallAfterD2E = 11
               /*
                 ******* CALL ALGORITHM *******
                 there are 2 bits register in the D2E buffer like st, sst, called firstTimeCall[1:0]
@@ -269,29 +266,20 @@ always @(*) begin
                 there are 2 bits register in the D2E buffer like st, sst, called firstTimeRET[1:0]
                 If it was a call, make enablePushOrPop = 11, make firstTimeRET = 11, first 1 tells PC that it is the first cycle in ret, then it will take the popped into higher part of PC, second bit tells that it is a call instr
                 If we find here in next cycle that firstTimeRET = 11, then make enablePushOrPop = 11, make firstTimeRET = 01, PC will find firstTimeRET = 01, then will write the popped into the lower part of the PC
-                We need to flush previous two instructions, so make FlushNumOut = 2
               */
             end
           else if(opcode == `OP_RTI) begin 
-              FlushNumOut=2'd3;
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `BRANCH_SIGNALS; 
-              aluSignals = `ALU_NOP;
+              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0010000000; 
+              aluSignals = `ALU_RTI;
               shift = 1'b0; 
-              enablePushOrPop = 2'b00;
+              enablePushOrPop = 2'b11;
+              firstTimeRETOut = 2'b11;
+              /*
+                ******* RTI ALGORITHM *******
+                Same as RET instruction, but the difference is that we need the alu to take the freezedCCRAfterE2M
+              */
             end
           /// other operations 
-          else if(opcode == `OP_Rst) begin 
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0; 
-              aluSignals = `ALU_NOP;
-              shift = 1'b0; 
-              enablePushOrPop = 2'b00;
-            end
-          else if(opcode == `OP_INT) begin 
-              {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000100; 
-              aluSignals = `ALU_NOP;
-              shift = 1'b0; 
-              enablePushOrPop = 2'b00;
-            end
           else if(opcode == `OP_OUT) begin 
               // {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0110000000; 
               /// here we just raise the Out write signal and the alu will just move the data which comes to it

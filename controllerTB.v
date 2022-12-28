@@ -1,7 +1,6 @@
 `include "defines.v"
 module controllerTB;
-reg clk, reset;
-reg [1:0] interruptSignal;
+reg clk, reset, interruptSignal;
 reg [15:0] inPortData;
 wire [15:0] outPortData;
 wire outSignalEn;

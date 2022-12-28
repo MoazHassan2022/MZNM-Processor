@@ -1,11 +1,14 @@
 `include "defines.v"
 
-module ALU(aluSignals,firstOperand,secondOperand,result,zeroFlag,carryFlag,overFlowFlag,negativeFlag,zeroFlagOut,carryFlagOut,overFlowFlagOut,negativeFlagOut);
+module ALU(aluSignals,firstOperand,secondOperand,result,zeroFlag,carryFlag,overFlowFlag,negativeFlag,zeroFlagOut,carryFlagOut,overFlowFlagOut,negativeFlagOut, freezedCCR);
 input [4:0] aluSignals;
 input [15:0] firstOperand,secondOperand;
 input zeroFlag,carryFlag,overFlowFlag,negativeFlag;
+input [3:0] freezedCCR; // [3: NF, 2: OF, 1: CF, 0: ZF]
+
 output [15:0] result;
 output zeroFlagOut,carryFlagOut,overFlowFlagOut,negativeFlagOut;
+
 wire zeroFlagTemp,negativeFlagTemp, overFlowFlagTemp;
 wire [16:0] resultWithCarry, resultOfInc, resultOfDec, resultOfAdd, resultOfSub;
 
@@ -20,6 +23,7 @@ assign zeroFlagTemp = (result==16'd0);
 assign overFlowFlagTemp = (firstOperand[15] ^ result[15]) & (secondOperand[15] ^ result[15]);
 assign negativeFlagTemp = result[15];
 assign {overFlowFlagOut,zeroFlagOut,negativeFlagOut,resultWithCarry} = 
+                (aluSignals == `ALU_RTI)?{freezedCCR[2],freezedCCR[0],freezedCCR[3],freezedCCR[1],16'd0}: // restore flags
 		(aluSignals == `ALU_NOP)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,16'd0}:
                 (aluSignals == `ALU_NOT)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,~firstOperand}:
                 (aluSignals == `ALU_STD)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,firstOperand}: // aluOut must be Rdst

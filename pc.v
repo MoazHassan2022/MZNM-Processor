@@ -1,18 +1,18 @@
-module PC (aluOut, memData, read_data1, pcSrc, pc, reset, clk, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterE2M);
-// pcSrc = 00 => old pc+1, pcSrc = 01 => read_data1(branch result address), pcSrc = 10 => old pc
-// interruptSignal = 11 => pc = 0, interruptSignal = 01 => pc = 30
+module PC (aluOut, memData, branchAddress, pcSrc, pc, reset, clk, firstTimeINTAfterD2E, firstTimeCallAfterD2E, firstTimeRETAfterE2M);
+// pcSrc = 00 => old pc+1, pcSrc = 01 => branchAddress(branch result address), pcSrc = 10 => old pc
+// firstTimeINTAfterD2E = 11 => pc = 0
 // reset = 1 => 32d, reset = 0 => evaluate
-input  [15:0] aluOut, memData, read_data1;
-input [1:0] pcSrc, interruptSignal, firstTimeCallAfterD2E, firstTimeRETAfterE2M;
+input  [15:0] aluOut, memData, branchAddress;
+input [1:0] pcSrc, firstTimeCallAfterD2E, firstTimeRETAfterE2M, firstTimeINTAfterD2E;
 input reset, clk;
 output reg [31:0] pc;
 always@(negedge clk)
 begin
-	if(reset === 1'b1 || interruptSignal === 2'b01)
+	if(reset === 1'b1)
 	begin
 		pc =  32'd31; // 32d is the first place in instruction memory, then make it 31 to be 32 when incremented, 0 is for interrupt handling routine
 	end
-	else if(interruptSignal === 2'b11)
+	else if(firstTimeINTAfterD2E === 2'b11)
 	begin
 		pc =  32'd0;
 	end
@@ -30,7 +30,7 @@ begin
 	end
 	else if(pcSrc === 2'b01)
 	begin
-		pc = {16'b0,read_data1};
+		pc = {16'b0,branchAddress};
 	end
 	else if(pcSrc === 2'b10)
 	begin

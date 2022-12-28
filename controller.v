@@ -2,8 +2,7 @@
 module Controller (clk, reset, interruptSignal, inPortData, outPortData, outSignalEn);
 
 // DEFINING INPUTS
-input clk, reset;
-input [1:0] interruptSignal;
+input clk, reset, interruptSignal;
 
 ////////////// IN Port WORK /////////////////
 input [`inPortWidth - 1:0] inPortData; 

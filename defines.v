@@ -71,6 +71,7 @@
 `define ALU_JN 5'd16
 `define ALU_JC 5'd17
 `define ALU_JMP 5'd18
+`define ALU_RTI 5'd19
 
 
 /// defining common signals 
