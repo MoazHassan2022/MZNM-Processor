@@ -52,21 +52,16 @@ Registers={
 }
 
 # opent the input file 
-ft=open("input.asm","r")
+ft=open("instructions.asm","r")
 
 #opent the instructions memory file
-InstructionMemory=open("instructionMemory2.txt","w")
+InstructionMemory=open("instructionMemory.txt","w")
 outArray=[]
 ArrInstructions=[]
 val = 0
-size = 1024
+size = 1048576
 out = [val] * size
 Ldm=""
-
-outArray.append("rti\n") # take it from rti
-
-for i in range(31):
-    outArray.append("0000000000000000\n")
 
 
 for line in ft :
@@ -87,7 +82,11 @@ for line in ArrInstructions:
             instruc=line[:pos]
             operands=line[pos:].strip()
             if instruc.lower()==".org":
-                i=int(operands.strip())
+                skipped=int((operands.strip()),16)
+                skipped-=i
+                for k in range(skipped):
+                    out[i]="0000000000000000"
+                    i+=1
                 continue
             if OneOperand.__contains__(instruc.lower()):
                 instruction+=OneOperand[instruc.lower()]
