@@ -52,21 +52,16 @@ Registers={
 }
 
 # opent the input file 
-ft=open("input.asm","r")
+ft=open("instructions.asm","r")
 
 #opent the instructions memory file
-InstructionMemory=open("instructionMemory2.txt","w")
+InstructionMemory=open("instructionMemory.txt","w")
 outArray=[]
 ArrInstructions=[]
 val = 0
-size = 1024
+size = 1048576
 out = [val] * size
 Ldm=""
-
-outArray.append("rti\n") # take it from rti
-
-for i in range(31):
-    outArray.append("0000000000000000\n")
 
 
 for line in ft :
@@ -87,12 +82,16 @@ for line in ArrInstructions:
             instruc=line[:pos]
             operands=line[pos:].strip()
             if instruc.lower()==".org":
-                i=int(operands.strip())
+                skipped=int((operands.strip()),16)
+                skipped-=i
+                for k in range(skipped):
+                    out[i]="0000000000000000"
+                    i+=1
                 continue
             if OneOperand.__contains__(instruc.lower()):
                 instruction+=OneOperand[instruc.lower()]
                 if Registers.__contains__(operands.lower()):# if true one operand 
-                    if instruc.lower()=="push" or instruc.lower()=="call" or instruc.lower()=="out":
+                    if instruc.lower()=="push" or instruc.lower()=="out":
                         instruction+="000"
                         instruction+=Registers[operands.lower()]
                         instruction+="00000"
@@ -100,7 +99,6 @@ for line in ArrInstructions:
                         instruction+=Registers[operands.lower()]
                         instruction+="00000000"
             elif TwoOperands.__contains__(instruc.lower()):
-                print(instruc,"from the two operands")
                 instruction+=TwoOperands[instruc.lower()]
                 if operands.find(",")!=-1:
                     pos=operands.index(",")
@@ -110,27 +108,23 @@ for line in ArrInstructions:
                         instruction+=Registers[op2.lower()]
                     else:
                         if Instruction32.__contains__(instruc.lower()):
-                            print("ldm here")
                             Ldm=1
                         if instruc.lower()!="shl" and instruc.lower()!="shr" and instruc.lower()!="ldm":
-                            print(line)
-                            print("operand two value",op2)
+                            op2=int(int(op2),16)
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
 
                     if Registers.__contains__(op1.lower()): # if false the immadet value??
-                        print(instruction,"berfroe the ldm one",op1,Registers[op1.lower()])
                         instruction+=Registers[op1.lower()]
 
                     if instruc.lower()=="shl" or instruc.lower()=="shr":
                             instruction+="000"
-                            print(format(int(op2), "#07b")[2:])
+                            op2=int(int(op2),16)
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
                     if instruc.lower()!="shl" and instruc.lower()!="shr":
                         instruction+="00000"
                         if Instruction32.__contains__(instruc.lower()):
-                            print(instruction,"berfroe the ldm")
                             instruction+="000"
 
                     
@@ -142,8 +136,7 @@ for line in ArrInstructions:
         i+=1
         if Ldm==1:
             Ldm=0
-            print("from the final the value",op2)
-            print("ldm",format(int(op2), "#018b")[2:])
+            op2=int(int(op2),16)
             out[i]=format(int(op2), "#018b")[2:]
             i+=1
     #will check if the instruction two or one operand
