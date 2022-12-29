@@ -1,3 +1,4 @@
+# R1 => R0
 # no operand
 NoOperand={
     "nop":"00000",
