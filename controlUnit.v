@@ -2,7 +2,9 @@
 
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StIn,SstIn,interruptSignal,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, firstTimeINTIn, firstTimeINTOut, bubbleSignal, isPush
+    CLRC,StIn,SstIn,interruptSignal,StOut,SstOut,FlushNumIn,FlushNumOut, shift,
+    enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut,
+    firstTimeINTIn, firstTimeINTOut, bubbleSignal, isPush
 );
 
 /// defining the inputs 
