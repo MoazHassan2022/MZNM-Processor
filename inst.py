@@ -52,10 +52,10 @@ Registers={
 }
 
 # opent the input file 
-ft=open("input.asm","r")
+ft=open("instructions.asm","r")
 
 #opent the instructions memory file
-InstructionMemory=open("instructionMemory2.txt","w")
+InstructionMemory=open("instructionMemory.txt","w")
 outArray=[]
 ArrInstructions=[]
 val = 0
