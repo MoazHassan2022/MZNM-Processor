@@ -91,7 +91,7 @@ for line in ArrInstructions:
             if OneOperand.__contains__(instruc.lower()):
                 instruction+=OneOperand[instruc.lower()]
                 if Registers.__contains__(operands.lower()):# if true one operand 
-                    if instruc.lower()=="push" or instruc.lower()=="call" or instruc.lower()=="out":
+                    if instruc.lower()=="push" or instruc.lower()=="out":
                         instruction+="000"
                         instruction+=Registers[operands.lower()]
                         instruction+="00000"
