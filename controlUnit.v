@@ -47,6 +47,8 @@ always @(*) begin
         enablePushOrPop = 2'b01;
         shift = 1'b0;
         isPush = 1'b0;
+        firstTimeCallOut = 2'b00;
+        firstTimeRETOut = 2'b00;
     end
     else if(interruptSignal === 1'b1) begin 
         /*
@@ -62,6 +64,8 @@ always @(*) begin
         enablePushOrPop = 2'b01; // push
         firstTimeINTOut = 2'b11; // first cycle in INT(push lower PC as it is)
         isPush = 1'b0;
+        firstTimeCallOut = 2'b00;
+        firstTimeRETOut = 2'b00;
       end
     else if(FlushNumIn>0)
     begin
@@ -71,6 +75,8 @@ always @(*) begin
       enablePushOrPop = 2'b00;
       shift = 1'b0;
       isPush = 1'b0;
+      firstTimeCallOut = 2'b00;
+      firstTimeRETOut = 2'b00;
     end
     else if(bubbleSignal==1)
     begin
@@ -79,6 +85,8 @@ always @(*) begin
       enablePushOrPop = 2'b00;
       shift = 1'b0;
       isPush = 1'b0;
+      firstTimeCallOut = 2'b00;
+      firstTimeRETOut = 2'b00;
     end
     else
       begin

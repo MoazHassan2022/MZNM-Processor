@@ -9,7 +9,7 @@ input [3:0] freezedCCR; // [3: NF, 2: OF, 1: CF, 0: ZF]
 output [15:0] result;
 output zeroFlagOut,carryFlagOut,overFlowFlagOut,negativeFlagOut;
 
-wire zeroFlagTemp,negativeFlagTemp, overFlowFlagTemp;
+wire zeroFlagTemp,negativeFlagTemp,overFlowFlagTemp,expectedZeroFlagOut,expectedOverFlowFlagOut,expectedNegativeFlagOut;
 wire [16:0] resultWithCarry, resultOfInc, resultOfDec, resultOfAdd, resultOfSub;
 
 assign resultOfInc = firstOperand+1;
@@ -18,11 +18,14 @@ assign resultOfAdd = firstOperand+secondOperand;
 assign resultOfSub = firstOperand-secondOperand;
 
 assign result = resultWithCarry[15:0];
-assign carryFlagOut = resultWithCarry[16];
 assign zeroFlagTemp = (result==16'd0);
 assign overFlowFlagTemp = (firstOperand[15] ^ result[15]) & (secondOperand[15] ^ result[15]);
 assign negativeFlagTemp = result[15];
-assign {overFlowFlagOut,zeroFlagOut,negativeFlagOut,resultWithCarry} = 
+assign zeroFlagOut = (expectedZeroFlagOut === 1'b1) ? 1'b1 : 1'b0;
+assign carryFlagOut = (resultWithCarry[16] === 1'b1) ? 1'b1 : 1'b0;
+assign overFlowFlagOut = (expectedOverFlowFlagOut === 1'b1) ? 1'b1 : 1'b0;
+assign negativeFlagOut = (expectedNegativeFlagOut === 1'b1) ? 1'b1 : 1'b0;
+assign {expectedOverFlowFlagOut,expectedZeroFlagOut,expectedNegativeFlagOut,resultWithCarry} = 
                 (aluSignals == `ALU_RTI)?{freezedCCR[2],freezedCCR[0],freezedCCR[3],freezedCCR[1],16'd0}: // restore flags
 		(aluSignals == `ALU_NOP)?{overFlowFlag,zeroFlag,negativeFlag,carryFlag,16'd0}:
                 (aluSignals == `ALU_NOT)?{overFlowFlag,zeroFlagTemp,negativeFlagTemp,carryFlag,~firstOperand}:
