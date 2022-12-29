@@ -99,7 +99,6 @@ for line in ArrInstructions:
                         instruction+=Registers[operands.lower()]
                         instruction+="00000000"
             elif TwoOperands.__contains__(instruc.lower()):
-                print(instruc,"from the two operands")
                 instruction+=TwoOperands[instruc.lower()]
                 if operands.find(",")!=-1:
                     pos=operands.index(",")
@@ -109,27 +108,23 @@ for line in ArrInstructions:
                         instruction+=Registers[op2.lower()]
                     else:
                         if Instruction32.__contains__(instruc.lower()):
-                            print("ldm here")
                             Ldm=1
                         if instruc.lower()!="shl" and instruc.lower()!="shr" and instruc.lower()!="ldm":
-                            print(line)
-                            print("operand two value",op2)
+                            op2=int(int(op2),16)
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
 
                     if Registers.__contains__(op1.lower()): # if false the immadet value??
-                        print(instruction,"berfroe the ldm one",op1,Registers[op1.lower()])
                         instruction+=Registers[op1.lower()]
 
                     if instruc.lower()=="shl" or instruc.lower()=="shr":
                             instruction+="000"
-                            print(format(int(op2), "#07b")[2:])
+                            op2=int(int(op2),16)
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
                     if instruc.lower()!="shl" and instruc.lower()!="shr":
                         instruction+="00000"
                         if Instruction32.__contains__(instruc.lower()):
-                            print(instruction,"berfroe the ldm")
                             instruction+="000"
 
                     
@@ -141,8 +136,7 @@ for line in ArrInstructions:
         i+=1
         if Ldm==1:
             Ldm=0
-            print("from the final the value",op2)
-            print("ldm",format(int(op2), "#018b")[2:])
+            op2=int(int(op2),16)
             out[i]=format(int(op2), "#018b")[2:]
             i+=1
     #will check if the instruction two or one operand
