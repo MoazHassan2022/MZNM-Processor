@@ -42,7 +42,7 @@
 `define OP_OUT 5'd24
 `define OP_IN 5'd25
 `define OP_SETC 5'd27
-`define OP_CLCR 5'd28
+`define OP_CLRC 5'd28
 
 
 /// define the memory size
@@ -52,20 +52,26 @@
 
 
 /// defining the operations for the ALU
-`define ALU_NOP 4'b0
-`define ALU_NOT 4'd1
-`define ALU_INC 4'd2
-`define ALU_DEC 4'd3
-`define ALU_MOV 4'd4
-`define ALU_ADD 4'd5
-`define ALU_SUB 4'd6
-`define ALU_AND 4'd7
-`define ALU_OR 4'd8
-`define ALU_SHL 4'd9
-`define ALU_SHR 4'd10
-`define ALU_STD 4'd11
-`define ALU_LDD 4'd12
-`define ALU_SETC 4'd13
+`define ALU_NOP 5'b0
+`define ALU_NOT 5'd1
+`define ALU_INC 5'd2
+`define ALU_DEC 5'd3
+`define ALU_MOV 5'd4
+`define ALU_ADD 5'd5
+`define ALU_SUB 5'd6
+`define ALU_AND 5'd7
+`define ALU_OR 5'd8
+`define ALU_SHL 5'd9
+`define ALU_SHR 5'd10
+`define ALU_STD 5'd11
+`define ALU_LDD 5'd12
+`define ALU_SETC 5'd13
+`define ALU_CLRC 5'd14
+`define ALU_JZ 5'd15
+`define ALU_JN 5'd16
+`define ALU_JC 5'd17
+`define ALU_JMP 5'd18
+`define ALU_RTI 5'd19
 
 
 /// defining common signals 

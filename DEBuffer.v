@@ -1,49 +1,40 @@
-module DEBuffer(aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC,
-ST,SST,STOut, SSTOut, Reg1,Reg2,Instruction,SrcAddress,RegDestination,Clk, Reg1Out, Reg2Out, 
-InstructionOut, SrcAddressOut, RegDestinationOut,FlashNumOut,FlashNumIn, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, 
-    CLRCOut, aluSignalsOut, instr, instrOut,  
-    shift, 
-    shiftOut
-    );
+module DEBuffer(aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, ST, SST, isPush, Reg1, Reg2, smallImmediate, SrcAddress,
+    RegDestination, FlashNumIn, instr, shift, enablePushOrPop, firstTimeCall, firstTimeRET, firstTimeINT, pc, clk, Reg1Out, Reg2Out, smallImmediateOut, 
+    SrcAddressOut, RegDestinationOut, FlashNumOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut, 
+    aluSignalsOut, instrOut, shiftOut, enablePushOrPopOut, firstTimeCallOut, pcOut, firstTimeRETOut, firstTimeINTOut, STOut, SSTOut, isPushOut
+);
 
 
 // Inputs to the buffer
-input Clk;
-input ST;
-input SST;
-input IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC;
+input clk, ST, SST, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, shift, isPush; 
 input [15:0] Reg1,Reg2, instr;
-input [4:0]  Instruction;
+input [4:0]  smallImmediate;
 input [2:0]  SrcAddress;
 input [2:0]  RegDestination;
-input [1:0]  FlashNumIn;
-input [3:0]  aluSignals;
-input shift;
+input [1:0]  FlashNumIn, enablePushOrPop, firstTimeCall, firstTimeRET, firstTimeINT;
+input [4:0]  aluSignals;
+input [31:0] pc;
 
 // Outputs from the buffer
-output reg   STOut;
-output reg   SSTOut;
-output reg  [15:0] Reg1Out;
-output reg  [15:0] Reg2Out;
-output reg  [15:0] instrOut;
-output reg  [4:0]  InstructionOut;
+output reg  [15:0] Reg1Out, Reg2Out, instrOut;
+output reg  [4:0]  smallImmediateOut;
 output reg  [2:0]  SrcAddressOut;
 output reg  [2:0]  RegDestinationOut;
-output reg  [1:0]  FlashNumOut;
-output reg IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut;
-output reg [3:0] aluSignalsOut;
-output reg shiftOut;
+output reg  [1:0]  FlashNumOut, enablePushOrPopOut, firstTimeCallOut, firstTimeRETOut, firstTimeINTOut;
+output reg STOut, SSTOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut, shiftOut, isPushOut;
+output reg [4:0] aluSignalsOut;
+output reg [31:0] pcOut;
 
 
 
-always@(negedge Clk)
+always@(posedge clk)
 begin
     FlashNumOut=FlashNumIn;
     STOut=ST;
     SSTOut=SST;
     Reg1Out=Reg1;
     Reg2Out=Reg2;
-    InstructionOut=Instruction;
+    smallImmediateOut=smallImmediate;
     SrcAddressOut=SrcAddress;
     RegDestinationOut=RegDestination;
     IROut = IR;
@@ -59,5 +50,11 @@ begin
     aluSignalsOut = aluSignals;
     instrOut = instr;
     shiftOut = shift;
+    enablePushOrPopOut = enablePushOrPop;
+    firstTimeCallOut = firstTimeCall;
+    pcOut = pc;
+    firstTimeRETOut = firstTimeRET;
+    firstTimeINTOut = firstTimeINT;
+    isPushOut = isPush;
 end
 endmodule

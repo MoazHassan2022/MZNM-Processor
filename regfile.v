@@ -17,7 +17,7 @@ assign read_data1 = registers[read_addr1];
 assign read_data2 = registers[read_addr2];
 
 //read from the registers based on the address
-always@(posedge clk)
+always@(negedge clk)
 begin
     if(rst)
     begin
