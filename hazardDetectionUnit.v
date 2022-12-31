@@ -10,17 +10,23 @@
 //assumption : CCR = {zero,negative,carry,overflow} // [3: NF, 2: OF, 1: CF, 0: ZF]
 
 module hazardDetectionUnit (
-    ccr,opcode,opcodeAfterD2E,src1,src2,dst,ID_EX_MEMRD,pcSrc,bubbleSignal
+    ccr,opcode,opcodeAfterD2E,opcodeAfterE2M,src1,src2,dst,dstAfterE2M,MRAfterD2E,MRAfterE2M,pcSrc,bubbleSignal
 );
     input [3:0] ccr;
-    input [4:0] opcode, opcodeAfterD2E;
-    input [2:0] src1,src2,dst;
-    input ID_EX_MEMRD; // MRAfterD2E
+    input [4:0] opcode, opcodeAfterD2E, opcodeAfterE2M;
+    input [2:0] src1,src2,dst,dstAfterE2M;
+    input MRAfterD2E, MRAfterE2M;
     output[1:0] pcSrc;
     output bubbleSignal;  /*bubble signal is connected to nop signal of control unit to handle the pcHazard*/
+    wire isBranch, isLDDOrPOPAfterD2E, isLDDOrPOPAfterE2M;
 
-    /*handling of load use case*/
-    assign bubbleSignal = (((opcodeAfterD2E == `OP_LDD ) || (opcodeAfterD2E == `OP_POP )) & ID_EX_MEMRD & (src1==dst || src2==dst)) ? 1'b1:1'b0;   
+    assign isLDDOrPOPAfterD2E = ((opcodeAfterD2E == `OP_LDD ) || (opcodeAfterD2E == `OP_POP ))  ? 1'b1 : 1'b0;
+    assign isLDDOrPOPAfterE2M = ((opcodeAfterE2M == `OP_LDD ) || (opcodeAfterE2M == `OP_POP )) ? 1'b1 : 1'b0;
+    assign isBranchTaken = ((opcode == `OP_JZ & ccr[0]) || (opcode == `OP_JN & ccr[3] ) || (opcode == `OP_JC & ccr[1] ) || (opcode == `OP_JMP )) ? 1'b1 : 1'b0;
+    assign isBranch = ((opcode == `OP_JZ) || (opcode == `OP_JN) || (opcode == `OP_JC) || (opcode == `OP_JMP )) ? 1'b1 : 1'b0;
+
+    /*handling of load or pop use case*/
+    assign bubbleSignal = ((isLDDOrPOPAfterD2E & MRAfterD2E & (src1==dst || src2==dst)) || (isBranch & isLDDOrPOPAfterE2M & MRAfterE2M & (src1==dstAfterE2M || src2==dstAfterE2M))) ? 1'b1:1'b0;   
     
     /*handling of branches cases*/
     /*branches cases are:
@@ -30,7 +36,7 @@ module hazardDetectionUnit (
         JMP  --> we detect that we will jump in decoding phase that means we will flush only one instruction
     */
 
-    assign pcSrc =  (bubbleSignal === 1'b1) ? `pcSrcStay : ((opcode == `OP_JZ & ccr[0]) || (opcode == `OP_JN & ccr[3] ) || (opcode == `OP_JC & ccr[1] ) || (opcode == `OP_JMP )) ? `pcSrcFromReg
+    assign pcSrc =  (bubbleSignal === 1'b1) ? `pcSrcStay : isBranchTaken ? `pcSrcFromReg
       :2'b00;
 
 

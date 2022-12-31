@@ -1,4 +1,4 @@
-# R1 => R0
+
 # no operand
 NoOperand={
     "nop":"00000",
@@ -43,14 +43,14 @@ Instruction32={
 }
 #registers
 Registers={
-    "r1":"000",
-    "r2":"001",
-    "r3":"010",
-    "r4":"011",
-    "r5":"100",
-    "r6":"101",
-    "r7":"110",
-    "r8":"111"
+    "r0":"000",
+    "r1":"001",
+    "r2":"010",
+    "r3":"011",
+    "r4":"100",
+    "r5":"101",
+    "r6":"110",
+    "r7":"111"
 }
 
 # opent the input file 
@@ -116,7 +116,7 @@ for line in ArrInstructions:
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
 
-                    if Registers.__contains__(op1.lower()): # if false the immadet value??
+                    if Registers.__contains__(op1.lower()): # if false the immediate value
                         instruction+=Registers[op1.lower()]
 
                     if instruc.lower()=="shl" or instruc.lower()=="shr":

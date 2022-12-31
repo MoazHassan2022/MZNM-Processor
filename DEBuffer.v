@@ -1,12 +1,12 @@
 module DEBuffer(aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, ST, SST, isPush, isIN, Reg1, Reg2, smallImmediate, SrcAddress,
-    RegDestination, FlashNumIn, instr, shift, enablePushOrPop, firstTimeCall, firstTimeRET, firstTimeINT, pc, clk, Reg1Out, Reg2Out, smallImmediateOut, 
+    RegDestination, FlashNumIn, instr, shift, enablePushOrPop, firstTimeCall, firstTimeRET, firstTimeINT, pc, reset, clk, Reg1Out, Reg2Out, smallImmediateOut, 
     SrcAddressOut, RegDestinationOut, FlashNumOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut, 
     aluSignalsOut, instrOut, shiftOut, enablePushOrPopOut, firstTimeCallOut, pcOut, firstTimeRETOut, firstTimeINTOut, STOut, SSTOut, isPushOut, isINOut
 );
 
 
 // Inputs to the buffer
-input clk, ST, SST, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, shift, isPush, isIN; 
+input clk, reset, ST, SST, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, shift, isPush, isIN; 
 input [15:0] Reg1,Reg2, instr;
 input [4:0]  smallImmediate;
 input [2:0]  SrcAddress;
@@ -25,8 +25,6 @@ output reg STOut, SSTOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut,
 output reg [4:0] aluSignalsOut;
 output reg [31:0] pcOut;
 
-
-
 always@(posedge clk)
 begin
     FlashNumOut=FlashNumIn;
@@ -38,7 +36,10 @@ begin
     SrcAddressOut=SrcAddress;
     RegDestinationOut=RegDestination;
     IROut = IR;
-    IWOut = IW;
+    if(reset === 1'b1)
+        IWOut = 1'b0;
+    else 
+        IWOut = IW;
     MROut = MR;
     MWOut = MW;
     MTROut = MTR;
