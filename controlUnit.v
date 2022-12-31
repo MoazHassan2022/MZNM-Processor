@@ -2,7 +2,7 @@
 
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StIn,SstIn,interruptSignal,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, firstTimeINTIn, firstTimeINTOut, bubbleSignal, isPush
+    CLRC,StIn,SstIn,interruptSignalAfterF2D,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, firstTimeINTIn, firstTimeINTOut, bubbleSignal, isPush, isIn
 );
 
 /// defining the inputs 
@@ -10,7 +10,7 @@ input [4:0] opcode;
 input  StIn;
 input  SstIn;
 input  [1:0] FlushNumIn, firstTimeCallIn, firstTimeRETIn, firstTimeINTIn;
-input bubbleSignal, interruptSignal; 
+input bubbleSignal, interruptSignalAfterF2D; 
 
 
 /// defining the outputs [IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC] signals
@@ -35,6 +35,7 @@ output reg [1:0] firstTimeCallOut; // Please see the call algorithm down at hand
 output reg [1:0] firstTimeRETOut; // Please see the ret algorithm down at handling OP_RET instruction
 output reg [1:0] firstTimeINTOut; // Please see the interrupt algorithm down at handling interrupt signal
 output reg isPush;
+output reg isIn;
 
 
 always @(*) begin
@@ -47,10 +48,11 @@ always @(*) begin
         enablePushOrPop = 2'b01;
         shift = 1'b0;
         isPush = 1'b0;
+        isIn = 1'b0;
         firstTimeCallOut = 2'b00;
         firstTimeRETOut = 2'b00;
     end
-    else if(interruptSignal === 1'b1) begin 
+    else if(interruptSignalAfterF2D === 1'b1) begin 
         /*
           first cycle found interrupt = 1{
             firstTimeINT = 11, ALU_NOP, handled as a call instr, but at memory mux take the current inst PC[15:0] as it is, and at second cycle when firstTimeINT = 01, take (current instr PC - 1)[31:16]
@@ -64,6 +66,7 @@ always @(*) begin
         enablePushOrPop = 2'b01; // push
         firstTimeINTOut = 2'b11; // first cycle in INT(push lower PC as it is)
         isPush = 1'b0;
+        isIn = 1'b0;
         firstTimeCallOut = 2'b00;
         firstTimeRETOut = 2'b00;
       end
@@ -75,6 +78,7 @@ always @(*) begin
       enablePushOrPop = 2'b00;
       shift = 1'b0;
       isPush = 1'b0;
+      isIn = 1'b0;
       firstTimeCallOut = 2'b00;
       firstTimeRETOut = 2'b00;
     end
@@ -85,6 +89,7 @@ always @(*) begin
       enablePushOrPop = 2'b00;
       shift = 1'b0;
       isPush = 1'b0;
+      isIn = 1'b0;
       firstTimeCallOut = 2'b00;
       firstTimeRETOut = 2'b00;
     end
@@ -100,6 +105,7 @@ always @(*) begin
               enablePushOrPop = 2'b00;
               shift = 1'b0;
               isPush = 1'b0;
+              isIn = 1'b0;
           end
         else if(firstTimeCallIn === 2'b11)
           begin
@@ -110,6 +116,7 @@ always @(*) begin
               enablePushOrPop = 2'b01;
               shift = 1'b0;
               isPush = 1'b0;
+              isIn = 1'b0;
           end
           else if(firstTimeRETIn === 2'b11)
           begin
@@ -121,6 +128,7 @@ always @(*) begin
               enablePushOrPop = 2'b11;
               firstTimeRETOut = 2'b01;
               isPush = 1'b0;
+              isIn = 1'b0;
           end
         else
           begin
@@ -129,6 +137,7 @@ always @(*) begin
               StOut=0;
               SstOut=0;
               isPush = 1'b0;
+              isIn = 1'b0;
             if(opcode == `OP_NOT) begin
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_NOT;
@@ -298,11 +307,11 @@ always @(*) begin
               enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_IN) begin 
-              /// TODO: DON'T FORGET TO DETECT AND SOLVE IF THERE ARE ANY HAZARDS DURING THE IN OPERATIONS.
               // {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b1001000000; /// old 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b1000001000;
               /// IR = 1 -> because I will read from the input port. 
-              /// RW = 1 -> because I will write to the register file in the destation. 
+              /// RW = 1 -> because I will write to the register file in the destation.
+              isIn = 1'b1;
               aluSignals = `ALU_MOV;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;

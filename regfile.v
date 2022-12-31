@@ -30,6 +30,6 @@ begin
             registers[write_addr] = write_data;
         end
     end
-    $display("reg[0] = %d,reg[1] = %d,reg[2] = %d,reg[3] = %d,reg[4] = %d,reg[5] = %d,reg[6] = %d,reg[7] = %d",registers[0],registers[1],registers[2],registers[3],registers[4],registers[5],registers[6],registers[7]);
+    $display("reg[0] = %h,reg[1] = %h,reg[2] = %h,reg[3] = %h,reg[4] = %h,reg[5] = %h,reg[6] = %h,reg[7] = %h",registers[0],registers[1],registers[2],registers[3],registers[4],registers[5],registers[6],registers[7]);
 end
 endmodule

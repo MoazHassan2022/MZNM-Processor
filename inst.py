@@ -5,7 +5,7 @@ NoOperand={
     "ret":"10100",
     "rti":"10101",
     "setc":"11011",
-    "clcr":"11100"
+    "clrc":"11100"
 }
 
 # the one operand instructions
@@ -17,6 +17,7 @@ OneOperand={
     "dec":"00010",
     "push":"01010",
     "pop":"01011",
+    "jn":"10000",
     "jc":"10001",
     "jmp":"10010",
     "jz":"01111",
@@ -72,7 +73,7 @@ i=0
 for line in ArrInstructions:
     instruction=""
     line=line.strip()
-    if line[0]=="#":
+    if line == "" or line == " " or line[0]=="#":
         continue
     else:
         pos=line.find("#")
@@ -111,7 +112,7 @@ for line in ArrInstructions:
                         if Instruction32.__contains__(instruc.lower()):
                             Ldm=1
                         if instruc.lower()!="shl" and instruc.lower()!="shr" and instruc.lower()!="ldm":
-                            op2=int(int(op2),16)
+                            op2=int(op2,16)
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
 
@@ -120,7 +121,7 @@ for line in ArrInstructions:
 
                     if instruc.lower()=="shl" or instruc.lower()=="shr":
                             instruction+="000"
-                            op2=int(int(op2),16)
+                            op2=int(op2,16)
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
                     if instruc.lower()!="shl" and instruc.lower()!="shr":
@@ -137,7 +138,7 @@ for line in ArrInstructions:
         i+=1
         if Ldm==1:
             Ldm=0
-            op2=int(int(op2),16)
+            op2=int(op2,16)
             out[i]=format(int(op2), "#018b")[2:]
             i+=1
     #will check if the instruction two or one operand

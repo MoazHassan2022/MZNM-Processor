@@ -15,7 +15,7 @@ wire [16:0] resultWithCarry, resultOfInc, resultOfDec, resultOfAdd, resultOfSub;
 assign resultOfInc = firstOperand+1;
 assign resultOfDec = firstOperand-1;
 assign resultOfAdd = firstOperand+secondOperand;
-assign resultOfSub = firstOperand-secondOperand;
+assign resultOfSub = secondOperand-firstOperand;
 
 assign result = resultWithCarry[15:0];
 assign zeroFlagTemp = (result==16'd0);
@@ -46,7 +46,7 @@ assign {expectedOverFlowFlagOut,expectedZeroFlagOut,expectedNegativeFlagOut,resu
                 (aluSignals == `ALU_SHR)?(secondOperand == 16'b0) ? {overFlowFlag,zeroFlagTemp,negativeFlagTemp,1'b0, firstOperand} : {overFlowFlag,zeroFlagTemp,negativeFlagTemp,firstOperand[secondOperand - 1], firstOperand >> secondOperand} :
                 (aluSignals == `ALU_SETC)?{overFlowFlag,zeroFlag,negativeFlag,1'b1, 16'b0}: /// we just raised the setC to 1
                 (aluSignals == `ALU_CLRC)?{overFlowFlag,zeroFlag,negativeFlag,1'b0, 16'b0}: /// we just raised the clrC to 1
-                17'dx;
+                20'd0;
 
 endmodule
 
