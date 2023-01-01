@@ -13,13 +13,13 @@ initial begin
     $readmemb("dataMemory.txt", Memo);
 end
 
-assign DataOut = MemeRead === 1'b1 ? Memo[Addr] : 16'bx;
+assign DataOut = MemeRead === 1'b1 ? Memo[Addr] : 16'b0;
 always @(negedge Clk) begin
     if(MemeWrite==1'b1)
     begin
         Memo[Addr]=DataIn;
     end
-    $display("Memo[%d] = %d", Addr, Memo[Addr]);
+    $display("Memo[%h] = %h", Addr, Memo[Addr]);
 end
 
 endmodule

@@ -2,9 +2,7 @@
 
 module ControlUnit (
     opcode, aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StIn,SstIn,interruptSignal,StOut,SstOut,FlushNumIn,FlushNumOut, shift,
-    enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut,
-    firstTimeINTIn, firstTimeINTOut, bubbleSignal, isPush
+    CLRC,StIn,SstIn,interruptSignalAfterF2D,StOut,SstOut,FlushNumIn,FlushNumOut, shift, enablePushOrPop, firstTimeCallIn, firstTimeCallOut, firstTimeRETIn, firstTimeRETOut, firstTimeINTIn, firstTimeINTOut, bubbleSignal, isPush, isIn, interruptSignalShiftedIn, interruptSignalShifted
 );
 
 /// defining the inputs 
@@ -12,7 +10,7 @@ input [4:0] opcode;
 input  StIn;
 input  SstIn;
 input  [1:0] FlushNumIn, firstTimeCallIn, firstTimeRETIn, firstTimeINTIn;
-input bubbleSignal, interruptSignal; 
+input bubbleSignal, interruptSignalAfterF2D, interruptSignalShiftedIn; 
 
 
 /// defining the outputs [IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC] signals
@@ -37,6 +35,8 @@ output reg [1:0] firstTimeCallOut; // Please see the call algorithm down at hand
 output reg [1:0] firstTimeRETOut; // Please see the ret algorithm down at handling OP_RET instruction
 output reg [1:0] firstTimeINTOut; // Please see the interrupt algorithm down at handling interrupt signal
 output reg isPush;
+output reg isIn;
+output reg interruptSignalShifted; // interrupt signal shifted one cycle because it is the second cycle of LDM
 
 
 always @(*) begin
@@ -49,10 +49,41 @@ always @(*) begin
         enablePushOrPop = 2'b01;
         shift = 1'b0;
         isPush = 1'b0;
+        isIn = 1'b0;
         firstTimeCallOut = 2'b00;
         firstTimeRETOut = 2'b00;
+        interruptSignalShifted = 1'b0;
     end
-    else if(interruptSignal === 1'b1) begin 
+    else if(interruptSignalShiftedIn === 1'b1) begin
+      {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
+      aluSignals = `ALU_NOP;
+      shift = 1'b0; 
+      enablePushOrPop = 2'b01; // push
+      firstTimeINTOut = 2'b11; // first cycle in INT(push lower PC as it is)
+      isPush = 1'b0;
+      isIn = 1'b0;
+      firstTimeCallOut = 2'b00;
+      firstTimeRETOut = 2'b00;
+      interruptSignalShifted = 1'b0;
+    end
+    else if(interruptSignalAfterF2D === 1'b1) begin 
+        // handling if an interrupt comes in second cycle in LDM
+        if(StIn==1&&SstIn==1)
+          begin
+            // it is the second cycle after detecting that it was LDM inst
+            {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0000011000; 
+              aluSignals = `ALU_MOV;
+              StOut=1;
+              SstOut=0;
+              enablePushOrPop = 2'b00;
+              shift = 1'b0;
+              isPush = 1'b0;
+              isIn = 1'b0;
+              interruptSignalShifted = 1'b1;
+              firstTimeINTOut = 2'b00;
+              firstTimeCallOut = 2'b00;
+              firstTimeRETOut = 2'b00;
+          end
         /*
           first cycle found interrupt = 1{
             firstTimeINT = 11, ALU_NOP, handled as a call instr, but at memory mux take the current inst PC[15:0] as it is, and at second cycle when firstTimeINT = 01, take (current instr PC - 1)[31:16]
@@ -60,14 +91,19 @@ always @(*) begin
             alu takes the freezedCCRAfterE2M when RTI
           }
         */
-        {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
-        aluSignals = `ALU_NOP;
-        shift = 1'b0; 
-        enablePushOrPop = 2'b01; // push
-        firstTimeINTOut = 2'b11; // first cycle in INT(push lower PC as it is)
-        isPush = 1'b0;
-        firstTimeCallOut = 2'b00;
-        firstTimeRETOut = 2'b00;
+        else 
+          begin
+            {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b0001000000; 
+            aluSignals = `ALU_NOP;
+            shift = 1'b0; 
+            enablePushOrPop = 2'b01; // push
+            firstTimeINTOut = 2'b11; // first cycle in INT(push lower PC as it is)
+            isPush = 1'b0;
+            isIn = 1'b0;
+            firstTimeCallOut = 2'b00;
+            firstTimeRETOut = 2'b00;
+            interruptSignalShifted = 1'b0;
+          end
       end
     else if(FlushNumIn>0)
     begin
@@ -77,8 +113,11 @@ always @(*) begin
       enablePushOrPop = 2'b00;
       shift = 1'b0;
       isPush = 1'b0;
+      isIn = 1'b0;
       firstTimeCallOut = 2'b00;
       firstTimeRETOut = 2'b00;
+      firstTimeINTOut = 2'b00;
+      interruptSignalShifted = 1'b0;
     end
     else if(bubbleSignal==1)
     begin
@@ -87,8 +126,11 @@ always @(*) begin
       enablePushOrPop = 2'b00;
       shift = 1'b0;
       isPush = 1'b0;
+      isIn = 1'b0;
       firstTimeCallOut = 2'b00;
       firstTimeRETOut = 2'b00;
+      firstTimeINTOut = 2'b00;
+      interruptSignalShifted = 1'b0;
     end
     else
       begin
@@ -102,6 +144,11 @@ always @(*) begin
               enablePushOrPop = 2'b00;
               shift = 1'b0;
               isPush = 1'b0;
+              isIn = 1'b0;
+              firstTimeCallOut = 2'b00;
+              firstTimeINTOut = 2'b00;
+              firstTimeRETOut = 2'b00;
+              interruptSignalShifted = 1'b0;
           end
         else if(firstTimeCallIn === 2'b11)
           begin
@@ -112,6 +159,10 @@ always @(*) begin
               enablePushOrPop = 2'b01;
               shift = 1'b0;
               isPush = 1'b0;
+              isIn = 1'b0;
+              firstTimeRETOut = 2'b00;
+              firstTimeINTOut = 2'b00;
+              interruptSignalShifted = 1'b0;
           end
           else if(firstTimeRETIn === 2'b11)
           begin
@@ -123,14 +174,21 @@ always @(*) begin
               enablePushOrPop = 2'b11;
               firstTimeRETOut = 2'b01;
               isPush = 1'b0;
+              isIn = 1'b0;
+              firstTimeCallOut = 2'b00;
+              firstTimeINTOut = 2'b00;
+              interruptSignalShifted = 1'b0;
           end
         else
           begin
+              firstTimeINTOut = 2'b00;
+              interruptSignalShifted = 1'b0;
               firstTimeCallOut = 2'b00;
               firstTimeRETOut = 2'b00;
               StOut=0;
               SstOut=0;
               isPush = 1'b0;
+              isIn = 1'b0;
             if(opcode == `OP_NOT) begin
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = `ALU_SIGNALS; 
               aluSignals = `ALU_NOT;
@@ -300,11 +358,11 @@ always @(*) begin
               enablePushOrPop = 2'b00;
             end
           else if(opcode == `OP_IN) begin 
-              /// TODO: DON'T FORGET TO DETECT AND SOLVE IF THERE ARE ANY HAZARDS DURING THE IN OPERATIONS.
               // {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b1001000000; /// old 
               {IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC} = 10'b1000001000;
               /// IR = 1 -> because I will read from the input port. 
-              /// RW = 1 -> because I will write to the register file in the destation. 
+              /// RW = 1 -> because I will write to the register file in the destation.
+              isIn = 1'b1;
               aluSignals = `ALU_MOV;
               shift = 1'b0; 
               enablePushOrPop = 2'b00;

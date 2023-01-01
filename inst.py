@@ -1,10 +1,11 @@
+
 # no operand
 NoOperand={
     "nop":"00000",
     "ret":"10100",
     "rti":"10101",
     "setc":"11011",
-    "clcr":"11100"
+    "clrc":"11100"
 }
 
 # the one operand instructions
@@ -16,6 +17,7 @@ OneOperand={
     "dec":"00010",
     "push":"01010",
     "pop":"01011",
+    "jn":"10000",
     "jc":"10001",
     "jmp":"10010",
     "jz":"01111",
@@ -41,14 +43,14 @@ Instruction32={
 }
 #registers
 Registers={
-    "r1":"000",
-    "r2":"001",
-    "r3":"010",
-    "r4":"011",
-    "r5":"100",
-    "r6":"101",
-    "r7":"110",
-    "r8":"111"
+    "r0":"000",
+    "r1":"001",
+    "r2":"010",
+    "r3":"011",
+    "r4":"100",
+    "r5":"101",
+    "r6":"110",
+    "r7":"111"
 }
 
 # opent the input file 
@@ -71,7 +73,7 @@ i=0
 for line in ArrInstructions:
     instruction=""
     line=line.strip()
-    if line[0]=="#":
+    if line == "" or line == " " or line[0]=="#":
         continue
     else:
         pos=line.find("#")
@@ -110,16 +112,16 @@ for line in ArrInstructions:
                         if Instruction32.__contains__(instruc.lower()):
                             Ldm=1
                         if instruc.lower()!="shl" and instruc.lower()!="shr" and instruc.lower()!="ldm":
-                            op2=int(int(op2),16)
+                            op2=int(op2,16)
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
 
-                    if Registers.__contains__(op1.lower()): # if false the immadet value??
+                    if Registers.__contains__(op1.lower()): # if false the immediate value
                         instruction+=Registers[op1.lower()]
 
                     if instruc.lower()=="shl" or instruc.lower()=="shr":
                             instruction+="000"
-                            op2=int(int(op2),16)
+                            op2=int(op2,16)
                             BinNum=(format(int(op2), "#07b")[2:])
                             instruction+=BinNum
                     if instruc.lower()!="shl" and instruc.lower()!="shr":
@@ -136,7 +138,7 @@ for line in ArrInstructions:
         i+=1
         if Ldm==1:
             Ldm=0
-            op2=int(int(op2),16)
+            op2=int(op2,16)
             out[i]=format(int(op2), "#018b")[2:]
             i+=1
     #will check if the instruction two or one operand

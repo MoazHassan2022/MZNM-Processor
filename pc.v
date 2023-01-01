@@ -6,11 +6,12 @@ input  [15:0] aluOut, memData, branchAddress;
 input [1:0] pcSrc, firstTimeCallAfterD2E, firstTimeRETAfterE2M, firstTimeINTAfterD2E;
 input reset, clk;
 output reg [31:0] pc;
+
 always@(negedge clk)
 begin
 	if(reset === 1'b1)
 	begin
-		pc =  32'd32; // 32d is the first place in instruction memory, then make it 31 to be 32 when incremented, 0 is for interrupt handling routine
+		pc =  32'd32; // 32d is the first place in instruction memory, 0 is for interrupt handling routine
 	end
 	else if(firstTimeINTAfterD2E === 2'b11)
 	begin
