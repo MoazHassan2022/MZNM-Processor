@@ -42,7 +42,7 @@ output outSignalEn;
 // DEFINING WIRES
 
 wire IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, isPush, isIN, StIn, SstIn, StAfterD2E, SstAfterD2E, PCHazard, IRAfterD2E, IWAfterD2E, MRAfterD2E, MWAfterD2E, MTRAfterD2E, ALU_srcAfterD2E, RWAfterD2E, BranchAfterD2E, SetCAfterD2E, 
-    CLRCAfterD2E, shift, shiftAfterD2E, isPushAfterD2E, isINAfterD2E, MRAfterE2M, MWAfterE2M, MTRAfterE2M, RWAfterE2M, isPushAfterE2M, MTRAfterM2W, RWAfterM2W, interruptSignalAfterF2D;
+    CLRCAfterD2E, shift, shiftAfterD2E, isPushAfterD2E, isINAfterD2E, MRAfterE2M, MWAfterE2M, MTRAfterE2M, RWAfterE2M, isPushAfterE2M, MTRAfterM2W, RWAfterM2W, interruptSignalAfterF2D, interruptSignalShifted, interruptSignalShiftedAfterD2E;
 wire [1:0] pcSrc, FlushNumIn, FlushNumAfterD2E, enablePushOrPop, enablePushOrPopAfterD2E, enablePushOrPopAfterE2M, firstTimeCall, firstTimeCallAfterD2E, firstTimeRET, firstTimeRETAfterD2E, firstTimeINT, firstTimeINTAfterD2E, firstTimeCallAfterE2M, firstTimeRETAfterE2M, firstTimeINTAfterE2M, takeALUOrMemForwardedSrc1, takeALUOrMemForwardedSrc2, forwardedToBranch;
 wire [4:0] aluSignals, aluSignalsAfterD2E, opcodeAfterE2M;
 wire [15:0] aluOut, read_data1, read_data2, write_data, aluSecondOperand, aluFirstOperand, branchAddress, read_data1AfterD2E, read_data2AfterD2E, read_data2AfterE2M, instrAfterF2D, aluOutAfterE2M, aluOutAfterM2W, memDataAfterM2W;
@@ -97,7 +97,7 @@ regfile regFile(RWAfterM2W, read_data1, read_data2, write_data, clk, reset, inst
 
 ControlUnit cu(
     instrAfterF2D[15:11], aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, 
-    CLRC,StAfterD2E,SstAfterD2E,interruptSignalAfterF2D,StIn,SstIn,FlushNumAfterD2E,FlushNumIn,shift,enablePushOrPop, firstTimeCallAfterD2E, firstTimeCall, firstTimeRETAfterD2E, firstTimeRET, firstTimeINTAfterD2E, firstTimeINT, bubbleSignal, isPush, isIN
+    CLRC,StAfterD2E,SstAfterD2E,interruptSignalAfterF2D,StIn,SstIn,FlushNumAfterD2E,FlushNumIn,shift,enablePushOrPop, firstTimeCallAfterD2E, firstTimeCall, firstTimeRETAfterD2E, firstTimeRET, firstTimeINTAfterD2E, firstTimeINT, bubbleSignal, isPush, isIN, interruptSignalShiftedAfterD2E, interruptSignalShifted
 );
 
 DEBuffer de(
@@ -116,6 +116,7 @@ DEBuffer de(
      firstTimeINT, // used for call instruction
      pcAfterF2D, // used for call instruction
      reset, // used for reset
+     interruptSignalShifted, // used for shifting interrupt signal one cycle in case we are in the second cycle of LDM in Decode
      clk, /// clock signal. 
      read_data1AfterD2E, /// this is the destination data but after the buffer. 
      read_data2AfterD2E, /// this is the source data but after the buffer. either (inport data) or (data from the register file). 
@@ -144,7 +145,8 @@ DEBuffer de(
      StAfterD2E, /// state signal after the D2E buffer. 
      SstAfterD2E, /// second state signal after the D2E buffer.
      isPushAfterD2E, /// signal for detecting push instruction
-     isINAfterD2E    /// signal for detecting IN instruction
+     isINAfterD2E,    /// signal for detecting IN instruction
+     interruptSignalShiftedAfterD2E
      );
 
 ForwardingUnit fu(RegDestinationAfterD2E,SrcAddressAfterD2E,RegDestinationAfterE2M,RegDestinationAfterM2W,MRAfterE2M,RWAfterE2M,RWAfterM2W,RWAfterD2E,MTRAfterD2E,instrAfterF2D[10:8],isINAfterD2E,takeALUOrMemForwardedSrc1,takeALUOrMemForwardedSrc2,forwardedToBranch);

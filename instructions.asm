@@ -2,13 +2,12 @@
 #all numbers are in hexadecimal
 #the reset signal is raised before this code is executed and the flags and the registers are set to zeros.
 .ORG 0 #this is the interrupt code
-#AND R3,R4
-NOT R8
+AND R3,R4
 ADD R1,R4
 OUT R4
 RTI
 .ORG 20 #this is the instructions code
-LDM R1,2D # 45 
+LDM R1,2d # 45 
 SETC 
 JC R1 
 LDM R1,50 # 80 

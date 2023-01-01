@@ -19,8 +19,10 @@ initial begin
     @(posedge clk);
     inPortData = 16'hFFFF;
     @(posedge clk);
+    interruptSignal = 1'b1;
     inPortData = 16'hF320;
     @(posedge clk);
+    interruptSignal = 1'b0;
     @(posedge clk);
     @(posedge clk); 
     @(posedge clk);
