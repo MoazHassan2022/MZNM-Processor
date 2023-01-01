@@ -8,12 +8,12 @@ wire outSignalEn;
 Controller controller(clk, reset, interruptSignal, inPortData, outPortData, outSignalEn);
 initial begin
 	reset = 1'b1;
-	clk = 1'b1;
+	clk = 1'b0;
     inPortData = 16'h0;
     interruptSignal = 1'b0;
 	@(posedge clk); 
     reset = 1'b0;
-    inPortData = 16'h5;
+    inPortData = 16'h5; 
     @(posedge clk);
     inPortData = 16'h19;
     @(posedge clk);

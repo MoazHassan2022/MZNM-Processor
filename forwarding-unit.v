@@ -18,9 +18,9 @@ assign src1_signal = (src1==EX_MEM_RD && !MTRAfterE2M && RWAfterE2M && !isINAfte
 assign src2_signal = (src2==EX_MEM_RD && !MTRAfterE2M && RWAfterE2M && !isINAfterD2E)? 2'd2: // take aluOutAfterE2M
                      (src2==MEM_WB_RD && RWAfterM2W && !isINAfterD2E)? 2'd1: // memDataAfterM2W
                      2'd0;
-assign forwardedToBranch = (destAddrAfterF2D==src1 && !MTRAfterD2E && RWAfterD2E && !isINAfterD2E)? 2'b01: // take aluOut
-                     (destAddrAfterF2D==EX_MEM_RD && !MTRAfterE2M && RWAfterE2M && !isINAfterD2E)? 2'b10: // take aluOutAfterE2M
-                     (destAddrAfterF2D==MEM_WB_RD && RWAfterM2W && !isINAfterD2E)? 2'b11: // memDataAfterM2W
+assign forwardedToBranch = (destAddrAfterF2D==src1 && !MTRAfterD2E && RWAfterD2E)? 2'b01: // take aluOut
+                     (destAddrAfterF2D==EX_MEM_RD && !MTRAfterE2M && RWAfterE2M)? 2'b10: // take aluOutAfterE2M
+                     (destAddrAfterF2D==MEM_WB_RD && RWAfterM2W)? 2'b11: // memDataAfterM2W
                      2'd0;
 
 endmodule

@@ -17,16 +17,6 @@ module Processor (
     outSignalEn
 );
 
-/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                        ******************* WHAT REMAINS **********************
-
-Trying the assembler
-
-                        ******************* TO BE TESTED **********************
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
 // DEFINNG INPUTS
 input wire clk, reset, interruptSignal;
 input wire [15:0] memData, instr, inPortData;
@@ -71,7 +61,7 @@ assign regDestAddressToD2E = (StIn^SstIn) === 1'b0 ? instrAfterF2D[10:8] : RegDe
 assign dataEitherFromInputPortOrSrc = ((IR) == 1'b1 ? inPortData : read_data2);   
 
 /// working on the Out instruction
-assign outSignalEn = IWAfterD2E;  /// this is a signal to inform the listener on the outport that it should read this data. 
+assign outSignalEn = (reset === 1'b0) ? IWAfterD2E : 1'b0;  /// this is a signal to inform the listener on the outport that it should read this data. 
 assign outPortData = aluOut; // here we attach the aluOut to the outport in case that we have out write signal.
 //////////////////////////////////////////////////
 /// Working on push and pop instructions

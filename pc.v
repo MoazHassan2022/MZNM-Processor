@@ -7,6 +7,7 @@ input [1:0] pcSrc, firstTimeCallAfterD2E, firstTimeRETAfterE2M, firstTimeINTAfte
 input reset, clk;
 output reg [31:0] pc;
 
+
 always@(negedge clk)
 begin
 	if(reset === 1'b1)
