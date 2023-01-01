@@ -3,9 +3,50 @@
 <h2 href="#Description">Description</h2>
 <blockquote>
   <p>
-  This is a RISC-like implementation for a 5-stages pipelined processor implemented with Verilog which follows Harvard architecture with 2 separated memories one for the data and the other for the instructions with full forwarding to solve data hazards and a hazard detection unit to solve control hazards.
+  This is a RISC-like implementation for a 5-stages pipelined processor implemented with Verilog which follows Harvard architecture with 2 separated memories one for the data and the other for the instructions with full forwarding to solve data hazards, a hazard detection unit to solve control hazards, and a compiler script with Python to compile assembly instructions into machine code instructions.
  </p>
 </blockquote>
+
+<h2>Build With</h3>
+ <ul>
+ <li><a href="https://www.tutorialspoint.com/vlsi_design/vlsi_design_verilog_introduction.htm">Verilog</a></li>
+  <li><a href="https://eda.sw.siemens.com/en-US/ic/modelsim">ModelSim 2020.1</a></li>
+  <li><a href="https://www.python.org/">Python</a></li>
+  <li><a href="https://app.diagrams.net/">Drawio</a></li>
+ </ul>
+
+   
+   
+<h2>Getting Started</h3>
+<blockquote>
+  <p>This is an list of needed steps to set up your project locally, to get a local copy up and running follow these steps.
+ </p>
+</blockquote>
+<h3 href="#Installation">Installation</h3>
+<ol>
+  <li><strong><em>Clone the repository</em></strong>
+    <blockquote><code>$ git clone https://github.com/MoazHassan2022/MZNM-Processor.git</code></blockquote>
+  </li>
+  <li> 
+  <strong><em>Navigate to repository directory
+</em></strong>
+    <blockquote><code>$ cd MZNM-Processor</code></blockquote>
+  </li>
+  <li> 
+  <strong><em>Install ModelSim
+</em></strong>
+  </li>
+</ol>
+<h3 href="#Running">Running</h3>
+<ol>
+  <li><strong><em>Run ModelSim</em></strong>
+  </li>
+    <li><strong><em>Running simulation in ModelSim terminal, this will compile and run assembly instructions written in <code>./instructions.asm</code></em></strong>
+    <blockquote><code>$ do simulation.do </code></blockquote>
+  </li>
+ 
+</ol>
+
 <h2 href="#Structure">Project Structure</h2>
  <div> 
   <pre>
