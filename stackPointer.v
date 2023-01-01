@@ -2,6 +2,13 @@ module stackPointer(enable, clk, rst, pushOrPop, sp);
 input  enable, clk, rst, pushOrPop;
 output reg [31:0] sp;
 
+always@(negedge clk)
+begin
+	if(rst)
+    begin
+        sp = 2047;
+    end
+end
 always@(posedge clk)
 begin
     if(rst)

@@ -7,18 +7,7 @@ ADD R1,R4
 OUT R4
 RTI
 .ORG 20 #this is the instructions code
-LDM R1,2d # 45 
-SETC 
-JC R1 
-LDM R1,50 # 80 
-INC R2 
-STD R1,R2 
-LDD R2,R5 
-INC R5 
-PUSH R5 
-POP R7 
-INC R7 
-LDM R0,6 
-ADD R0,R0 
-LDM R7,24 # 36 
-JMP R7
+IN R1
+JMP R1
+NOP
+NOT R0
