@@ -1,12 +1,12 @@
-module DEBuffer(aluSignals, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, ST, SST, isPush, isIN, Reg1, Reg2, smallImmediate, SrcAddress,
+module DEBuffer(aluSignals, IR, IW, MR, MW, MTR, RW, Branch, ST, SST, isPush, isIN, Reg1, Reg2, smallImmediate, SrcAddress,
     RegDestination, FlashNumIn, instr, shift, enablePushOrPop, firstTimeCall, firstTimeRET, firstTimeINT, pc, reset, interruptSignalShifted, clk, Reg1Out, Reg2Out, smallImmediateOut, 
-    SrcAddressOut, RegDestinationOut, FlashNumOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut, 
+    SrcAddressOut, RegDestinationOut, FlashNumOut, IROut, IWOut, MROut, MWOut, MTROut, RWOut, BranchOut, 
     aluSignalsOut, instrOut, shiftOut, enablePushOrPopOut, firstTimeCallOut, pcOut, firstTimeRETOut, firstTimeINTOut, STOut, SSTOut, isPushOut, isINOut, interruptSignalShiftedOut
 );
 
 
 // Inputs to the buffer
-input clk, reset, ST, SST, IR, IW, MR, MW, MTR, ALU_src, RW, Branch, SetC, CLRC, shift, isPush, isIN, interruptSignalShifted; 
+input clk, reset, ST, SST, IR, IW, MR, MW, MTR, RW, Branch, shift, isPush, isIN, interruptSignalShifted; 
 input [15:0] Reg1,Reg2, instr;
 input [4:0]  smallImmediate;
 input [2:0]  SrcAddress;
@@ -21,7 +21,7 @@ output reg  [4:0]  smallImmediateOut;
 output reg  [2:0]  SrcAddressOut;
 output reg  [2:0]  RegDestinationOut;
 output reg  [1:0]  FlashNumOut, enablePushOrPopOut, firstTimeCallOut, firstTimeRETOut, firstTimeINTOut;
-output reg STOut, SSTOut, IROut, IWOut, MROut, MWOut, MTROut, ALU_srcOut, RWOut, BranchOut, SetCOut, CLRCOut, shiftOut, isPushOut, isINOut, interruptSignalShiftedOut;
+output reg STOut, SSTOut, IROut, IWOut, MROut, MWOut, MTROut, RWOut, BranchOut, shiftOut, isPushOut, isINOut, interruptSignalShiftedOut;
 output reg [4:0] aluSignalsOut;
 output reg [31:0] pcOut;
 
@@ -44,11 +44,8 @@ begin
     MROut = MR;
     MWOut = MW;
     MTROut = MTR;
-    ALU_srcOut = ALU_src;
     RWOut = RW;
     BranchOut = Branch;
-    SetCOut = SetC;
-    CLRCOut = CLRC;
     aluSignalsOut = aluSignals;
     instrOut = instr;
     shiftOut = shift;

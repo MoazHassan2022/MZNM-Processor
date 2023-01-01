@@ -76,6 +76,6 @@
 
 /// defining common signals 
 ///  [IR, IW, MR, MW, MTR, ALU src, RW, Branch, SetC, CLRC]
-`define ALU_SIGNALS 10'b0000001000 /// this is a common signal form for all the alu operations.
-`define BRANCH_SIGNALS 10'b0000000100
+`define ALU_SIGNALS 7'b0000010 /// this is a common signal form for all the alu operations.
+`define BRANCH_SIGNALS 7'b0000001
 

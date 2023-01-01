@@ -6,6 +6,10 @@ AND R3,R4
 ADD R1,R4
 OUT R4
 RTI
+NOT R0
+LDM R7, 22
+SETC
+JC R7
 .ORG 20 #this is the instructions code
 IN R1
 JMP R1
