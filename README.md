@@ -52,7 +52,8 @@
   <pre>
 MZNM-Processor
 ├── design
-    ├── finalDesign.drawio
+    ├── processorDesign.drawio
+    ├── processorDesign.pdf
     ├── processorDesign.jpg
 ├── requirements
     ├── 1.jpg
